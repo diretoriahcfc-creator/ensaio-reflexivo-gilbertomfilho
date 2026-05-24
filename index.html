@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Ensaio Reflexivo — Blog de filosofia, autoconhecimento e consciência por Gilberto Mendonça Filho."/>
+  <meta property="og:title" content="Ensaio Reflexivo — Gilberto Mendonça Filho"/>
+  <meta property="og:description" content="Filosofia, autoconhecimento e consciência. Textos que confrontam o óbvio."/>
+  <meta property="og:type" content="website"/>
+  <title>Ensaio Reflexivo — Gilberto Mendonça Filho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--fundo);
+      color: var(--branco-suave);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─────────────────────────────────────────
+       NAVBAR
+    ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(17, 26, 18, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,168,75,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ouro-claro);
+      text-decoration: none;
+    }
+
+    .nav-handle {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.4);
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(46,74,48,0.5) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(74,127,165,0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 85%, rgba(200,168,75,0.08) 0%, transparent 45%),
+        linear-gradient(160deg, #0d1510 0%, #111a12 45%, #0e1820 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--fundo));
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(200,168,75,0.22);
+      border-radius: 30px;
+      padding: 5px 20px;
+      margin-bottom: 36px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ouro);
+    }
+
+    .hero-eyebrow .pip {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--ouro);
+      opacity: 0.5;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--creme);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .hero-blog-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.9rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ouro-claro);
+      letter-spacing: 0.06em;
+      margin-bottom: 36px;
+    }
+
+    .hero-divider {
+      width: 56px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 36px;
+    }
+
+    .hero-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .bio-line {
+      font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+      color: rgba(237,232,223,0.55);
+      letter-spacing: 0.06em;
+    }
+
+    .bio-destaque {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-style: italic;
+      color: rgba(200,168,75,0.65);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.35;
+      z-index: 2;
+    }
+
+    .hero-scroll span {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ouro);
+    }
+
+    .scroll-line {
+      width: 1px; height: 38px;
+      background: linear-gradient(to bottom, var(--ouro), transparent);
+      animation: scrollAnim 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollAnim {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50%       { opacity: 0.9; transform: scaleY(1); }
+    }
+
+    /* ─────────────────────────────────────────
+       SOBRE — faixa rápida
+    ───────────────────────────────────────── */
+    .sobre {
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.15));
+      border-top: 1px solid rgba(200,168,75,0.07);
+      border-bottom: 1px solid rgba(200,168,75,0.07);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .sobre p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(237,232,223,0.65);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .sobre p em {
+      color: var(--ouro-claro);
+      font-style: normal;
+    }
+
+    /* ─────────────────────────────────────────
+       POSTS
+    ───────────────────────────────────────── */
+    .posts-section {
+      padding: 96px 24px 120px;
+    }
+
+    .posts-header {
+      max-width: 860px;
+      margin: 0 auto 64px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .posts-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 300;
+      color: var(--creme);
+      white-space: nowrap;
+    }
+
+    .posts-header .header-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.25), transparent);
+    }
+
+    /* Grade de posts */
+    .posts-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ─── CARD DO POST ─── */
+    .post-card {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 32px;
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .post-card:first-child {
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .post-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(46,74,48,0.0), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .post-card:hover::before { opacity: 1; }
+
+    /* Coluna esquerda — número */
+    .post-num {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 6px;
+      gap: 8px;
+    }
+
+    .post-num .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(200,168,75,0.12);
+      transition: color 0.3s;
+    }
+
+    .post-card:hover .post-num .numero {
+      color: rgba(200,168,75,0.25);
+    }
+
+    .post-num .num-line {
+      width: 1px;
+      flex: 1;
+      background: linear-gradient(to bottom, rgba(200,168,75,0.15), transparent);
+      min-height: 20px;
+    }
+
+    /* Coluna direita — conteúdo */
+    .post-body {}
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .post-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--azul-ceu);
+      background: rgba(74,127,165,0.1);
+      border: 1px solid rgba(74,127,165,0.2);
+      border-radius: 4px;
+      padding: 2px 9px;
+    }
+
+    .post-date {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: rgba(200,168,75,0.35);
+      text-transform: uppercase;
+    }
+
+    .post-novo {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      background: rgba(200,168,75,0.08);
+      border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 30px;
+      padding: 2px 10px;
+    }
+
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 300;
+      color: var(--creme);
+      line-height: 1.2;
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+
+    .post-title em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    .post-card:hover .post-title { color: var(--ouro-claro); }
+
+    .post-excerpt {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: rgba(237,232,223,0.5);
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 24px;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .post-ref {
+      font-size: 0.75rem;
+      color: rgba(200,168,75,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .post-ref span {
+      color: rgba(74,127,165,0.6);
+    }
+
+    .post-ler {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-left: auto;
+      transition: gap 0.2s;
+    }
+
+    .post-card:hover .post-ler { gap: 12px; }
+
+    .post-ler-arrow {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .post-card:hover .post-ler-arrow { transform: translateX(4px); }
+
+    /* ─────────────────────────────────────────
+       SEPARADOR ORNAMENTAL
+    ───────────────────────────────────────── */
+    .ornamento {
+      text-align: center;
+      padding: 16px 0 64px;
+    }
+
+    .ornamento span {
+      font-size: 0.9rem;
+      letter-spacing: 0.4em;
+      color: rgba(200,168,75,0.15);
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background: #0b110c;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--ouro-claro);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .footer-nome {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.3);
+      margin-bottom: 20px;
+    }
+
+    .footer-divider {
+      width: 40px; height: 1px;
+      background: rgba(200,168,75,0.15);
+      margin: 20px auto;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.12);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVO
+    ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+
+      .post-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 36px 0;
+      }
+
+      .post-num {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .post-num .num-line {
+        width: 32px;
+        height: 1px;
+        min-height: unset;
+        background: linear-gradient(90deg, rgba(200,168,75,0.15), transparent);
+      }
+
+      .post-num .numero { font-size: 2rem; }
+
+      .posts-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .posts-header .header-line { width: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════ -->
+  <nav>
+    <a href="#" class="nav-logo">Ensaio Reflexivo</a>
+    <span class="nav-handle">@gilberto_mfilho</span>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span>Ensaio Reflexivo</span>
+      <div class="pip"></div>
+      <span>Blog</span>
+    </div>
+
+    <h1 class="hero-name">Gilberto<br>Mendonça Filho</h1>
+    <p class="hero-blog-name">Ensaio Reflexivo</p>
+
+    <div class="hero-divider"></div>
+
+    <div class="hero-bio">
+      <span class="bio-line">Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span class="bio-line">Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span class="bio-line">40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+
+    <div class="hero-scroll">
+      <span>ensaios</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       SOBRE
+  ══════════════════════════════════════ -->
+  <section class="sobre">
+    <p>Textos que confrontam o óbvio. Filosofia, autoconhecimento e consciência —<br>
+    escritos por alguém que atravessou, <em>não por alguém que observa de fora.</em></p>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       POSTS
+  ══════════════════════════════════════ -->
+  <section class="posts-section" id="ensaios">
+    <div class="posts-header">
+      <h2>Ensaios</h2>
+      <div class="header-line"></div>
+    </div>
+
+    <div class="posts-grid">
+
+      <!-- ── POST 3 (mais recente) ── -->
+      <a class="post-card" href="blog3.html">
+        <div class="post-num">
+          <span class="numero">03</span>
+          <div class="num-line"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Filosofia</span>
+            <span class="post-date">Maio 2026</span>
+            <span class="post-novo">Novo</span>
+          </div>
+          <h3 class="post-title">A Sociedade Que Somos:<br><em>o espelho que ninguém quer encarar</em></h3>
+          <p class="post-excerpt">
+            O mundo reativo, desconfiado e sofredor que vemos lá fora não nasceu do acaso.
+            Nasceu de dentro de cada um de nós. A sociedade é o somatório de tudo que cada
+            indivíduo carrega — e ainda não examinou.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Plotino · Henosis · @viespsicologico</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ── POST 2 ── -->
+      <a class="post-card" href="blog2.html">
+        <div class="post-num">
+          <span class="numero">02</span>
+          <div class="num-line"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Meditação</span>
+            <span class="post-date">Maio 2026</span>
+          </div>
+          <h3 class="post-title">A Prisão Sem Grades:<br><em>o mundo da mente que nos aprisiona</em></h3>
+          <p class="post-excerpt">
+            Toda escassez, todo medo, toda guerra começa no mesmo lugar: na mente coletiva
+            que nunca aprendeu a se observar. Chogyam Trungpa chamou isso de "o mundo da mente" —
+            e o diagnóstico, feito décadas atrás, nunca foi tão atual.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Chogyam Trungpa · O Mundo da Mente</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ── POST 1 ── -->
+      <a class="post-card" href="blog1.html">
+        <div class="post-num">
+          <span class="numero">01</span>
+          <div class="num-line"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Yoga · Mente</span>
+            <span class="post-date">Maio 2026</span>
+          </div>
+          <h3 class="post-title">O Efeito Bola de Tênis:<br><em>a mente presa entre dogma e estímulo</em></h3>
+          <p class="post-excerpt">
+            A mente que não para nunca é a mente que nunca descansa. Há mais de 40 anos
+            estudo o Yoga em suas fontes originais. O que essa prática me ensinou não está
+            em nenhum livro de autoajuda: o problema não é a quantidade de pensamentos —
+            é a ausência de silêncio entre eles.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Yoga Sutras · Patanjali · Svadhyaya</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /posts-grid -->
+
+    <div class="ornamento">
+      <span>✦ ✦ ✦</span>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <p class="footer-logo">Ensaio Reflexivo</p>
+    <p class="footer-nome">Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 — Todos os textos são de autoria própria.</p>
+  </footer>
+
+</body>
+</html>
