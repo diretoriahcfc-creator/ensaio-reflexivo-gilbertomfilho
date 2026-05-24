@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorial — Publicar no GitHub Pages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+      --codigo-bg:     #0d1a0e;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--fundo);
+      color: var(--branco-suave);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(17,26,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,168,75,0.08);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--ouro-claro);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+    .nav-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 42vh;
+      background:
+        radial-gradient(ellipse at 20% 60%, rgba(46,74,48,0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(74,127,165,0.2) 0%, transparent 50%),
+        linear-gradient(160deg, #0d1510 0%, #111a12 50%, #0e1820 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 24px 64px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(200,168,75,0.22);
+      border-radius: 30px;
+      padding: 5px 20px;
+      margin-bottom: 28px;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ouro);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      color: var(--creme);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-title em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: clamp(0.88rem, 1.6vw, 1rem);
+      color: rgba(237,232,223,0.45);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── CONTEÚDO ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── MÉTODOS ── */
+    .metodos {
+      padding: 80px 24px 0;
+    }
+    .metodo-tabs {
+      max-width: 780px;
+      margin: 0 auto 56px;
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 14px 24px;
+      background: transparent;
+      border: none;
+      color: rgba(237,232,223,0.4);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+      border-right: 1px solid rgba(200,168,75,0.1);
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn.active {
+      background: rgba(200,168,75,0.08);
+      color: var(--ouro);
+    }
+    .tab-btn:hover:not(.active) {
+      color: rgba(237,232,223,0.65);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── PASSOS ── */
+    .passo {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 28px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .passo:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+
+    .passo-num {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding-top: 4px;
+    }
+    .passo-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,168,75,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--ouro);
+      flex-shrink: 0;
+    }
+    .passo-linha {
+      width: 1px;
+      flex: 1;
+      min-height: 24px;
+      background: linear-gradient(to bottom, rgba(200,168,75,0.15), transparent);
+      margin-top: 8px;
+    }
+
+    .passo-corpo { padding-bottom: 8px; }
+
+    .passo-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .passo-titulo em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    .passo-texto {
+      font-size: 0.95rem;
+      color: rgba(237,232,223,0.55);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .passo-texto strong {
+      color: rgba(237,232,223,0.8);
+      font-weight: 500;
+    }
+
+    /* ── NOTA / ALERTA ── */
+    .nota {
+      background: rgba(200,168,75,0.06);
+      border-left: 3px solid rgba(200,168,75,0.4);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 20px;
+      margin: 16px 0;
+      font-size: 0.88rem;
+      color: rgba(237,232,223,0.55);
+      line-height: 1.7;
+    }
+    .nota strong {
+      color: var(--ouro);
+      font-weight: 500;
+    }
+
+    .alerta {
+      background: rgba(74,127,165,0.08);
+      border-left: 3px solid rgba(74,127,165,0.5);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 20px;
+      margin: 16px 0;
+      font-size: 0.88rem;
+      color: rgba(237,232,223,0.55);
+      line-height: 1.7;
+    }
+    .alerta strong { color: var(--azul-ceu); font-weight: 500; }
+
+    /* ── CÓDIGO ── */
+    .codigo-bloco {
+      background: var(--codigo-bg);
+      border: 1px solid rgba(200,168,75,0.1);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      position: relative;
+    }
+    .codigo-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.35);
+      margin-bottom: 12px;
+    }
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--ouro-claro);
+      line-height: 1.7;
+      display: block;
+      white-space: pre;
+    }
+    code em {
+      color: rgba(237,232,223,0.4);
+      font-style: normal;
+    }
+
+    /* ── IMAGEM PLACEHOLDER ── */
+    .tela {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .tela-icon {
+      font-size: 1.6rem;
+      opacity: 0.6;
+    }
+    .tela-desc {
+      font-size: 0.85rem;
+      color: rgba(237,232,223,0.4);
+      line-height: 1.6;
+    }
+    .tela-desc strong {
+      color: rgba(237,232,223,0.65);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── RESULTADO FINAL ── */
+    .resultado {
+      background: linear-gradient(135deg, rgba(46,74,48,0.12), rgba(28,43,58,0.15));
+      border: 1px solid rgba(200,168,75,0.1);
+      border-radius: 12px;
+      padding: 40px 36px;
+      margin: 0 auto 96px;
+      max-width: 780px;
+      text-align: center;
+    }
+    .resultado-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--ouro-claro);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .resultado-texto {
+      font-size: 0.92rem;
+      color: rgba(237,232,223,0.5);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .resultado-url {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--azul-ceu);
+      background: rgba(74,127,165,0.08);
+      border: 1px solid rgba(74,127,165,0.2);
+      border-radius: 6px;
+      padding: 8px 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── DIVISOR ── */
+    .divisor {
+      max-width: 780px;
+      margin: 0 auto 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .divisor-linha {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.15), transparent);
+    }
+    .divisor-txt {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.25);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0b110c;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-txt {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.12);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .passo {
+        grid-template-columns: 40px 1fr;
+        gap: 0 16px;
+      }
+      .metodo-tabs { flex-direction: column; }
+      .tab-btn { border-right: none; border-bottom: 1px solid rgba(200,168,75,0.1); }
+      .tab-btn:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Ensaio Reflexivo</a>
+    <span class="nav-tag">Tutorial · GitHub Pages</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Tutorial</div>
+    <h1 class="hero-title">Publicar o site<br><em>no GitHub Pages</em></h1>
+    <p class="hero-sub">Dois caminhos: pela interface web do GitHub (sem instalar nada) ou pelo terminal com Git.</p>
+  </section>
+
+  <!-- INSTALAÇÃO GIT -->
+  <section class="metodos" style="padding-bottom: 0;">
+    <div class="container">
+      <div style="max-width:780px; margin: 0 auto 16px;">
+        <div style="display:flex; align-items:center; gap:24px; margin-bottom:48px; padding-top: 8px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:300; color:var(--creme); white-space:nowrap;">Instalação do Git</h2>
+          <div style="flex:1; height:1px; background:linear-gradient(90deg,rgba(200,168,75,0.25),transparent);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-num">
+        <div class="passo-circle">1</div>
+        <div class="passo-linha"></div>
+      </div>
+      <div class="passo-corpo">
+        <h2 class="passo-titulo">Baixar o Git para Windows</h2>
+        <p class="passo-texto">
+          Acesse o site oficial pelo browser. O download do instalador começa automaticamente
+          assim que a página carrega.
+        </p>
+        <div class="codigo-bloco">
+          <div class="codigo-label">endereço no browser</div>
+          <code>git-scm.com/download/win</code>
+        </div>
+        <div class="nota">
+          <strong>Conta GitHub:</strong> você já tem conta criada — o Git que vai instalar
+          aqui é apenas o programa local que permite enviar ficheiros para o GitHub pelo terminal.
+          São coisas separadas.
+        </div>
+      </div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-num">
+        <div class="passo-circle">2</div>
+        <div class="passo-linha"></div>
+      </div>
+      <div class="passo-corpo">
+        <h2 class="passo-titulo">Executar o instalador</h2>
+        <p class="passo-texto">
+          Abra o ficheiro <strong>.exe</strong> que foi descarregado. O instalador vai
+          mostrar várias telas de opções — pode clicar em <strong>Next</strong> em todas
+          sem alterar nada. As configurações padrão funcionam perfeitamente para o que precisamos.
+        </p>
+        <div class="tela">
+          <span class="tela-icon">⚙️</span>
+          <div class="tela-desc">
+            <strong>Única atenção durante a instalação</strong>
+            Na tela "Adjusting your PATH environment", deixe selecionado
+            "Git from the command line and also from 3rd-party software" (já vem selecionado por padrão).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-num">
+        <div class="passo-circle">3</div>
+        <div class="passo-linha"></div>
+      </div>
+      <div class="passo-corpo">
+        <h2 class="passo-titulo">Confirmar a instalação</h2>
+        <p class="passo-texto">
+          Após instalar, abra o <strong>PowerShell</strong> — barra de pesquisa do Windows,
+          escreva <strong>powershell</strong> e pressione Enter. Em seguida, digite:
+        </p>
+        <div class="codigo-bloco">
+          <div class="codigo-label">PowerShell</div>
+          <code>git --version</code>
+        </div>
+        <p class="passo-texto">
+          Se aparecer algo como <strong>git version 2.x.x</strong>, a instalação foi bem-sucedida.
+          Pode avançar para o Método 2 abaixo.
+        </p>
+        <div class="alerta">
+          <strong>Não apareceu a versão?</strong> Feche o PowerShell, abra novamente e tente outra vez.
+          O terminal precisa ser reiniciado para reconhecer o Git recém-instalado.
+        </div>
+      </div>
+    </div>
+
+    <div class="passo" style="border-bottom: none; margin-bottom: 24px;">
+      <div class="passo-num">
+        <div class="passo-circle">4</div>
+        <div class="passo-linha"></div>
+      </div>
+      <div class="passo-corpo">
+        <h2 class="passo-titulo">Identificar-se ao Git <em>(uma vez só)</em></h2>
+        <p class="passo-texto">
+          Antes do primeiro uso, diga ao Git quem é você. Use o mesmo e-mail da sua conta GitHub.
+          Estes dois comandos só precisam ser executados uma única vez em todo o computador.
+        </p>
+        <div class="codigo-bloco">
+          <div class="codigo-label">PowerShell — executar uma vez</div>
+          <code>git config --global user.name "Gilberto Mendonça Filho"
+git config --global user.email "diretoria.hcfc@gmail.com"</code>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:780px; margin: 0 auto 64px; padding: 0 24px;">
+      <div class="divisor" style="margin-bottom: 0;">
+        <div class="divisor-linha"></div>
+        <span class="divisor-txt">Git instalado — escolha como publicar</span>
+        <div class="divisor-linha"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <section class="metodos">
+    <div class="container">
+      <div class="metodo-tabs">
+        <button class="tab-btn active" onclick="mostrarTab('web')">Método 1 — Interface Web</button>
+        <button class="tab-btn" onclick="mostrarTab('git')">Método 2 — Terminal (Git)</button>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════
+         MÉTODO 1 — INTERFACE WEB
+    ════════════════════════════════ -->
+    <div id="tab-web" class="tab-content active">
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">1</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Aceder ao repositório no GitHub</h2>
+          <p class="passo-texto">
+            Abra o browser e entre em <strong>github.com</strong>. Faça login na sua conta e
+            clique no repositório do Ensaio Reflexivo — normalmente aparece na lista
+            da página inicial ou em <strong>Your repositories</strong>.
+          </p>
+          <div class="tela">
+            <span class="tela-icon">🔗</span>
+            <div class="tela-desc">
+              <strong>URL do repositório</strong>
+              github.com/seu-usuario/ensaio-reflexivo (ou o nome que escolheu)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">2</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Fazer upload do <em>index.html</em> actualizado</h2>
+          <p class="passo-texto">
+            Dentro do repositório, clique em <strong>Add file → Upload files</strong>
+            (botão no canto direito, acima da lista de ficheiros).
+            Arraste o ficheiro <strong>index.html</strong> para a área de drop, ou clique
+            em "choose your files" para selecionar.
+          </p>
+          <div class="nota">
+            <strong>Atenção:</strong> se o repositório já tem um index.html, o upload substitui
+            automaticamente o ficheiro existente. Não é preciso apagar antes.
+          </div>
+          <div class="tela">
+            <span class="tela-icon">📂</span>
+            <div class="tela-desc">
+              <strong>Ficheiro a enviar</strong>
+              index.html — o que acabou de ser gerado, na pasta do blog no seu computador.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">3</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Confirmar o commit</h2>
+          <p class="passo-texto">
+            Após selecionar o ficheiro, role a página até à secção <strong>Commit changes</strong>.
+            No campo de texto já vem preenchido algo como "Upload files". Pode deixar assim
+            ou escrever uma descrição mais clara, por exemplo:
+          </p>
+          <div class="codigo-bloco">
+            <div class="codigo-label">mensagem de commit</div>
+            <code>Atualiza index.html — ancoragem do menu e seção Fontes</code>
+          </div>
+          <p class="passo-texto">
+            Deixe selecionado <strong>"Commit directly to the main branch"</strong>
+            e clique em <strong>Commit changes</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">4</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Aguardar a publicação <em>(1 a 3 minutos)</em></h2>
+          <p class="passo-texto">
+            O GitHub Pages detecta o commit e publica automaticamente. Para acompanhar:
+            clique em <strong>Settings → Pages</strong> no menu do repositório.
+            Quando estiver pronto, aparece a mensagem em verde:
+            <strong>"Your site is live at …"</strong>
+          </p>
+          <div class="alerta">
+            <strong>Dica:</strong> se o site ainda mostrar a versão antiga, force o recarregamento
+            no browser com <strong>Ctrl + Shift + R</strong> (Windows) ou <strong>Cmd + Shift + R</strong> (Mac).
+            O browser pode ter em cache a versão anterior.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-web -->
+
+    <!-- ════════════════════════════════
+         MÉTODO 2 — TERMINAL
+    ════════════════════════════════ -->
+    <div id="tab-git" class="tab-content">
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">1</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Pré-requisito: Git instalado</h2>
+          <p class="passo-texto">
+            Abra o terminal (PowerShell no Windows, Terminal no Mac) e confirme que o Git
+            está instalado com o comando abaixo. Se devolver a versão, está tudo certo.
+          </p>
+          <div class="codigo-bloco">
+            <div class="codigo-label">terminal</div>
+            <code>git --version</code>
+          </div>
+          <p class="passo-texto">
+            Se aparecer "git is not recognized" ou semelhante, aceda a
+            <strong>git-scm.com</strong>, faça o download e instale. Depois reinicie o terminal.
+          </p>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">2</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Navegar até à pasta do blog</h2>
+          <p class="passo-texto">
+            No terminal, entre na pasta onde estão os ficheiros do blog. Substitua o caminho
+            pelo caminho real no seu computador.
+          </p>
+          <div class="codigo-bloco">
+            <div class="codigo-label">Windows — PowerShell</div>
+            <code>cd "C:\Users\Jose Gilberto\Documents\Pasta  Gilberto\Gilberto Filho\Blog\ensaio reflexivo"</code>
+          </div>
+          <div class="codigo-bloco">
+            <div class="codigo-label">Mac — Terminal</div>
+            <code>cd ~/Documents/ensaio-reflexivo</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">3</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Verificar o estado dos ficheiros</h2>
+          <p class="passo-texto">
+            Este comando mostra quais ficheiros foram alterados desde o último commit.
+            O <strong>index.html</strong> deve aparecer na lista.
+          </p>
+          <div class="codigo-bloco">
+            <div class="codigo-label">terminal</div>
+            <code>git status</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">4</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Adicionar, confirmar e enviar</h2>
+          <p class="passo-texto">
+            Três comandos em sequência: <strong>add</strong> prepara o ficheiro,
+            <strong>commit</strong> regista a alteração localmente,
+            <strong>push</strong> envia para o GitHub.
+          </p>
+          <div class="codigo-bloco">
+            <div class="codigo-label">terminal — executar na ordem</div>
+            <code>git add index.html
+git commit -m "Atualiza index.html — ancoragem do menu e seção Fontes"
+git push origin main</code>
+          </div>
+          <div class="nota">
+            <strong>Nota:</strong> se o branch principal do seu repositório se chamar
+            <strong>master</strong> em vez de <strong>main</strong>, substitua
+            <code style="display:inline; font-size:0.85rem;">git push origin main</code>
+            por <code style="display:inline; font-size:0.85rem;">git push origin master</code>.
+          </div>
+          <p class="passo-texto">
+            O terminal pode pedir o utilizador e a senha (ou um token de acesso pessoal)
+            do GitHub na primeira vez. Isso é normal e não acontece nas vezes seguintes se
+            optar por guardar as credenciais.
+          </p>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-num">
+          <div class="passo-circle">5</div>
+          <div class="passo-linha"></div>
+        </div>
+        <div class="passo-corpo">
+          <h2 class="passo-titulo">Confirmar a publicação</h2>
+          <p class="passo-texto">
+            Após o push, o GitHub Pages publica em 1 a 3 minutos.
+            Aceda ao seu site e faça <strong>Ctrl + Shift + R</strong> para garantir
+            que o browser não usa cache da versão anterior.
+          </p>
+          <div class="alerta">
+            <strong>Para próximas atualizações</strong> — apenas os três comandos são necessários:
+            <code style="display:inline; font-size:0.85rem;">git add</code>,
+            <code style="display:inline; font-size:0.85rem;">git commit -m "mensagem"</code>,
+            <code style="display:inline; font-size:0.85rem;">git push origin main</code>.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-git -->
+  </section>
+
+  <!-- DIVISOR -->
+  <div style="padding: 64px 24px 0;">
+    <div class="divisor">
+      <div class="divisor-linha"></div>
+      <span class="divisor-txt">resultado esperado</span>
+      <div class="divisor-linha"></div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div style="padding: 0 24px 96px;">
+    <div class="resultado">
+      <p class="resultado-titulo">Site publicado e menu a funcionar</p>
+      <p class="resultado-texto">
+        Após o deploy, os links <strong>Início</strong>, <strong>Sobre</strong> e
+        <strong>Fontes</strong> navegam suavemente dentro da mesma página, sem recarregar
+        e sem erro 404 — porque apontam para âncoras internas (<em>#inicio</em>,
+        <em>#sobre</em>, <em>#fontes</em>) e não para ficheiros separados.
+      </p>
+      <div class="resultado-url">seu-usuario.github.io/ensaio-reflexivo</div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-txt">Ensaio Reflexivo · Gilberto Mendonça Filho · @gilberto_mfilho</p>
+  </footer>
+
+  <script>
+    function mostrarTab(id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
