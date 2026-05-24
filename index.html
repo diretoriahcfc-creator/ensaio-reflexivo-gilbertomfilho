@@ -30,13 +30,13 @@
       color: var(--branco-suave);
       font-family: 'Raleway', sans-serif;
       font-weight: 300;
-      line-height: 1.9;
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        NAVBAR
-    ═══════════════════════════════════ */
+    ───────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -80,10 +80,10 @@
       color: rgba(200,168,75,0.4);
     }
 
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        HERO
-    ═══════════════════════════════════ */
-    .hero-capa {
+    ───────────────────────────────────────── */
+    .hero {
       min-height: 100vh;
       background:
         radial-gradient(ellipse at 15% 50%, rgba(46,74,48,0.5) 0%, transparent 55%),
@@ -99,7 +99,7 @@
       position: relative;
       overflow: hidden;
     }
-    .hero-capa::after {
+    .hero::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -170,15 +170,13 @@
     }
     .hero-scroll {
       position: absolute;
-      bottom: 44px;
-      left: 50%;
+      bottom: 44px; left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      opacity: 0.35;
-      z-index: 2;
+      opacity: 0.35; z-index: 2;
     }
     .hero-scroll span {
       font-size: 0.62rem;
@@ -196,9 +194,9 @@
       50%       { opacity: 0.9; transform: scaleY(1); }
     }
 
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        SOBRE
-    ═══════════════════════════════════ */
+    ───────────────────────────────────────── */
     .sobre {
       background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.15));
       border-top: 1px solid rgba(200,168,75,0.07);
@@ -218,82 +216,90 @@
     }
     .sobre p em { color: var(--ouro-claro); font-style: normal; }
 
-    /* ═══════════════════════════════════
-       CABEÇALHO DE SEÇÃO (ensaios / fontes)
-    ═══════════════════════════════════ */
-    .secao-header {
+    /* ─────────────────────────────────────────
+       POSTS
+    ───────────────────────────────────────── */
+    .posts-section {
+      padding: 96px 24px 120px;
+    }
+    .posts-header {
       max-width: 860px;
-      margin: 0 auto 56px;
+      margin: 0 auto 64px;
       display: flex;
       align-items: center;
       gap: 24px;
-      padding: 0 24px;
     }
-    .secao-header h2 {
+    .posts-header h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.4rem, 3vw, 1.9rem);
       font-weight: 300;
       color: var(--creme);
       white-space: nowrap;
     }
-    .secao-header .header-line {
-      flex: 1;
-      height: 1px;
+    .posts-header .header-line {
+      flex: 1; height: 1px;
       background: linear-gradient(90deg, rgba(200,168,75,0.25), transparent);
     }
-
-    /* ═══════════════════════════════════
-       LINHA DO TEMPO — CONTAINER
-    ═══════════════════════════════════ */
-    .timeline {
-      padding: 96px 24px 80px;
-    }
-
-    /* ═══════════════════════════════════
-       ENSAIO — BLOCO COMPLETO
-    ═══════════════════════════════════ */
-    .ensaio-bloco {
+    .posts-grid {
       max-width: 860px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
-    /* Cabeçalho do ensaio (substituiu o card-link) */
-    .ensaio-header {
+    /* ─── CARD ─── */
+    .post-card {
       display: grid;
       grid-template-columns: 80px 1fr;
       gap: 0 32px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(200,168,75,0.1);
-      margin-bottom: 0;
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.3s;
+      position: relative;
     }
-    .ensaio-num {
+    .post-card:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .post-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(46,74,48,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .post-card:hover::before { opacity: 1; }
+
+    .post-num {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       padding-top: 6px;
       gap: 8px;
     }
-    .ensaio-num .numero {
+    .post-num .numero {
       font-family: 'Cormorant Garamond', serif;
       font-size: 3.5rem;
       font-weight: 300;
       line-height: 1;
-      color: rgba(200,168,75,0.18);
+      color: rgba(200,168,75,0.12);
+      transition: color 0.3s;
     }
-    .ensaio-num .num-line {
-      width: 1px;
-      flex: 1;
-      min-height: 20px;
+    .post-card:hover .post-num .numero { color: rgba(200,168,75,0.28); }
+    .post-num .num-line {
+      width: 1px; flex: 1;
       background: linear-gradient(to bottom, rgba(200,168,75,0.15), transparent);
+      min-height: 20px;
     }
-    .ensaio-meta {
+
+    .post-meta {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 14px;
     }
-    /* Tag de tema — span puro, sem link */
-    .ensaio-tema {
+    .post-tag {
       font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -303,13 +309,13 @@
       border-radius: 4px;
       padding: 2px 9px;
     }
-    .ensaio-data {
+    .post-date {
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       color: rgba(200,168,75,0.35);
       text-transform: uppercase;
     }
-    .ensaio-novo {
+    .post-novo {
       font-size: 0.62rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -319,450 +325,82 @@
       border-radius: 30px;
       padding: 2px 10px;
     }
-    .ensaio-titulo-header {
+    .post-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
       font-weight: 300;
       color: var(--creme);
       line-height: 1.2;
-      margin-bottom: 10px;
-    }
-    .ensaio-titulo-header em { color: var(--ouro-claro); font-style: italic; }
-    .ensaio-subtitulo-header {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      font-style: italic;
-      color: var(--cinza-texto);
-      line-height: 1.6;
       margin-bottom: 12px;
+      transition: color 0.3s;
     }
-    .ensaio-autoria {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(200,168,75,0.4);
+    .post-title em { color: var(--ouro-claro); font-style: italic; }
+    .post-card:hover .post-title { color: var(--ouro-claro); }
+    .post-excerpt {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: rgba(237,232,223,0.5);
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 24px;
     }
-
-    /* Corpo do ensaio */
-    .ensaio-corpo {
-      padding-top: 64px;
-      padding-bottom: 24px;
-    }
-
-    /* ═══════════════════════════════════
-       COMPONENTES INTERNOS DOS ENSAIOS
-    ═══════════════════════════════════ */
-    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
-
-    .section-label {
+    .post-footer {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 36px;
+      gap: 16px;
     }
-    .section-label .numero-sec {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: rgba(200,168,75,0.25);
-      line-height: 1;
-    }
-    .section-label .linha-divisor {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
-    }
-
-    h2.section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 300;
-      color: var(--creme);
-      margin-bottom: 32px;
-      line-height: 1.3;
-    }
-    h2.section-title em { color: var(--ouro-claro); font-style: italic; }
-
-    .sec-bloco { padding: 64px 0; }
-
-    .corpo p {
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      color: rgba(237,232,223,0.88);
-      margin-bottom: 28px;
-      line-height: 1.92;
-    }
-    .corpo p:last-child { margin-bottom: 0; }
-
-    .citacao-principal {
-      background: linear-gradient(135deg, rgba(46,74,48,0.18), rgba(74,127,165,0.10));
-      border-left: 3px solid var(--ouro);
-      border-radius: 0 12px 12px 0;
-      padding: 40px 44px;
-      margin: 60px 0;
-    }
-    .citacao-principal p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 3vw, 1.85rem);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--ouro-claro);
-      line-height: 1.55;
-      margin-bottom: 16px;
-    }
-    .citacao-fonte {
+    .post-ref {
       font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(200,168,75,0.5);
+      color: rgba(200,168,75,0.35);
+      letter-spacing: 0.05em;
     }
-
-    .frase-central {
-      text-align: center;
-      padding: 70px 0;
-    }
-    .frase-central p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--creme);
-      line-height: 1.4;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .frase-central p em { color: var(--ouro-claro); }
-    .frase-divider {
-      width: 40px; height: 1px;
-      background: var(--ouro);
-      margin: 30px auto;
-      opacity: 0.5;
-    }
-
-    .separador {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px 0;
-    }
-    .separador .linha {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.2), transparent);
-    }
-    .separador .ornamento {
-      color: rgba(200,168,75,0.3);
-      font-size: 0.9rem;
-      letter-spacing: 0.3em;
-    }
-
-    /* Conceito (blog 1 — Svadhyaya) */
-    .conceito-bloco {
-      position: relative;
-      background: linear-gradient(135deg, rgba(28,43,58,0.6), rgba(46,74,48,0.3));
-      border: 1px solid rgba(74,127,165,0.2);
-      border-radius: 16px;
-      padding: 50px 48px;
-      margin: 64px 0;
-      overflow: hidden;
-    }
-    .conceito-bloco::before {
-      content: 'स्वाध्याय';
-      position: absolute;
-      top: 10px; right: 20px;
-      font-size: 3.5rem; font-weight: 300;
-      color: rgba(74,127,165,0.06);
-      pointer-events: none;
-    }
-    .conceito-tag {
-      display: inline-block;
-      background: rgba(74,127,165,0.15);
-      border: 1px solid rgba(74,127,165,0.3);
-      border-radius: 4px;
-      padding: 3px 12px;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--azul-ceu);
-      margin-bottom: 20px;
-    }
-    .conceito-bloco h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 300;
-      color: var(--creme);
-      margin-bottom: 22px;
-      line-height: 1.3;
-    }
-    .conceito-bloco p {
-      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-      color: rgba(237,232,223,0.82);
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-
-    /* Padrões (blog 2) */
-    .padroes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 44px 0;
-    }
-    .padrao-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200,168,75,0.12);
-      border-radius: 12px;
-      padding: 28px 24px;
-    }
-    .padrao-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
-    .padrao-titulo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; font-weight: 600;
-      color: var(--ouro-claro); margin-bottom: 8px;
-    }
-    .padrao-texto { font-size: 0.88rem; color: rgba(237,232,223,0.6); line-height: 1.7; }
-
-    /* Trungpa (blog 2) */
-    .trungpa-bloco {
-      position: relative;
-      background: linear-gradient(135deg, rgba(28,43,58,0.6), rgba(46,74,48,0.3));
-      border: 1px solid rgba(74,127,165,0.2);
-      border-radius: 16px;
-      padding: 50px 48px;
-      margin: 64px 0;
-      overflow: hidden;
-    }
-    .trungpa-bloco::before {
-      content: 'ཀུན་གཞི';
-      position: absolute;
-      bottom: -5px; right: 20px;
-      font-size: 4rem; font-weight: 300;
-      color: rgba(74,127,165,0.05);
-      pointer-events: none;
-    }
-    .trungpa-tag {
-      display: inline-block;
-      background: rgba(74,127,165,0.15);
-      border: 1px solid rgba(74,127,165,0.3);
-      border-radius: 4px;
-      padding: 3px 12px;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--azul-ceu);
-      margin-bottom: 20px;
-    }
-    .trungpa-bloco h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 300;
-      color: var(--creme);
-      margin-bottom: 22px; line-height: 1.3;
-    }
-    .trungpa-bloco p {
-      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-      color: rgba(237,232,223,0.82);
-      line-height: 1.9; margin-bottom: 20px;
-    }
-
-    /* Camadas (blog 3) */
-    .camadas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 44px 0;
-    }
-    .camada-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200,168,75,0.12);
-      border-radius: 12px;
-      padding: 28px 24px;
-      transition: border-color 0.3s;
-    }
-    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
-    .camada-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
-    .camada-titulo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; font-weight: 600;
-      color: var(--ouro-claro); margin-bottom: 8px;
-    }
-    .camada-texto { font-size: 0.88rem; color: rgba(237,232,223,0.6); line-height: 1.7; }
-
-    /* Henosis (blog 3) */
-    .henosis-bloco {
-      position: relative;
-      background: linear-gradient(135deg, rgba(28,43,58,0.6), rgba(46,74,48,0.3));
-      border: 1px solid rgba(74,127,165,0.2);
-      border-radius: 16px;
-      padding: 50px 48px;
-      margin: 64px 0;
-      overflow: hidden;
-    }
-    .henosis-bloco::before {
-      content: 'ΕΝΩΣΙΣ';
-      position: absolute;
-      top: 20px; right: 30px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem; font-weight: 300;
-      color: rgba(74,127,165,0.07);
-      letter-spacing: 0.1em;
-      pointer-events: none; line-height: 1;
-    }
-    .henosis-tag {
-      display: inline-block;
-      background: rgba(74,127,165,0.15);
-      border: 1px solid rgba(74,127,165,0.3);
-      border-radius: 4px;
-      padding: 3px 12px;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--azul-ceu);
-      margin-bottom: 20px;
-    }
-    .henosis-bloco h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 300;
-      color: var(--creme);
-      margin-bottom: 22px; line-height: 1.3;
-    }
-    .henosis-bloco p {
-      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-      color: rgba(237,232,223,0.82);
-      line-height: 1.9; margin-bottom: 20px;
-    }
-    .henosis-bloco p:last-child { margin-bottom: 0; }
-    .referencia-canal {
+    .post-ref span { color: rgba(74,127,165,0.6); }
+    .post-ler {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(200,168,75,0.07);
-      border: 1px solid rgba(200,168,75,0.2);
-      border-radius: 30px;
-      padding: 6px 16px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--ouro);
-      letter-spacing: 0.05em;
-      margin-top: 28px;
-      text-decoration: none;
-      transition: background 0.3s;
+      margin-left: auto;
+      transition: gap 0.2s;
     }
-    .referencia-canal:hover { background: rgba(200,168,75,0.14); }
+    .post-card:hover .post-ler { gap: 12px; }
+    .post-ler-arrow { font-size: 1rem; transition: transform 0.2s; }
+    .post-card:hover .post-ler-arrow { transform: translateX(4px); }
 
-    /* Krishnamurti (blog 4) */
-    .krishna-bloco {
-      position: relative;
-      background: linear-gradient(135deg, rgba(28,43,58,0.6), rgba(46,74,48,0.3));
-      border: 1px solid rgba(74,127,165,0.2);
-      border-radius: 16px; padding: 50px 48px;
-      margin: 64px 0; overflow: hidden;
-    }
-    .krishna-bloco::before {
-      content: 'ΦΩΣ';
-      position: absolute; top: 16px; right: 28px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5.5rem; font-weight: 300;
-      color: rgba(74,127,165,0.07);
-      letter-spacing: 0.12em; pointer-events: none; line-height: 1;
-    }
-    .krishna-tag {
-      display: inline-block;
-      background: rgba(74,127,165,0.15);
-      border: 1px solid rgba(74,127,165,0.3);
-      border-radius: 4px; padding: 3px 12px;
-      font-size: 0.7rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--azul-ceu); margin-bottom: 20px;
-    }
-    .krishna-bloco h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 300; color: var(--creme);
-      margin-bottom: 22px; line-height: 1.3;
-    }
-    .krishna-bloco p {
-      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-      color: rgba(237,232,223,0.82);
-      line-height: 1.9; margin-bottom: 20px;
-    }
-    .krishna-bloco p:last-child { margin-bottom: 0; }
-    .referencia-livro {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(200,168,75,0.07);
-      border: 1px solid rgba(200,168,75,0.2);
-      border-radius: 30px; padding: 6px 16px;
-      font-size: 0.78rem; color: var(--ouro);
-      letter-spacing: 0.05em; margin-top: 28px;
-      text-decoration: none; cursor: default;
-    }
+    /* ─────────────────────────────────────────
+       ORNAMENTO
+    ───────────────────────────────────────── */
+    .ornamento { text-align: center; padding: 16px 0 64px; }
+    .ornamento span { font-size: 0.9rem; letter-spacing: 0.4em; color: rgba(200,168,75,0.15); }
 
-    /* Fechamento / assinatura */
-    .fechamento {
-      background: linear-gradient(160deg, rgba(46,74,48,0.15), rgba(28,43,58,0.25));
-      border-top: 1px solid rgba(200,168,75,0.1);
-      padding: 80px 24px 80px;
-      text-align: center;
-    }
-    .fechamento h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 300;
-      color: var(--creme);
-      margin-bottom: 24px;
-      line-height: 1.3;
-    }
-    .fechamento h2 em { color: var(--ouro-claro); font-style: italic; }
-    .fechamento p {
-      font-size: clamp(0.98rem, 1.9vw, 1.08rem);
-      color: rgba(237,232,223,0.7);
-      max-width: 580px;
-      margin: 0 auto 28px;
-      line-height: 1.85;
-    }
-    .assinatura {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(200,168,75,0.1);
-    }
-    .assinatura-nome {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 600;
-      color: var(--ouro-claro); letter-spacing: 0.04em; margin-bottom: 6px;
-    }
-    .assinatura-cargo {
-      font-size: 0.78rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(200,168,75,0.45); margin-top: 4px;
-    }
-    .assinatura-bio { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
-    .assinatura-bio span {
-      font-size: 0.88rem; color: rgba(237,232,223,0.65);
-      letter-spacing: 0.05em; line-height: 1.7;
-    }
-    .assinatura-bio .bio-destaque {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-style: italic;
-      color: rgba(200,168,75,0.7); letter-spacing: 0.03em; margin-top: 6px;
-    }
-
-    /* Divisor entre ensaios */
-    .divisor-ensaio {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 24px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .divisor-ensaio .dl { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,168,75,0.12), transparent); }
-    .divisor-ensaio .do { font-size: 0.7rem; letter-spacing: 0.3em; color: rgba(200,168,75,0.18); }
-
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        FONTES
-    ═══════════════════════════════════ */
+    ───────────────────────────────────────── */
     .fontes-section {
       background: linear-gradient(180deg, rgba(28,43,58,0.12), rgba(46,74,48,0.08));
       border-top: 1px solid rgba(200,168,75,0.07);
       padding: 96px 24px 112px;
     }
     .fontes-inner { max-width: 860px; margin: 0 auto; }
+    .fontes-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .fontes-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 300;
+      color: var(--creme);
+      white-space: nowrap;
+    }
+    .fontes-header .header-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.25), transparent);
+    }
     .fontes-intro {
       font-size: clamp(0.9rem, 1.6vw, 1rem);
       color: rgba(237,232,223,0.45);
@@ -797,9 +435,9 @@
     .fonte-obra { font-size: 0.88rem; color: rgba(237,232,223,0.45); line-height: 1.6; }
     .fonte-obra em { color: rgba(74,127,165,0.7); font-style: normal; }
 
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        FOOTER
-    ═══════════════════════════════════ */
+    ───────────────────────────────────────── */
     footer {
       background: #0b110c;
       border-top: 1px solid rgba(255,255,255,0.04);
@@ -815,32 +453,27 @@
       font-size: 0.78rem; letter-spacing: 0.14em;
       text-transform: uppercase; color: rgba(200,168,75,0.3); margin-bottom: 20px;
     }
-    .footer-divider {
-      width: 40px; height: 1px;
-      background: rgba(200,168,75,0.15); margin: 20px auto;
-    }
+    .footer-divider { width: 40px; height: 1px; background: rgba(200,168,75,0.15); margin: 20px auto; }
     .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.12); letter-spacing: 0.1em; }
 
-    /* ═══════════════════════════════════
+    /* ─────────────────────────────────────────
        RESPONSIVO
-    ═══════════════════════════════════ */
+    ───────────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .nav-links { gap: 20px; }
       .fonte-item { grid-template-columns: 1fr; gap: 12px; }
     }
     @media (max-width: 640px) {
-      nav { padding: 14px 16px; }
       .nav-links { display: none; }
-      .ensaio-header { grid-template-columns: 1fr; gap: 12px; }
-      .ensaio-num { flex-direction: row; align-items: center; }
-      .ensaio-num .num-line { width: 32px; height: 1px; min-height: unset; background: linear-gradient(90deg, rgba(200,168,75,0.15), transparent); }
-      .ensaio-num .numero { font-size: 2rem; }
-      .citacao-principal { padding: 28px 24px; }
-      .conceito-bloco, .trungpa-bloco, .henosis-bloco { padding: 36px 28px; }
-      .camadas-grid, .padroes-grid { grid-template-columns: 1fr; }
-      .secao-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .secao-header .header-line { width: 60px; }
+      .post-card { grid-template-columns: 1fr; gap: 12px; padding: 36px 0; }
+      .post-num { flex-direction: row; align-items: center; gap: 12px; }
+      .post-num .num-line { width: 32px; height: 1px; min-height: unset; background: linear-gradient(90deg, rgba(200,168,75,0.15), transparent); }
+      .post-num .numero { font-size: 2rem; }
+      .posts-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .posts-header .header-line { width: 60px; }
+      .fontes-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .fontes-header .header-line { width: 60px; }
     }
   </style>
 </head>
@@ -863,7 +496,7 @@
   <!-- ══════════════════════════════════════
        HERO  ·  id="inicio"
   ══════════════════════════════════════ -->
-  <section class="hero-capa" id="inicio">
+  <section class="hero" id="inicio">
     <div class="hero-eyebrow">
       <span>Ensaio Reflexivo</span>
       <div class="pip"></div>
@@ -895,528 +528,118 @@
 
 
   <!-- ══════════════════════════════════════
-       LINHA DO TEMPO — TODOS OS ENSAIOS
+       POSTS  ·  id="ensaios"
   ══════════════════════════════════════ -->
-  <div class="timeline" id="ensaios">
-
-    <div class="secao-header">
+  <section class="posts-section" id="ensaios">
+    <div class="posts-header">
       <h2>Ensaios</h2>
       <div class="header-line"></div>
     </div>
 
+    <div class="posts-grid">
 
-    <!-- ╔══════════════════════════════════════════════════╗
-         ║  ENSAIO 4 — O Caminho Que Ninguém Pode Fazer  ║
-         ╚══════════════════════════════════════════════════╝ -->
-    <article class="ensaio-bloco" id="ensaio-4">
-
-      <div class="ensaio-header">
-        <div class="ensaio-num">
+      <!-- ── POST 4 (mais recente) ── -->
+      <a class="post-card" href="blog4.html">
+        <div class="post-num">
           <span class="numero">04</span>
           <div class="num-line"></div>
         </div>
-        <div>
-          <div class="ensaio-meta">
-            <span class="ensaio-tema">Consciência · Presença</span>
-            <span class="ensaio-data">Maio 2026</span>
-            <span class="ensaio-novo">Novo</span>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Consciência · Presença</span>
+            <span class="post-date">Maio 2026</span>
+            <span class="post-novo">Novo</span>
           </div>
-          <h2 class="ensaio-titulo-header">O Caminho Que Ninguém Pode Fazer Por Você:<br><em>a busca externa como espelho que aponta para dentro</em></h2>
-          <p class="ensaio-subtitulo-header">Compramos livros, reservamos retiros, seguimos mestres. Cada busca externa é necessária — não porque a resposta está lá, mas porque só ela nos ensina, pela exaustão, que a resposta nunca esteve lá.</p>
-          <p class="ensaio-autoria">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
-        </div>
-      </div>
-
-      <div class="ensaio-corpo">
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">01</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">A biblioteca que não liberta</h2>
-          <div class="corpo">
-            <p>Existe um padrão que quase todo buscador sincero repete. Começa com um livro — aquele que "mudou tudo". Depois vem outro, e mais outro. Uma palestra que confirma o que o livro disse de forma diferente. Um retiro de fim de semana. Um workshop de dois dias. Um guru que fala com uma clareza que parece definitiva. A agenda se preenche de conteúdo sobre como viver melhor, ser mais presente, despertar.</p>
-            <p>E há algo genuíno nessa busca. Não é vaidade nem moda. Há ali uma fome real, um reconhecimento de que algo está fora de lugar — dentro, não fora. Esse reconhecimento é precioso. É o primeiro sinal de que a consciência começou a se mover em direção a si mesma.</p>
-            <p>Mas há uma armadilha sutil nesse movimento, e ela está precisamente onde menos esperamos: na própria busca. Porque buscar fora — mesmo buscando sinceramente algo que só pode ser encontrado dentro — é ainda olhar na direção errada. E cada livro novo, cada retiro, cada sistema adquirido pode, paradoxalmente, afastar o que procuramos ao criar a ilusão de que estamos nos aproximando.</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"A transformação não é transferível. Nenhum livro jamais transformou alguém. Um livro pode apontar. A transformação acontece no espaço entre a apontação e o silêncio que vem depois."</p>
-            <span class="citacao-fonte">Gilberto Mendonça Filho — Ensaio Reflexivo</span>
+          <h3 class="post-title">O Caminho Que Ninguém Pode Fazer Por Você:<br><em>a busca externa como espelho que aponta para dentro</em></h3>
+          <p class="post-excerpt">
+            Compramos livros, reservamos retiros, seguimos mestres. Cada busca externa
+            é necessária — não porque a resposta está lá, mas porque só ela nos ensina,
+            pela exaustão, que a resposta nunca esteve lá.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Krishnamurti · Freedom from the Known</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
           </div>
         </div>
+      </a>
 
-        <div style="background:linear-gradient(180deg,var(--fundo),#0e1820,var(--fundo));">
-          <div class="container">
-            <div class="frase-central">
-              <p>Todo mestre genuíno aponta para dentro. Todo sistema verdadeiro se dissolve quando cumpre sua função. <em>O dedo que aponta para a lua não é a lua.</em></p>
-              <div class="frase-divider"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">02</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">As três forças <em>que mantêm o olhar voltado para fora</em></h2>
-          <div class="corpo">
-            <p>A tendência de buscar fora o que só existe dentro não é ingenuidade. Ela tem estrutura, tem força, tem razões profundas que precisam ser nomeadas antes de serem atravessadas.</p>
-          </div>
-          <div class="camadas-grid">
-            <div class="camada-card">
-              <span class="camada-icon">📦</span>
-              <div class="camada-titulo">A indústria</div>
-              <p class="camada-texto">O mercado de autodesenvolvimento vende transformação como produto. Cada novo método promete o que o anterior não entregou — e o ciclo perpetua o consumidor, não o despertar.</p>
-            </div>
-            <div class="camada-card">
-              <span class="camada-icon">🙏</span>
-              <div class="camada-titulo">A autoridade delegada</div>
-              <p class="camada-texto">É mais confortável seguir do que descobrir. Delegar a responsabilidade da percepção a um mestre, um livro ou um sistema é uma forma sutil de fuga que parece, por fora, dedicação.</p>
-            </div>
-            <div class="camada-card">
-              <span class="camada-icon">🪞</span>
-              <div class="camada-titulo">A comparação</div>
-              <p class="camada-texto">Medimos nossa jornada pela dos outros. Onde estou no caminho? Mais ou menos avançado? Essa pergunta revela que ainda tratamos o autoconhecimento como corrida — e toda corrida tem um externo como referência.</p>
-            </div>
-          </div>
-          <div class="corpo">
-            <p>Nenhuma dessas forças é monstruosa. São humanas. E cada uma delas tem seu momento de necessidade — há uma fase em que o livro certo chega na hora certa, em que o mestre diz exatamente o que precisávamos ouvir, em que ver a jornada de outro nos devolve a coragem. Esse momento é real. O problema começa quando esse momento se prolonga indefinidamente, quando a muleta vira morada.</p>
-            <p>A busca externa é o andaime. Necessário durante a construção. Mas ninguém mora no andaime.</p>
-          </div>
-        </div>
-
-        <div class="container"><div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div></div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">03</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Ser sua própria luz: <em>o que Krishnamurti ensinou sem fundar escola</em></h2>
-          <div class="corpo">
-            <p>Jiddu Krishnamurti passou décadas diante de multidões falando sobre liberdade, consciência e percepção. E fez algo que nenhum guru antes havia feito com tamanha consistência: recusou-se a ser seguido. Dissolveu a ordem que o preparava para ser um avatar espiritual. Disse, repetidas vezes, com palavras que cortam pela precisão: "A verdade é uma terra sem caminhos."</p>
-            <p>Em <em>Freedom from the Known</em>, sua obra mais densa, Krishnamurti identifica com cirúrgica clareza o que chamou de "o conhecido" — a totalidade da experiência acumulada, das crenças herdadas, das imagens que construímos de nós mesmos e do mundo. E faz uma afirmação que inverte tudo: o conhecido não é a base do autoconhecimento. É o seu principal obstáculo.</p>
-            <p>Porque o conhecido é sempre o passado. E o passado é exatamente o que nos impede de ver o presente com olhos limpos. Cada livro que "nos transformou" se torna, com o tempo, mais um filtro entre a consciência e o que é. Mais uma lente colorida sobre um olho que precisava ver sem cor.</p>
-          </div>
-          <div class="krishna-bloco">
-            <span class="krishna-tag">Krishnamurti · Freedom from the Known</span>
-            <h3>A terra sem caminhos</h3>
-            <p>Há uma frase das últimas décadas de vida de Krishnamurti que carrega mais peso do que parece à primeira leitura: "Seja sua própria luz." Não é um convite ao individualismo. Não é encorajamento à arrogância espiritual. É o reconhecimento de algo muito preciso: que a luz que você busca nos outros já existe em você, mas não pode ser ativada por ninguém além de você.</p>
-            <p>O que ele descreve não é ausência de aprendizado. É ausência de dependência. Há uma diferença entre usar um mapa e confundir o mapa com o território. Entre aprender com a experiência de outro e tentar viver a experiência de outro como se fosse a sua. Um rio que tentasse copiar o percurso de outro rio não chegaria ao mar — chegaria ao atolamento.</p>
-            <p>O caminho do autodesenvolvimento genuíno é, por definição, intransferível. Não porque seja secreto. Mas porque ele é feito de percepções que só você pode ter, no momento em que as tem, no corpo em que vive, com a história que carrega. Nenhum retiro pode ter essa percepção por você. Nenhum livro pode ser presente no seu lugar. Nenhum mestre pode ser você acordando.</p>
-            <span class="referencia-livro">📖 Freedom from the Known — J. Krishnamurti (Harper &amp; Row, 1969)</span>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:0; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">04</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Quando a presença desperta: <em>o encontro que não tem endereço</em></h2>
-          <div class="corpo">
-            <p>Há um momento que não se programa. Que não chega depois de um certo número de livros lidos, retiros completados ou meditações acumuladas. Ele não é prêmio nem consequência direta de esforço. É mais parecido com o instante em que você para de procurar as chaves e percebe que estavam no bolso o tempo todo.</p>
-            <p>É o momento em que a consciência deixa de ser objeto de busca e se reconhece como o próprio buscador. Em que a presença não é algo que você pratica — é o que você é quando para de ser outra coisa. Em que o uno, essa unidade que as tradições chamam por nomes diferentes, não aparece como conquista mas como reconhecimento. Como se você tivesse saído de um quarto escuro onde buscava a luz com uma lanterna e, ao abrir a porta, percebesse que a luz do lado de fora sempre esteve lá.</p>
-            <p>Quarenta anos de Yoga me ensinaram isso com uma paciência que nenhum argumento conseguiria. A prática não me deu algo novo. Foi retirando, camada por camada, o que eu havia colocado sobre o que já era. E quando há menos camadas, o que permanece não é um eu melhorado. É algo mais simples, mais silencioso e mais vivo do que qualquer versão melhorada de mim mesmo poderia ser.</p>
-            <p>Os livros foram necessários. Os retiros foram necessários. Os mestres que encontrei foram necessários. Não porque me deram a resposta. Mas porque, um a um, foram mostrando onde a resposta não estava — até que o único lugar ainda não explorado era o único lugar que sempre importou.</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"Não há caminho para a presença. A presença é o caminho. E ela começa precisamente onde você está — não onde você pretende chegar."</p>
-            <span class="citacao-fonte">Gilberto Mendonça Filho — Ensaio Reflexivo</span>
-          </div>
-        </div>
-
-      </div><!-- /ensaio-corpo -->
-
-      <div class="fechamento">
-        <div class="container" style="max-width:780px;">
-          <h2>A luz<br><em>já estava acesa</em></h2>
-          <p>Continue lendo. Continue praticando. Continue indo aos retiros se eles ainda falam com algo vivo em você. Mas vá com olhos abertos para a função deles: são espelhos, não destinos. São dedos apontando, não a lua.</p>
-          <p>O momento em que você reconhece isso — não como ideia, mas como percepção direta — é o momento em que a busca não termina, mas muda de natureza. Você continua se movendo, mas já não está perdido. Porque aprendeu que o que procurava nunca esteve fora. Estava esperando, com a paciência que só o eterno tem, exatamente onde você sempre esteve.</p>
-          <p>Dentro. Uno. Presente.</p>
-          <div class="assinatura">
-            <p class="assinatura-nome">Gilberto Mendonça Filho</p>
-            <p class="assinatura-cargo">@gilberto_mfilho</p>
-            <div class="assinatura-bio">
-              <span>Empresário &nbsp;|&nbsp; 59 anos</span>
-              <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
-              <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
-              <span class="bio-destaque">Disciplina que vai além do corpo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </article><!-- /ensaio-4 -->
-
-
-    <div class="divisor-ensaio">
-      <div class="dl"></div>
-      <span class="do">✦ ✦ ✦</span>
-      <div class="dl"></div>
-    </div>
-
-
-    <!-- ╔══════════════════════════════════════╗
-         ║  ENSAIO 3 — A Sociedade Que Somos   ║
-         ╚══════════════════════════════════════╝ -->
-    <article class="ensaio-bloco" id="ensaio-3">
-
-      <div class="ensaio-header">
-        <div class="ensaio-num">
+      <!-- ── POST 3 ── -->
+      <a class="post-card" href="blog3.html">
+        <div class="post-num">
           <span class="numero">03</span>
           <div class="num-line"></div>
         </div>
-        <div>
-          <div class="ensaio-meta">
-            <span class="ensaio-tema">Filosofia</span>
-            <span class="ensaio-data">Maio 2026</span>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Filosofia</span>
+            <span class="post-date">Maio 2026</span>
           </div>
-          <h2 class="ensaio-titulo-header">A Sociedade Que Somos:<br><em>o espelho que ninguém quer encarar</em></h2>
-          <p class="ensaio-subtitulo-header">O mundo reativo, desconfiado e sofredor que vemos lá fora não nasceu do acaso. Nasceu de dentro de cada um de nós.</p>
-          <p class="ensaio-autoria">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
-        </div>
-      </div>
-
-      <div class="ensaio-corpo">
-
-        <div class="container">
-          <div class="section-label"><span class="numero-sec">01</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">O diagnóstico que ninguém quer receber</h2>
-          <div class="corpo">
-            <p>Olhe ao redor. As pessoas estão nervosas, impacientes, desconfiadas umas das outras. O trânsito é uma guerra. A internet é um campo de batalha. Uma discordância política vira rompimento de família. Um comentário mal interpretado vira processo judicial. A reatividade virou o modo padrão de existir, e a desconfiança tornou-se o filtro pelo qual enxergamos qualquer relação.</p>
-            <p>Chamamos isso de "o estado do mundo". Como se o mundo fosse uma entidade separada de nós, uma força externa que nos acontece. Mas o mundo não existe fora das pessoas que o compõem. A sociedade é o somatório de tudo que cada indivíduo carrega dentro de si e projeta para fora em cada interação, em cada decisão, em cada silêncio escolhido no lugar de uma conversa honesta.</p>
-            <p>A pergunta incômoda, então, não é "o que há de errado com o mundo?" A pergunta correta é: o que eu, especificamente eu, ainda carrego dentro de mim que alimenta esse estado coletivo de sofrimento?</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"Não é possível construir um mundo consciente com indivíduos inconscientes. A consciência coletiva não antecede a individual; ela a segue."</p>
-            <span class="citacao-fonte">Gilberto Mendonça Filho — Ensaio Reflexivo</span>
+          <h3 class="post-title">A Sociedade Que Somos:<br><em>o espelho que ninguém quer encarar</em></h3>
+          <p class="post-excerpt">
+            O mundo reativo, desconfiado e sofredor que vemos lá fora não nasceu do acaso.
+            Nasceu de dentro de cada um de nós. A sociedade é o somatório de tudo que cada
+            indivíduo carrega — e ainda não examinou.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Plotino · Henosis · @viespsicologico</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
           </div>
         </div>
+      </a>
 
-        <div style="background:linear-gradient(180deg,var(--fundo),#0e1820,var(--fundo));">
-          <div class="container">
-            <div class="frase-central">
-              <p>A sociedade reativa não é a causa do seu sofrimento. Ela é <em>o reflexo</em> do sofrimento que cada um de nós ainda não resolveu.</p>
-              <div class="frase-divider"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">02</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">As camadas que carregamos <em>sem saber</em></h2>
-          <div class="corpo">
-            <p>Ninguém nasce ansioso, reativo ou desconfiado. Chegamos ao mundo com uma abertura radical para o outro, uma curiosidade pura sobre a existência. O que acontece depois é uma acumulação lenta e quase invisível de camadas que vão cobrindo essa abertura original como sedimento cobre um rio.</p>
-            <p>Essas camadas têm três fontes principais, e a maioria das pessoas atravessa a vida inteira sem reconhecê-las pelo nome.</p>
-          </div>
-          <div class="camadas-grid">
-            <div class="camada-card">
-              <span class="camada-icon">🧬</span>
-              <div class="camada-titulo">Herança</div>
-              <p class="camada-texto">Medos, crenças e padrões emocionais transmitidos por gerações. Não escolhemos, simplesmente absorvemos — e depois repetimos.</p>
-            </div>
-            <div class="camada-card">
-              <span class="camada-icon">📖</span>
-              <div class="camada-titulo">Doutrina</div>
-              <p class="camada-texto">Religiões, ideologias, tradições. Muitas vezes sagradas na origem, mas operadas como prisão quando nunca foram questionadas pessoalmente.</p>
-            </div>
-            <div class="camada-card">
-              <span class="camada-icon">😶</span>
-              <div class="camada-titulo">Inconsciência</div>
-              <p class="camada-texto">O piloto automático do ego: reagir antes de perceber, ferir antes de sentir, julgar antes de compreender.</p>
-            </div>
-          </div>
-          <div class="corpo">
-            <p>Enquanto essas camadas permanecem intocadas, não somos nós que vivemos nossa vida. São elas que vivem através de nós. Nossos relacionamentos reproduzem os padrões dos nossos pais. Nossas reações políticas reproduzem os medos da nossa infância. Nossas escolhas reproduzem as crenças que nem sabemos ter.</p>
-            <p>E uma sociedade composta por milhões de pessoas vivendo dessa forma — compulsivamente, reativamente, inconscientemente — será, inevitavelmente, uma sociedade sofrida, egocêntrica e sem ética. Não por maldade. Por inconsciência herdada, não examinada, não trabalhada.</p>
-          </div>
-        </div>
-
-        <div class="container"><div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div></div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">03</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Henosis: o caminho de volta <em>ao que você sempre foi</em></h2>
-          <div class="corpo">
-            <p>Os gregos antigos tinham uma palavra para o que estamos discutindo aqui, uma palavra que a filosofia neoplatônica, especialmente Plotino, desenvolveu com uma profundidade raramente alcançada desde então: <strong style="color:var(--ouro-claro);">Henosis</strong>. Do grego ἕνωσις, ela significa união, unicidade. Não a fusão sentimental entre duas pessoas, mas a reunião da alma com o Uno, a fonte primária de toda existência.</p>
-            <p>O canal <strong style="color:var(--creme);">@viespsicologico</strong> abordou esse conceito de forma precisa no vídeo <em>Henosis: O Processo Místico de União com o Uno</em>. E o que Plotino identificou há mais de dezessete séculos ainda serve como diagnóstico para o nosso tempo: o sofrimento da alma começa no momento em que ela esquece sua origem. Quando a consciência se fragmenta, quando o ego se instala como o único organizador da experiência, a alma perde o contato com aquilo que é fundamental em si mesma.</p>
-          </div>
-          <div class="henosis-bloco">
-            <span class="henosis-tag">Plotino · Neoplatonismo</span>
-            <h3>A ascensão que não se faz com os pés</h3>
-            <p>Plotino escreveu que o caminho de retorno ao Uno não pode ser feito com "pés, carruagens ou barcos". Não há transporte externo para esse destino. É necessário despertar uma outra visão: aquela que todos possuem, mas poucos utilizam.</p>
-            <p>Essa visão não é adquirida. É revelada quando as camadas que a obscurecem são removidas. A purificação, para Plotino, não é punição. É o processo gradual de retirar tudo aquilo que não é essencialmente você: os medos herdados, as crenças absorvidas, os padrões que agem por você enquanto você dorme.</p>
-            <p>O que resta, quando essas camadas caem, não é o vazio. É a consciência limpa, a presença plena, a capacidade de agir a partir de princípios genuínos em vez de reagir a partir de feridas antigas. É isso que os antigos chamavam de contato com o Uno. E é disso que o mundo, hoje, está com fome.</p>
-            <a class="referencia-canal" href="https://www.youtube.com/@viespsicologico" target="_blank">
-              ▶ @viespsicologico — Henosis: O Processo Místico de União com o Uno
-            </a>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:0; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">04</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Se você muda, <em>algo no mundo muda com você</em></h2>
-          <div class="corpo">
-            <p>Existe uma ilusão confortável em atribuir os problemas do mundo a outros, aos políticos, às instituições, às redes sociais, ao capitalismo, às elites. Não porque essas críticas sejam completamente falsas, mas porque elas nos permitem permanecer exatamente onde estamos: indignados, certos, imóveis.</p>
-            <p>A verdade que ninguém quer ouvir é que cada pessoa que trabalha seriamente sobre si mesma, que remove uma camada de inconsciência, que rompe um padrão herdado, que aprende a observar antes de reagir, que escolhe ética mesmo quando não há testemunhas, essa pessoa está fazendo pela sociedade o que nenhum manifesto político consegue fazer: ela está mudando o substrato de onde a sociedade emerge.</p>
-            <p>Isso não é ingenuidade. É física social. Uma família onde há um adulto mais consciente funciona diferente. Uma empresa com lideranças que não operam no piloto automático do ego funciona diferente. Uma comunidade com pessoas que se conhecem por dentro, que não projetam seus fantasmas nos outros, que constroem relações a partir de presença real, é uma comunidade diferente.</p>
-            <p>O trabalho interior não é um luxo espiritual para quem tem tempo. É o trabalho mais urgente e mais negligenciado da nossa época. E ele começa com uma pergunta simples, mas raramente feita com honestidade: o que dentro de mim ainda está adormecido, herdado, não examinado, e que todos ao meu redor já pagaram o preço?</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"Não jamais melhoraremos como sociedade se não começarmos a retirar as camadas que carregamos: de inconsciência, de hereditariedade, de doutrinas que nunca fizemos nossas."</p>
-            <span class="citacao-fonte">Gilberto Mendonça Filho — Ensaio Reflexivo</span>
-          </div>
-        </div>
-
-      </div><!-- /ensaio-corpo -->
-
-      <div class="fechamento">
-        <div class="container" style="max-width:780px;">
-          <h2>O espelho<br><em>está esperando</em></h2>
-          <p>Você pode continuar olhando para a sociedade com julgamento ou com desespero. Ou pode fazer algo mais difícil, e muito mais transformador: olhar para dentro com a mesma honestidade que exige do mundo lá fora.</p>
-          <p>O processo de Henosis não é um evento místico reservado a sábios e monges. É o movimento silencioso de qualquer pessoa que decide, um dia, parar de repetir e começar a perceber. Que decide, uma vez sequer, não reagir de onde sempre reagiu. Que encontra, no espaço entre o estímulo e a resposta, aquilo que sempre foi mais essencial do que qualquer camada acumulada.</p>
-          <p>O mundo que queremos começa no único lugar onde temos real poder de intervenção: em nós mesmos.</p>
-          <div class="assinatura">
-            <p class="assinatura-nome">Gilberto Mendonça Filho</p>
-            <p class="assinatura-cargo">@gilberto_mfilho</p>
-            <div class="assinatura-bio">
-              <span>Empresário &nbsp;|&nbsp; 59 anos</span>
-              <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
-              <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
-              <span class="bio-destaque">Disciplina que vai além do corpo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </article><!-- /ensaio-3 -->
-
-
-    <div class="divisor-ensaio">
-      <div class="dl"></div>
-      <span class="do">✦ ✦ ✦</span>
-      <div class="dl"></div>
-    </div>
-
-
-    <!-- ╔══════════════════════════════════════╗
-         ║  ENSAIO 2 — A Prisão Sem Grades     ║
-         ╚══════════════════════════════════════╝ -->
-    <article class="ensaio-bloco" id="ensaio-2">
-
-      <div class="ensaio-header">
-        <div class="ensaio-num">
+      <!-- ── POST 2 ── -->
+      <a class="post-card" href="blog2.html">
+        <div class="post-num">
           <span class="numero">02</span>
           <div class="num-line"></div>
         </div>
-        <div>
-          <div class="ensaio-meta">
-            <span class="ensaio-tema">Meditação</span>
-            <span class="ensaio-data">Maio 2026</span>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Meditação</span>
+            <span class="post-date">Maio 2026</span>
           </div>
-          <h2 class="ensaio-titulo-header">A Prisão Sem Grades:<br><em>o mundo da mente que nos aprisiona</em></h2>
-          <p class="ensaio-subtitulo-header">Todo este mundo é o mundo da mente. E a mente que não se conhece é a prisão mais eficiente que existe.</p>
-          <p class="ensaio-autoria">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
-        </div>
-      </div>
-
-      <div class="ensaio-corpo">
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">01</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">O mundo que construímos sem perceber</h2>
-          <div class="corpo">
-            <p>Há uma pergunta que raramente fazemos quando olhamos para o estado do mundo: por que, com todo o avanço tecnológico, todo o acesso à informação, toda a prosperidade material que nunca existiu em tal escala na história humana — ainda há tanta escassez emocional, tanto medo, tanta violência, tanto conflito que parece não ter origem nem solução?</p>
-            <p>A resposta mais fácil é sempre externa: os governantes, o sistema, os outros. Mas Chogyam Trungpa — mestre budista tibetano que trouxe os ensinamentos ao Ocidente nas décadas de 60 e 70 — apontou para uma direção diferente, incômoda e precisa: "todo este mundo é o mundo da mente".</p>
-            <p>Não como metáfora. Como diagnóstico.</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"Todo este mundo é o mundo da mente. A escassez, o medo e as guerras não são problemas externos. São projeções de uma consciência coletiva que nunca aprendeu a se observar."</p>
-            <span class="citacao-fonte">Chogyam Trungpa — O Mundo da Mente</span>
+          <h3 class="post-title">A Prisão Sem Grades:<br><em>o mundo da mente que nos aprisiona</em></h3>
+          <p class="post-excerpt">
+            Toda escassez, todo medo, toda guerra começa no mesmo lugar: na mente coletiva
+            que nunca aprendeu a se observar. Chogyam Trungpa chamou isso de "o mundo da mente" —
+            e o diagnóstico, feito décadas atrás, nunca foi tão atual.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Chogyam Trungpa · O Mundo da Mente</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
           </div>
         </div>
+      </a>
 
-        <div style="background:linear-gradient(180deg,var(--fundo),#0e1820,var(--fundo));">
-          <div class="container">
-            <div class="frase-central">
-              <p>A prisão mais eficiente não tem grades. Tem <em>pensamentos que parecem fatos, medos que parecem verdades e crenças que parecem a própria realidade.</em></p>
-              <div class="frase-divider"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">02</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Os três padrões que a mente coletiva repete</h2>
-          <div class="corpo">
-            <p>Trungpa identificou padrões que a mente coletiva repete independentemente da época, da cultura ou do nível de desenvolvimento econômico. Padrões que se manifestam na política, nas relações, no mercado, na espiritualidade — em qualquer campo onde humanos interagem.</p>
-          </div>
-          <div class="padroes-grid">
-            <div class="padrao-card">
-              <span class="padrao-icon">⚡</span>
-              <div class="padrao-titulo">Escassez</div>
-              <p class="padrao-texto">A crença de que nunca há suficiente — tempo, dinheiro, reconhecimento, amor. Uma narrativa que opera independente da realidade objetiva.</p>
-            </div>
-            <div class="padrao-card">
-              <span class="padrao-icon">🌑</span>
-              <div class="padrao-titulo">Medo</div>
-              <p class="padrao-texto">O medo como modo padrão de existir. Não o medo diante de um perigo real, mas o medo crônico de um futuro imaginado.</p>
-            </div>
-            <div class="padrao-card">
-              <span class="padrao-icon">⚔️</span>
-              <div class="padrao-titulo">Conflito</div>
-              <p class="padrao-texto">A tendência de organizar o mundo em opostos — nós e eles, certo e errado — e defender a própria posição como se fosse a própria existência.</p>
-            </div>
-          </div>
-          <div class="corpo">
-            <p>O que torna esses padrões tão persistentes é que eles não vivem no mundo externo. Vivem na estrutura mental de cada pessoa que participa da sociedade. E uma sociedade composta por mentes que carregam esses padrões não examinados vai reproduzi-los em toda estrutura que criar — independente de qual seja o sistema político, econômico ou religioso vigente.</p>
-          </div>
-        </div>
-
-        <div class="container"><div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div></div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">03</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Meditação: <em>consciência antes de reação</em></h2>
-          <div class="trungpa-bloco">
-            <span class="trungpa-tag">Chogyam Trungpa · O Mundo da Mente</span>
-            <h3>A travessia honesta</h3>
-            <p>Trungpa não apresenta a meditação como fuga do mundo. Apresenta como o único caminho que vai ao fundo do problema — porque o problema está na mente, e é na mente que precisa ser trabalhado.</p>
-            <p>A distinção que ele faz é fundamental: há uma diferença entre usar a meditação para se sentir melhor (fuga) e usar a meditação para ver mais claramente o que está acontecendo dentro de si (travessia). A fuga pode ser confortável. A travessia é necessária.</p>
-            <p>Quando a consciência aprende a se observar antes de reagir — não como técnica, mas como modo de ser — os padrões coletivos perdem um portador. Uma mente que não opera em modo automático de escassez, medo e conflito é uma mente que não alimenta esses padrões na família, no trabalho, na política, nas relações.</p>
-          </div>
-          <div class="corpo">
-            <p>Isso não é idealismo. É aritmética. Cada pessoa que trabalha seriamente a própria consciência subtrai um vetor dos padrões coletivos que perpetuam o sofrimento. Não resolve o mundo. Mas muda o substrato de onde o mundo emerge.</p>
-          </div>
-        </div>
-
-      </div><!-- /ensaio-corpo -->
-
-      <div class="fechamento">
-        <div class="container" style="max-width:780px;">
-          <h2>A porta<br><em>sempre foi interior</em></h2>
-          <p>O mundo da mente que Trungpa descreve não é uma abstração filosófica. É o estado em que a maioria de nós acorda todas as manhãs — reagindo antes de perceber, defendendo antes de compreender, sofrendo por padrões que nunca examinamos.</p>
-          <p>A saída não é uma reforma externa. É uma observação interna. Honesta. Repetida. Sem atalho.</p>
-          <div class="assinatura">
-            <p class="assinatura-nome">Gilberto Mendonça Filho</p>
-            <p class="assinatura-cargo">@gilberto_mfilho</p>
-            <div class="assinatura-bio">
-              <span>Empresário &nbsp;|&nbsp; 59 anos</span>
-              <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
-              <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
-              <span class="bio-destaque">Disciplina que vai além do corpo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </article><!-- /ensaio-2 -->
-
-
-    <div class="divisor-ensaio">
-      <div class="dl"></div>
-      <span class="do">✦ ✦ ✦</span>
-      <div class="dl"></div>
-    </div>
-
-
-    <!-- ╔══════════════════════════════════════╗
-         ║  ENSAIO 1 — O Efeito Bola de Tênis  ║
-         ╚══════════════════════════════════════╝ -->
-    <article class="ensaio-bloco" id="ensaio-1">
-
-      <div class="ensaio-header">
-        <div class="ensaio-num">
+      <!-- ── POST 1 ── -->
+      <a class="post-card" href="blog1.html">
+        <div class="post-num">
           <span class="numero">01</span>
           <div class="num-line"></div>
         </div>
-        <div>
-          <div class="ensaio-meta">
-            <span class="ensaio-tema">Yoga · Mente</span>
-            <span class="ensaio-data">Maio 2026</span>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="post-tag">Yoga · Mente</span>
+            <span class="post-date">Maio 2026</span>
           </div>
-          <h2 class="ensaio-titulo-header">O Efeito Bola de Tênis:<br><em>a mente presa entre dogma e estímulo</em></h2>
-          <p class="ensaio-subtitulo-header">A mente que não para nunca é a mente que nunca descansa.</p>
-          <p class="ensaio-autoria">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
-        </div>
-      </div>
-
-      <div class="ensaio-corpo">
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">01</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">A raquete que nunca para</h2>
-          <div class="corpo">
-            <p>Você já percebeu que passa o dia inteiro pensando — mas no final não tomou nenhuma decisão que realmente importava? Que a cabeça estava cheia, mas o centro estava vazio? Que havia muito ruído, mas pouco silêncio?</p>
-            <p>Isso tem um nome. Chamo de Efeito Bola de Tênis. De um lado, o bombardeio constante de informações, opiniões e estímulos do mundo externo. Do outro, o peso silencioso dos dogmas que carregamos há anos — crenças que nunca questionamos, certezas que nunca foram nossas. A mente fica presa entre os dois lados. Travada. Reagindo. Nunca realmente presente.</p>
-            <p>A pergunta que ninguém faz, porque a resposta incomoda, é: o que dentro de mim mantém essa bola em movimento? O que eu, especificamente eu, ainda preciso examinar para parar de jogar esse jogo sem saber que estou jogando?</p>
-          </div>
-          <div class="citacao-principal">
-            <p>"O problema não é a quantidade de pensamentos. É a ausência de silêncio entre eles."</p>
-            <span class="citacao-fonte">Gilberto Mendonça Filho — Ensaio Reflexivo</span>
+          <h3 class="post-title">O Efeito Bola de Tênis:<br><em>a mente presa entre dogma e estímulo</em></h3>
+          <p class="post-excerpt">
+            A mente que não para nunca é a mente que nunca descansa. Há mais de 40 anos
+            estudo o Yoga em suas fontes originais. O que essa prática me ensinou não está
+            em nenhum livro de autoajuda: o problema não é a quantidade de pensamentos —
+            é a ausência de silêncio entre eles.
+          </p>
+          <div class="post-footer">
+            <p class="post-ref">Referência: <span>Yoga Sutras · Patanjali · Svadhyaya</span></p>
+            <span class="post-ler">Ler <span class="post-ler-arrow">→</span></span>
           </div>
         </div>
+      </a>
 
-        <div style="background:linear-gradient(180deg,var(--fundo),#0e1820,var(--fundo));">
-          <div class="container">
-            <div class="frase-central">
-              <p>Há mais de 40 anos estudo o Yoga em suas fontes originais. O que essa prática me ensinou não está em nenhum livro de autoajuda: <em>você não é os pensamentos que passam. Você é o espaço onde eles acontecem.</em></p>
-              <div class="frase-divider"></div>
-            </div>
-          </div>
-        </div>
+    </div><!-- /posts-grid -->
 
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">02</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Os dois lados da quadra</h2>
-          <div class="corpo">
-            <p>O primeiro lado é o mundo externo: a velocidade, as notificações, a opinião de todos sobre tudo o tempo todo. Nunca na história humana fomos expostos a tanto estímulo por unidade de tempo. O sistema nervoso não foi projetado para esse volume. A reação natural é o ruído interno constante — pensamentos que não terminam, ansiedade que não tem objeto preciso, um estado de alerta que não sabe onde pousar.</p>
-            <p>O segundo lado é mais sutil e mais antigo: os dogmas. Não apenas religiosos. Dogmas de família — "dinheiro não é para nós", "demonstrar emoção é fraqueza". Dogmas culturais — "sucesso tem essa forma, não outra". Dogmas políticos, médicos, filosóficos absorvidos sem exame, operando como verdades automáticas que filtram toda experiência antes mesmo de ela chegar à consciência.</p>
-            <p>A mente fica entre esses dois lados como uma bola de tênis. Nunca quieta. Nunca própria.</p>
-          </div>
-        </div>
-
-        <div class="container"><div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div></div>
-
-        <div class="container" style="padding-top:64px; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">03</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Svadhyaya: <em>o autoestudo como caminho</em></h2>
-          <div class="corpo">
-            <p>O Yoga original — não a versão de academia com playlist de lo-fi — tem um conceito central que atravessa milênios sem perder precisão: Svadhyaya. Do sânscrito, literalmente "estudo de si mesmo". Não acumular mais conhecimento externo. Aprender a esvaziar. Aprender a observar o observador.</p>
-            <p>Patanjali, nos Yoga Sutras, coloca Svadhyaya como um dos pilares da prática interior porque reconhece algo que a psicologia moderna redescobriu séculos depois: não é possível mudar o que não se vê. E não é possível ver o que nunca se parou para olhar.</p>
-          </div>
-          <div class="conceito-bloco">
-            <span class="conceito-tag">Patanjali · Yoga Sutras</span>
-            <h3>Svadhyaya — o estudo que ninguém ensina na escola</h3>
-            <p>Há 15 anos medito todos os dias, sem exceção. Não porque seja disciplinado no sentido que a palavra costuma ter — como punição voluntária. Mas porque a prática revelou, com o tempo, algo que nenhum curso ou livro poderia entregar: a diferença entre reagir e responder.</p>
-            <p>Reagir é automático. Vem das camadas — herança, dogma, medo antigo. Responder é consciente. Vem do espaço que existe entre o estímulo e a ação, quando você aprendeu a habitar esse espaço em vez de atravessá-lo correndo.</p>
-            <p>Svadhyaya não é introspecção melancólica. É investigação ativa. É a prática de perguntar, repetidamente e sem medo: isso que estou pensando é meu? Essa crença que estou defendendo, quando foi que a escolhi? Esse medo que me move, ele ainda descreve alguma realidade presente?</p>
-          </div>
-        </div>
-
-        <div class="container" style="padding-top:0; padding-bottom:64px;">
-          <div class="section-label"><span class="numero-sec">04</span><div class="linha-divisor"></div></div>
-          <h2 class="section-title">Sair da quadra</h2>
-          <div class="corpo">
-            <p>A saída do Efeito Bola de Tênis não é largar a raquete com raiva. Não é negar o mundo externo nem rejeitar tudo que foi ensinado. É algo mais preciso e mais exigente: aprender a sentar com o que é, sem a compulsão imediata de reagir, defender, ou resolver.</p>
-            <p>Quando você senta em silêncio de verdade — não apenas com os olhos fechados e o celular do lado — começa a perceber algo que muda tudo: você não é os pensamentos que passam. Você é o espaço consciente onde eles acontecem. E nesse espaço, a clareza renasce.</p>
-            <p>Não como resultado. Como reconhecimento. Ela sempre esteve lá, encoberta pelo barulho.</p>
-          </div>
-        </div>
-
-      </div><!-- /ensaio-corpo -->
-
-      <div class="fechamento">
-        <div class="container" style="max-width:780px;">
-          <h2>A quadra<br><em>sempre foi sua</em></h2>
-          <p>A bola só continua se você continua jogando. A pergunta não é como parar o jogo. A pergunta é: quando foi que você decidiu entrar nessa quadra, e quando foi que esqueceu que a decisão era sua?</p>
-          <div class="assinatura">
-            <p class="assinatura-nome">Gilberto Mendonça Filho</p>
-            <p class="assinatura-cargo">@gilberto_mfilho</p>
-            <div class="assinatura-bio">
-              <span>Empresário &nbsp;|&nbsp; 59 anos</span>
-              <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
-              <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
-              <span class="bio-destaque">Disciplina que vai além do corpo</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </article><!-- /ensaio-1 -->
-
-  </div><!-- /timeline -->
+    <div class="ornamento"><span>✦ ✦ ✦</span></div>
+  </section>
 
 
   <!-- ══════════════════════════════════════
@@ -1425,7 +648,7 @@
   <section class="fontes-section" id="fontes">
     <div class="fontes-inner">
 
-      <div class="secao-header" style="padding: 0;">
+      <div class="fontes-header">
         <h2>Fontes</h2>
         <div class="header-line"></div>
       </div>
@@ -1438,41 +661,44 @@
 
       <div class="fontes-grid">
 
+        <!-- Blog 4 -->
         <div class="fonte-item">
           <div class="fonte-blog-ref">
-            <span class="fonte-blog-num">Ensaio 04</span>
+            <span class="fonte-blog-num">Blog 04</span>
             <span class="fonte-conceito">Ser Sua Própria Luz</span>
           </div>
           <div class="fonte-corpo">
             <span class="fonte-autor">J. Krishnamurti</span>
             <span class="fonte-obra">
               Filósofo indiano que recusou discípulos e dissolveu a ordem criada para torná-lo líder espiritual.
-              Seu ensinamento central: a verdade não pode ser organizada, ensinada nem seguida — cada
-              consciência deve descobri-la de forma direta e intransferível.
+              Seu ensinamento central: a verdade não pode ser organizada, ensinada nem seguida —
+              cada consciência deve descobri-la de forma direta e intransferível.
               Referência: <em>Freedom from the Known</em> (Harper &amp; Row, 1969).
             </span>
           </div>
         </div>
 
+        <!-- Blog 3 -->
         <div class="fonte-item">
           <div class="fonte-blog-ref">
-            <span class="fonte-blog-num">Ensaio 03</span>
+            <span class="fonte-blog-num">Blog 03</span>
             <span class="fonte-conceito">Henosis</span>
           </div>
           <div class="fonte-corpo">
             <span class="fonte-autor">Plotino · @viespsicologico</span>
             <span class="fonte-obra">
               Henosis (do grego <em>ΕΝΩΣΙΣ</em>) é o conceito neoplatônico de união com o Uno —
-              a ideia de que a fragmentação que percebemos no mundo exterior é reflexo da fragmentação
-              interior ainda não integrada. Referência primária: <em>Enéadas</em>, Plotino.
-              Canal secundário: <em>@viespsicologico</em> (YouTube).
+              a ideia de que a fragmentação que percebemos no mundo exterior é reflexo da
+              fragmentação interior ainda não integrada. Referência primária: <em>Enéadas</em>,
+              Plotino. Canal secundário: <em>@viespsicologico</em> (YouTube).
             </span>
           </div>
         </div>
 
+        <!-- Blog 2 -->
         <div class="fonte-item">
           <div class="fonte-blog-ref">
-            <span class="fonte-blog-num">Ensaio 02</span>
+            <span class="fonte-blog-num">Blog 02</span>
             <span class="fonte-conceito">O Mundo da Mente</span>
           </div>
           <div class="fonte-corpo">
@@ -1486,9 +712,10 @@
           </div>
         </div>
 
+        <!-- Blog 1 -->
         <div class="fonte-item">
           <div class="fonte-blog-ref">
-            <span class="fonte-blog-num">Ensaio 01</span>
+            <span class="fonte-blog-num">Blog 01</span>
             <span class="fonte-conceito">Svadhyaya</span>
           </div>
           <div class="fonte-corpo">
@@ -1502,7 +729,7 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- /fontes-grid -->
     </div>
   </section>
 
