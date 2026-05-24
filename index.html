@@ -62,6 +62,26 @@
       text-decoration: none;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(237,232,223,0.45);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ouro);
+    }
+
     .nav-handle {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -437,6 +457,116 @@
     }
 
     /* ─────────────────────────────────────────
+       FONTES
+    ───────────────────────────────────────── */
+    .fontes-section {
+      background: linear-gradient(180deg, rgba(28,43,58,0.12), rgba(46,74,48,0.08));
+      border-top: 1px solid rgba(200,168,75,0.07);
+      padding: 96px 24px 112px;
+    }
+
+    .fontes-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .fontes-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .fontes-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 300;
+      color: var(--creme);
+      white-space: nowrap;
+    }
+
+    .fontes-header .header-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.25), transparent);
+    }
+
+    .fontes-intro {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: rgba(237,232,223,0.45);
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 56px;
+      font-style: italic;
+    }
+
+    .fontes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fonte-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 0 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+
+    .fonte-item:first-child {
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .fonte-blog-ref {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 3px;
+    }
+
+    .fonte-blog-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,168,75,0.35);
+    }
+
+    .fonte-conceito {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ouro-claro);
+      letter-spacing: 0.03em;
+    }
+
+    .fonte-corpo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .fonte-autor {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--creme);
+      letter-spacing: 0.03em;
+    }
+
+    .fonte-obra {
+      font-size: 0.88rem;
+      color: rgba(237,232,223,0.45);
+      line-height: 1.6;
+    }
+
+    .fonte-obra em {
+      color: rgba(74,127,165,0.7);
+      font-style: normal;
+    }
+
+    /* ─────────────────────────────────────────
        FOOTER
     ───────────────────────────────────────── */
     footer {
@@ -478,9 +608,17 @@
     /* ─────────────────────────────────────────
        RESPONSIVO
     ───────────────────────────────────────── */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       nav { padding: 16px 20px; }
+      .nav-links { gap: 20px; }
 
+      .fonte-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
       .post-card {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -504,6 +642,11 @@
 
       .posts-header { flex-direction: column; align-items: flex-start; gap: 12px; }
       .posts-header .header-line { width: 60px; }
+
+      .fontes-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .fontes-header .header-line { width: 60px; }
+
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -513,15 +656,22 @@
        NAVBAR
   ══════════════════════════════════════ -->
   <nav>
-    <a href="#" class="nav-logo">Ensaio Reflexivo</a>
+    <a href="#inicio" class="nav-logo">Ensaio Reflexivo</a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#fontes">Fontes</a></li>
+    </ul>
+
     <span class="nav-handle">@gilberto_mfilho</span>
   </nav>
 
 
   <!-- ══════════════════════════════════════
-       HERO
+       HERO  ·  id="inicio"
   ══════════════════════════════════════ -->
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="hero-eyebrow">
       <span>Ensaio Reflexivo</span>
       <div class="pip"></div>
@@ -548,16 +698,16 @@
 
 
   <!-- ══════════════════════════════════════
-       SOBRE
+       SOBRE  ·  id="sobre"
   ══════════════════════════════════════ -->
-  <section class="sobre">
+  <section class="sobre" id="sobre">
     <p>Textos que confrontam o óbvio. Filosofia, autoconhecimento e consciência —<br>
     escritos por alguém que atravessou, <em>não por alguém que observa de fora.</em></p>
   </section>
 
 
   <!-- ══════════════════════════════════════
-       POSTS
+       POSTS  ·  id="ensaios"
   ══════════════════════════════════════ -->
   <section class="posts-section" id="ensaios">
     <div class="posts-header">
@@ -645,6 +795,81 @@
 
     <div class="ornamento">
       <span>✦ ✦ ✦</span>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FONTES  ·  id="fontes"
+  ══════════════════════════════════════ -->
+  <section class="fontes-section" id="fontes">
+    <div class="fontes-inner">
+
+      <div class="fontes-header">
+        <h2>Fontes</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <p class="fontes-intro">
+        Cada ensaio ancora-se em uma tradição filosófica, psicológica ou espiritual concreta.
+        Estas são as referências que sustentam o que foi escrito — não para impressionar,
+        mas para que o leitor possa aprofundar por conta própria.
+      </p>
+
+      <div class="fontes-grid">
+
+        <!-- Fonte · Blog 3 -->
+        <div class="fonte-item">
+          <div class="fonte-blog-ref">
+            <span class="fonte-blog-num">Blog 03</span>
+            <span class="fonte-conceito">Henosis</span>
+          </div>
+          <div class="fonte-corpo">
+            <span class="fonte-autor">Plotino · @viespsicologico</span>
+            <span class="fonte-obra">
+              Henosis (do grego <em>ΕΝΩΣΙΣ</em>) é o conceito neoplatônico de união com o Uno —
+              a ideia de que a fragmentação que percebemos no mundo exterior é reflexo da
+              fragmentação interior ainda não integrada. Referência primária: <em>Enéadas</em>,
+              Plotino. Canal secundário: <em>@viespsicologico</em> (YouTube).
+            </span>
+          </div>
+        </div>
+
+        <!-- Fonte · Blog 2 -->
+        <div class="fonte-item">
+          <div class="fonte-blog-ref">
+            <span class="fonte-blog-num">Blog 02</span>
+            <span class="fonte-conceito">O Mundo da Mente</span>
+          </div>
+          <div class="fonte-corpo">
+            <span class="fonte-autor">Chogyam Trungpa</span>
+            <span class="fonte-obra">
+              Mestre tibetano que descreveu como a mente condicionada cria um universo paralelo —
+              denso de projeções, medos e narrativas — que confundimos com a realidade.
+              Referência: <em>O Mundo da Mente</em> (Shambhala Publications), e os ensinamentos
+              reunidos em <em>Cutting Through Spiritual Materialism</em>.
+            </span>
+          </div>
+        </div>
+
+        <!-- Fonte · Blog 1 -->
+        <div class="fonte-item">
+          <div class="fonte-blog-ref">
+            <span class="fonte-blog-num">Blog 01</span>
+            <span class="fonte-conceito">Svadhyaya</span>
+          </div>
+          <div class="fonte-corpo">
+            <span class="fonte-autor">Patanjali · Yoga Sutras</span>
+            <span class="fonte-obra">
+              Svadhyaya (do sânscrito <em>स्वाध्याय</em>) é um dos Niyamas do Yoga clássico:
+              o estudo de si mesmo como prática espiritual contínua. Não introspecção ocasional,
+              mas observação sistemática da mente em ação. Referência: <em>Yoga Sutras de Patanjali</em>,
+              livro II, Sadhana Pada.
+            </span>
+          </div>
+        </div>
+
+      </div><!-- /fontes-grid -->
     </div>
   </section>
 
