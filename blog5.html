@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camadas sobre Camadas — Ensaio Reflexivo · Blog 5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+
+    /* ——— HERO ——— */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at 60% 40%, rgba(28,43,58,0.55) 0%, transparent 70%),
+                  radial-gradient(ellipse at 30% 70%, rgba(46,74,48,0.3) 0%, transparent 60%),
+                  linear-gradient(180deg, #0d1510 0%, #0e1820 50%, #0d1510 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: 'ΠΛΗΡΩΜΑ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 18vw, 16rem);
+      font-weight: 300;
+      color: rgba(200,168,75,0.035);
+      letter-spacing: 0.15em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.2rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--ouro);
+      opacity: 0.7;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--creme);
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-style: italic;
+      color: var(--cinza-texto);
+      max-width: 580px;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0.8; transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ——— LAYOUT GERAL ——— */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    section:nth-child(even) {
+      background: linear-gradient(180deg, transparent, rgba(28,43,58,0.12), transparent);
+    }
+
+    /* ——— SEÇÃO HEADER ——— */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .linha-divisor {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-badge {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.2);
+      color: var(--ouro);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--creme);
+      margin-bottom: 2rem;
+    }
+
+    .section-title em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    /* ——— CORPO ——— */
+    .corpo p {
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      color: rgba(245,239,224,0.88);
+    }
+
+    .corpo p:last-child { margin-bottom: 0; }
+
+    .corpo em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    /* ——— CITAÇÃO ——— */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.8rem 2rem;
+      margin: 3rem 0;
+      background: linear-gradient(90deg, rgba(200,168,75,0.06), transparent);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ouro-claro);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.73rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+    }
+
+    /* ——— CARDS DE CAMADAS ——— */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      padding: 1.8rem 1.5rem;
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(46,74,48,0.12), rgba(28,43,58,0.15));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover {
+      border-color: rgba(200,168,75,0.35);
+    }
+
+    .camada-icon {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(245,239,224,0.75);
+      line-height: 1.7;
+    }
+
+    /* ——— BLOCO FILOSÓFICO ——— */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(74,127,165,0.2);
+      padding: 2.5rem 2rem 3rem;
+      margin: 3rem 0;
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(28,43,58,0.35), rgba(12,20,30,0.4));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΠΛΗΡΩΜΑ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.06);
+      letter-spacing: 0.1em;
+      pointer-events: none;
+    }
+
+    .filosofico-tag {
+      display: inline-block;
+      border: 1px solid rgba(74,127,165,0.3);
+      color: var(--azul-ceu);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .bloco-filosofico h3 em {
+      color: var(--ouro-claro);
+      font-style: italic;
+    }
+
+    .bloco-filosofico p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,239,224,0.85);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .referencia-canal:hover {
+      color: var(--ouro-claro);
+      border-color: rgba(200,168,75,0.4);
+    }
+
+    /* ——— FRASE CENTRAL ——— */
+    .frase-central {
+      text-align: center;
+      padding: 3.5rem 2rem;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--creme);
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+
+    .frase-central p em {
+      color: var(--ouro-claro);
+    }
+
+    .frase-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto;
+    }
+
+    /* ——— SEPARADOR ——— */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .separador .linha {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.25), transparent);
+    }
+
+    .separador .ornamento {
+      color: rgba(200,168,75,0.35);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+    }
+
+    /* ——— FECHAMENTO ——— */
+    .fechamento {
+      text-align: center;
+      padding: 5rem 2rem 6rem;
+      background: linear-gradient(180deg, transparent, rgba(28,43,58,0.15), transparent);
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      color: var(--ouro-claro);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .fechamento-texto {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,239,224,0.82);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.85;
+    }
+
+    /* ——— ASSINATURA ——— */
+    .assinatura {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.2);
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(46,74,48,0.1), rgba(28,43,58,0.12));
+      text-align: center;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 0.25rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro) !important;
+      font-style: italic;
+      font-weight: 400 !important;
+    }
+
+    /* ——— PERGUNTA CENTRAL ——— */
+    .pergunta-central {
+      text-align: center;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ouro-claro);
+      border: 1px solid rgba(200,168,75,0.2);
+      display: inline-block;
+      padding: 1.2rem 2rem;
+      border-radius: 4px;
+      background: rgba(200,168,75,0.04);
+      max-width: 620px;
+      line-height: 1.55;
+    }
+
+    /* ——— RESPONSIVE ——— */
+    @media (max-width: 640px) {
+      .container { padding: 0 1.2rem; }
+      .assinatura { padding: 1.5rem 1.8rem; }
+      .camadas-grid { grid-template-columns: 1fr; }
+      .citacao-principal { padding: 1.4rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>Ensaio Reflexivo</span>
+      <div class="dot"></div>
+      <span>Blog 5</span>
+    </div>
+    <h1 class="hero-title">
+      Camadas sobre Camadas:<br>
+      <em>o Pneuma que espera no silêncio</em>
+    </h1>
+    <p class="hero-subtitle">
+      Quando a consciência dorme sob o peso do que herdamos, das máscaras que fizemos carne, e da matéria que confundimos com nós mesmos.
+    </p>
+    <div class="hero-line"></div>
+    <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
+    <div class="scroll-hint">
+      <span>ler</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+
+  <!-- ATO 1 — O DIAGNÓSTICO -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">01</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <span class="section-badge">Ato I · O Diagnóstico</span>
+      <h2 class="section-title">O Peso do que <em>herdamos sem pedir</em></h2>
+      <div class="corpo">
+        <p>
+          Há uma confusão que fazemos cedo demais: acreditamos que somos aquilo que fomos ensinados a ser. Não de forma consciente — a consciência raramente participa desse processo. É uma sedimentação silenciosa, camada sobre camada, que começa antes de termos palavras para nomear o que está acontecendo. Os dogmas da família se instalam como certezas absolutas. Os medos dos antepassados se tornam reflexos automáticos. As crenças culturais se enraízam como fisiologia, como respiração, como instinto.
+        </p>
+        <p>
+          O resultado não é uma pessoa má ou deformada — é simplesmente uma pessoa <em>esquecida</em>. Esquecida de algo que existia antes de todas essas camadas, que existe ainda, que nunca foi verdadeiramente perdido, apenas coberto. E o que torna essa condição tão persistente não é a dureza das camadas em si, mas o fato de que, com o tempo, deixamos de percebê-las como camadas. Passamos a percebê-las como nós mesmos.
+        </p>
+        <p>
+          É aqui que a questão se torna pessoal. Não se trata de culpar a família, a cultura ou a religião. Esses sistemas fizeram o que sistemas fazem: transmitiram. A pergunta que importa não é de onde vieram essas camadas, mas o que há em mim que ainda as mantém no lugar — e por quê continua sendo mais seguro dormir do que despertar.
+        </p>
+      </div>
+
+      <div class="pergunta-central">
+        <p>"O que em mim ainda dorme sob as camadas que herdei — e que preço estou pagando por esse sono?"</p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="separador">
+    <div class="linha"></div>
+    <span class="ornamento">✦ ✦ ✦</span>
+    <div class="linha"></div>
+  </div>
+
+
+  <!-- ATO 2 — AS CAMADAS -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">02</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <span class="section-badge">Ato II · As Camadas</span>
+      <h2 class="section-title">As três forças que <em>constroem o esquecimento</em></h2>
+      <div class="corpo">
+        <p>
+          As camadas não chegam de uma vez. Elas se constroem em sequência, cada uma apoiada na anterior, formando uma arquitetura interna tão coesa que passa a parecer natural. Mas compreender como essa arquitetura foi erguida já é, em si, uma forma de começar a desmontá-la.
+        </p>
+      </div>
+
+      <div class="camadas-grid">
+        <div class="camada-card">
+          <span class="camada-icon">🧬</span>
+          <div class="camada-titulo">Herança Psíquica</div>
+          <p class="camada-texto">Dogmas, medos e crenças transmitidos sem escolha antes de termos capacidade de questionar. Chegam como verdade porque chegam primeiro.</p>
+        </div>
+        <div class="camada-card">
+          <span class="camada-icon">🎭</span>
+          <div class="camada-titulo">A Persona</div>
+          <p class="camada-texto">A máscara que construímos para sobreviver ao grupo. Começou como estratégia — e acabou sendo confundida com identidade. Jung chamava de persona: o que mostramos ao mundo em troca de pertencimento.</p>
+        </div>
+        <div class="camada-card">
+          <span class="camada-icon">⚙️</span>
+          <div class="camada-titulo">O Ego-Matéria</div>
+          <p class="camada-texto">A camada mais densa: a fusão total com o corpo, os bens, os títulos, a narrativa. Uma identidade tão ancorada na forma que perdeu contato com o que existe além dela.</p>
+        </div>
+      </div>
+
+      <div class="corpo">
+        <p>
+          Cada uma dessas forças opera de um modo distinto, mas todas convergem para o mesmo efeito: uma mente compulsiva, que reage antes de perceber, que preenche cada silêncio com pensamento, que teme a pausa porque na pausa algo esquecido poderia emergir. A mente compulsiva não é uma falha — é uma estratégia de sobrevivência que deixou de ser estratégia e tornou-se prisão.
+        </p>
+        <p>
+          E é precisamente aí que a questão deixa de ser filosófica e se torna íntima: que parte de mim precisa do ruído para não ouvir o que está sob ele?
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="separador">
+    <div class="linha"></div>
+    <span class="ornamento">✦ ✦ ✦</span>
+    <div class="linha"></div>
+  </div>
+
+
+  <!-- ATO 3 — CONCEITO FILOSÓFICO -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">03</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <span class="section-badge">Ato III · O Conceito Filosófico</span>
+      <h2 class="section-title"><em>Kenoma e Pleroma:</em><br>a cosmologia que nos habita</h2>
+      <div class="corpo">
+        <p>
+          A tradição gnóstica, transmitida em textos apócrifos que a ortodoxia religiosa preferiu silenciar, oferece uma das cartografias mais precisas para esse estado de esquecimento que chamamos de vida ordinária. Não é metáfora — é mapa.
+        </p>
+      </div>
+
+      <div class="bloco-filosofico">
+        <span class="filosofico-tag">Gnosis · Textos Apócrifos · @Apókrifa – Gnosis</span>
+        <h3>Kenoma, Pleroma e o <em>Pneuma aprisionado</em></h3>
+        <p>
+          Para os gnósticos, o universo material — o <em>Kenoma</em>, literalmente "o vazio" — é um espaço de constrição. Não porque a matéria seja má em si, mas porque o ser humano, mergulhado na matéria, esquece de onde veio. Existe em cada pessoa uma centelha divina, o <em>Pneuma</em>, que pertence ao <em>Pleroma</em> — a "plenitude", o reino da luz e da consciência pura. Mas essa centelha dorme, envolta em camadas — chamadas de <em>Archons</em> pelos gnósticos — que são exatamente os padrões psíquicos, os dogmas herdados, as formas de condicionamento que constroem nossa ilusão de identidade separada.
+        </p>
+        <p>
+          Os Archons não são demônios externos. São as estruturas internas de controle — o medo, o julgamento, a necessidade de aprovação, os programas automáticos que herdamos e perpetuamos. Cada camada de inconsciência é um Archon operando sem supervisão consciente. A <em>Gnosis</em> — que não é doutrina, mas conhecimento direto, experiencial, não mediado — é o processo pelo qual o Pneuma reconhece a si mesmo através das camadas, perfurando o Kenoma de dentro para fora.
+        </p>
+        <p>
+          O Evangelho de Tomé, um dos textos apócrifos preservados na biblioteca de Nag Hammadi, registra esta sentença atribuída a Jesus: "Se trouxeres à luz o que está em ti, o que trouxeres à luz te salvará. Se não trouxeres à luz o que está em ti, o que não trouxeres te destruirá." Não é advertência moralista. É descrição técnica do que acontece quando o Pneuma permanece coberto.
+        </p>
+        <a class="referencia-canal" href="https://drive.google.com/drive/u/2/folders/1c8RIVhkMRq-8HHFe5gaSVsTlyCqbqdDg" target="_blank">
+          ▶ @Apókrifa – Gnosis · Textos Gnósticos em Português
+        </a>
+      </div>
+
+      <div class="citacao-principal">
+        <p>"Se trouxeres à luz o que está em ti, o que trouxeres à luz te salvará."</p>
+        <span class="citacao-fonte">Evangelho de Tomé — Logion 70 · Biblioteca de Nag Hammadi</span>
+      </div>
+
+      <div class="corpo">
+        <p>
+          O que a tradição gnóstica nomeia como cosmologia, as práticas contemplativas contemporâneas descrevem como neurologia: a mente compulsiva é o Kenoma. O silêncio meditativo é a fissura por onde o Pleroma penetra. Não são sistemas incompatíveis — são linguagens diferentes para o mesmo fenômeno. E esse fenômeno é precisamente o que o Gilberto descreve quando fala em camadas sobre camadas de inconsciência que, retiradas uma a uma, abrem espaço para que a consciência esquecida reencontre sua frequência.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="frase-central">
+    <p>O Pneuma não precisa ser criado.<br>Precisa ser <em>desenterrado</em>.</p>
+    <div class="frase-divider"></div>
+  </div>
+
+
+  <!-- ATO 4 — A TRANSFORMAÇÃO -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">04</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <span class="section-badge">Ato IV · A Transformação</span>
+      <h2 class="section-title">Retirar as camadas:<br><em>o que as práticas realmente fazem</em></h2>
+      <div class="corpo">
+        <p>
+          Quarenta anos de yoga e quinze de meditação diária ensinam algo que nenhum livro pode transmitir completamente: as práticas não são instrumentos de aperfeiçoamento pessoal. Não são tecnologias para se tornar uma versão melhor de si mesmo. São processos de desbaste — uma remoção progressiva do que foi acumulado, do que foi herdado sem escolha, do que foi construído por medo.
+        </p>
+        <p>
+          O exercício físico começa essa obra no corpo. Não porque o corpo seja a camada superficial — pelo contrário, ele é o registro mais fiel de tudo que ficou represado. A tensão crônica no pescoço que começou na infância. A respiração encurtada que instalou a ansiedade como estado de base. O peso nos ombros que é também o peso de responsabilidades que nunca foram nossas, mas assumimos como se fossem. Quando o corpo se move com intenção, essas memórias fisiológicas começam a soltar-se. Não metaforicamente — literalmente.
+        </p>
+        <p>
+          A respiração consciente vai mais fundo. Ela acessa o sistema nervoso autônomo — o nível onde os Archons operam de forma mais primitiva, mais difícil de questionar racionalmente. Uma respiração longa e deliberada diz ao sistema nervoso que o perigo passou, mesmo que o perigo nunca tenha sido real, mesmo que tenha sido apenas o julgamento de um pai que morreu há décadas. O corpo não sabe a diferença. Mas a respiração cria a pausa onde essa distinção pode emergir.
+        </p>
+        <p>
+          A meditação, por fim, não é esvaziar a mente. Essa é uma das maiores deturpações do que a prática contemplativa realmente propõe. Meditar é observar a mente compulsiva sem se identificar com ela. É criar distância entre o observador e o conteúdo observado. E nessa distância — nesse espaço que se abre entre o pensamento e quem o nota — é exatamente onde o Pneuma respira. Não como experiência mística reservada a iniciados. Como algo absolutamente concreto, silencioso e disponível.
+        </p>
+        <p>
+          A divindade que nos habita não chegou de fora. Nunca precisou chegar — ela estava antes das camadas, ela permaneceu durante o acúmulo, ela permanece agora. O despertar não é aquisição. É reconhecimento. E o reconhecimento não precisa ser dramático nem definitivo. Acontece em frações — um pensamento que passa sem nos arrastar, uma respiração que encontra profundidade inesperada, um momento de quietude que não foi provocado por nenhuma circunstância externa. Nesses instantes, o Pleroma toca o Kenoma. A frequência esquecida se reencontra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="separador">
+    <div class="linha"></div>
+    <span class="ornamento">✦ ✦ ✦</span>
+    <div class="linha"></div>
+  </div>
+
+
+  <!-- FECHAMENTO -->
+  <section class="fechamento">
+    <div class="container">
+      <h2 class="fechamento-titulo">O que sempre esteve aqui</h2>
+      <p class="fechamento-texto">
+        Não há um ponto de chegada onde todas as camadas desaparecem e resta somente o ser puro. Há um processo — honesto, trabalhoso, às vezes desconfortável — de ir tornando consciente o que operava às escuras. Cada camada retirada não revela uma versão nova de você. Revela uma versão mais antiga, mais verdadeira, que existia antes do nome que te deram, antes do papel que aprendeste a desempenhar, antes do medo que transformaste em identidade. O Pneuma não é destino. É origem. E retornar a ele é, no fundo, o único movimento que a vida pede de nós.
+      </p>
+
+      <div class="assinatura">
+        <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+        <p class="assinatura-cargo">@gilberto_mfilho</p>
+        <div class="assinatura-bio">
+          <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+          <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+          <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+          <span class="bio-destaque">Disciplina que vai além do corpo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
