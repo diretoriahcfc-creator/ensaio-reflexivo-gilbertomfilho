@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog 6 — O Vazio que Habita | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      background: radial-gradient(ellipse at 50% 40%, #0e1d10 0%, #0d1510 55%, #0e1820 100%);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a84b' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 30px;
+      padding: 0.45rem 1.4rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--ouro);
+      opacity: 0.6;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--branco-suave);
+      max-width: 780px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--ouro-claro);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-style: italic;
+      color: var(--cinza-texto);
+      max-width: 560px;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.4rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      margin-bottom: 3.5rem;
+    }
+
+    .scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      opacity: 0.55;
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, var(--ouro), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* ── SEÇÕES ── */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    section:nth-child(even) {
+      background: rgba(14, 24, 32, 0.45);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 2.2rem;
+      line-height: 1.25;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--ouro-claro);
+    }
+
+    .corpo p {
+      font-size: clamp(1rem, 1.8vw, 1.08rem);
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+    }
+
+    .corpo p:last-child { margin-bottom: 0; }
+
+    /* ── CITAÇÃO ── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.8rem 2rem;
+      margin: 3rem 0;
+      background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ouro-claro);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+    }
+
+    /* ── CARDS DE CAMADAS ── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.4rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 8px;
+      padding: 1.8rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover {
+      border-color: rgba(200,168,75,0.35);
+    }
+
+    .camada-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+    }
+
+    .camada-texto {
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO ── */
+    .kenosis-bloco {
+      border: 1px solid rgba(74,127,165,0.25);
+      border-radius: 10px;
+      padding: 2.5rem 2.2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.6), rgba(17,26,18,0.4));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kenosis-bloco::before {
+      content: 'ΚΕΝΩΣΙΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.06);
+      letter-spacing: 0.1em;
+      pointer-events: none;
+    }
+
+    .kenosis-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 1.4rem;
+    }
+
+    .kenosis-bloco h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .kenosis-bloco h3 em {
+      font-style: italic;
+      color: var(--azul-ceu);
+    }
+
+    .kenosis-bloco p {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--creme);
+      margin-bottom: 1.4rem;
+      line-height: 1.85;
+    }
+
+    .referencia-canal {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--azul-ceu);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .referencia-canal:hover {
+      color: var(--ouro-claro);
+      border-color: rgba(200,168,75,0.4);
+    }
+
+    /* ── FRASE CENTRAL ── */
+    .frase-central {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.55;
+      margin-bottom: 1.6rem;
+    }
+
+    .frase-central p em {
+      color: var(--ouro-claro);
+    }
+
+    .frase-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--ouro);
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+
+    /* ── SEPARADOR ── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(200,168,75,0.2), transparent);
+    }
+
+    .separador .ornamento {
+      font-size: 0.7rem;
+      color: var(--ouro);
+      opacity: 0.45;
+      letter-spacing: 0.4em;
+    }
+
+    /* ── ASSINATURA ── */
+    .fechamento {
+      padding: 6rem 2rem 8rem;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 80%, rgba(14,24,32,0.7) 0%, transparent 70%);
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ouro-claro);
+      margin-bottom: 1.6rem;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fechamento-texto {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--cinza-texto);
+      max-width: 540px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.85;
+    }
+
+    .assinatura {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 2.2rem 3rem;
+      border: 1px solid rgba(200,168,75,0.18);
+      border-radius: 10px;
+      background: rgba(200,168,75,0.03);
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.2rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      margin-bottom: 0.8rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      font-weight: 300;
+    }
+
+    .bio-destaque {
+      font-style: italic;
+      color: var(--ouro-claro) !important;
+      font-weight: 400 !important;
+      margin-top: 0.2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .assinatura { padding: 1.8rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>Ensaio Reflexivo</span>
+      <div class="dot"></div>
+      <span>Blog 6</span>
+    </div>
+    <h1 class="hero-title">
+      O Vazio que Habita:<br>
+      <em>sobre entrega, silêncio e Kénosis</em>
+    </h1>
+    <p class="hero-subtitle">
+      Quando a meditação deixa de ser uma técnica e se torna simplesmente presença — o que resta?
+    </p>
+    <div class="hero-line"></div>
+    <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
+    <div class="scroll-hint">
+      <span>ler</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ATO 1 -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">01</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <h2 class="section-title">O peso de <em>tanto método</em></h2>
+      <div class="corpo">
+        <p>
+          Fala-se muito em meditação. Surgem todos os dias aplicativos, protocolos, cronogramas, tradições comprimidas em vídeos de doze minutos. O mercado da atenção transformou uma prática milenar em produto de prateleira — com embalagem, promessa de resultado e prazo de entrega. Respira por quatro, retém por sete, expira por oito. Visualize a luz. Ancore no corpo. Repita o mantra. Siga o guia.
+        </p>
+        <p>
+          Há uma contradição silenciosa nisso tudo: quanto mais a meditação é ensinada como técnica, mais ela exige um ego competente para executá-la. E o ego competente é precisamente o que impede a entrega. Tenta-se chegar ao silêncio pela via do controle — como quem tenta dormir pela força da vontade.
+        </p>
+        <p>
+          A pergunta que esse ensaio carrega não é nova, mas poucas vezes é feita com honestidade: o que acontece quando se retira de vez a fórmula? Quando não há nada a alcançar, nenhum estágio a completar, nenhuma mente a vencer? O que significa meditar quando a meditação não é mais uma prática?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE CENTRAL -->
+  <div class="frase-central">
+    <p>Às quatro da manhã, o mundo ainda não recomeçou.<br>É nesse <em>intervalo</em> que a entrega se torna possível.</p>
+    <div class="frase-divider"></div>
+  </div>
+
+  <!-- ATO 2 -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">02</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <h2 class="section-title">As três forças que <em>impedem o vazio</em></h2>
+      <div class="corpo">
+        <p>
+          Há quinze anos de meditação diária. Não como disciplina religiosa, não como ritual de performance. Faço na madrugada — às quatro, às cinco — porque é quando a sincronicidade entre o silêncio externo e o interno é mais fácil de habitar. Não é uma fórmula que recomendo. É simplesmente o que ocorre com o meu corpo nesse horário, e aprendi a confiar nisso antes de tentar explicar.
+        </p>
+        <p>
+          Mas chegou um tempo em que percebi que três forças, invisíveis e persistentes, operam contra a entrega genuína. Não são forças dramáticas. São sutis, quase razoáveis. E é exatamente por isso que passam despercebidas.
+        </p>
+      </div>
+
+      <div class="camadas-grid">
+        <div class="camada-card">
+          <span class="camada-icon">🎯</span>
+          <div class="camada-titulo">A Expectativa</div>
+          <p class="camada-texto">Chega-se à meditação carregando um resultado esperado — paz, clareza, iluminação, ao menos um bom dia. A expectativa é o ego travestido de espiritualidade. Ela transforma o silêncio em tarefa.</p>
+        </div>
+        <div class="camada-card">
+          <span class="camada-icon">⚙️</span>
+          <div class="camada-titulo">O Esforço</div>
+          <p class="camada-texto">Meditar "corretamente" exige tensão. Mantém-se a coluna, controla-se o pensamento, retorna-se ao foco. O esforço é virtuoso — mas cria uma vigilância que impede o abandono de si. Nunca se entrega quem ainda está de guarda.</p>
+        </div>
+        <div class="camada-card">
+          <span class="camada-icon">👁️</span>
+          <div class="camada-titulo">O Observador</div>
+          <p class="camada-texto">A prática comum ensina: "observe os pensamentos sem se identificar." Mas quem observa? Há um ego-observador que se mantém de fora, gerenciando a experiência. Esse observador é a última camada de resistência ao vazio.</p>
+        </div>
+      </div>
+
+      <div class="corpo">
+        <p>
+          Quando percebo que vagueei nos pensamentos, não faço drama. Faço uma respiração funda e volto. Não há punição, não há recomeço solene. O retorno é simples — quase desinteressante. E é exatamente nessa simplicidade que algo começa a se dissolver.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separador">
+    <div class="linha"></div>
+    <span class="ornamento">✦ ✦ ✦</span>
+    <div class="linha"></div>
+  </div>
+
+  <!-- ATO 3 -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">03</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <h2 class="section-title">Kénosis — <em>o esvaziamento de si</em></h2>
+      <div class="corpo">
+        <p>
+          São Tomás de Aquino não era um místico no sentido popular da palavra. Era um sistemático rigoroso, um arquiteto de conceitos. Mas na sua oração antes do estudo — transmitida pela tradição, resgatada por vozes como a do @corvoseco — há uma linha que não cabe em nenhum método: <em>"Dai-me a luz da sabedoria."</em> Não "ensina-me a técnica da sabedoria". Não "mostra-me o caminho da sabedoria". Dá. Como quem recebe — sem merecimento, sem garantia, sem controle.
+        </p>
+      </div>
+
+      <div class="citacao-principal">
+        <p>"Dai-me perspicácia para entender, memória para reter, graça abundante para falar. Ordena o meu agir e o meu repouso."</p>
+        <span class="citacao-fonte">São Tomás de Aquino — Oração Antes do Estudo</span>
+      </div>
+
+      <div class="kenosis-bloco">
+        <span class="kenosis-tag">Mística Cristã · Kénosis</span>
+        <h3>O esvaziamento como <em>condição de presença</em></h3>
+        <p>
+          Kénosis (κένωσις) é um conceito da teologia mística que designa o ato de esvaziar-se de si mesmo — não como destruição, mas como condição para que algo maior possa habitar. Na tradição cristã contemplativa, a Kénosis é o movimento pelo qual o ego cessa de reivindicar o centro, e a presença — seja ela chamada de Deus, do Uno, do Vazio — preenche o espaço que se abriu.
+        </p>
+        <p>
+          Não é uma técnica. É uma disposição. Diferente do esforço meditativo que busca controlar o pensamento, a Kénosis propõe algo mais radical: largar até mesmo o controle sobre o largar. Não se trata de observar os pensamentos de fora — trata-se de deixar de existir como aquele que observa.
+        </p>
+        <p>
+          Aquino pediu a luz, não a capacidade de fabricá-la. Essa distinção é tudo.
+        </p>
+        <a class="referencia-canal" href="https://www.instagram.com/corvoseco" target="_blank">
+          ▶ @corvoseco — Tradição e espiritualidade viva
+        </a>
+      </div>
+
+      <div class="corpo">
+        <p>
+          Há uma sincronicidade particular no amanhecer que ainda não sei explicar. O céu ainda escuro, a temperatura ainda noturna, o mundo suspenso entre o que terminou e o que ainda não começou. Nesse intervalo, o esvaziamento não exige esforço — ele simplesmente acontece, se eu não interferir. A Kénosis, descobri, não é algo que se faz. É algo que se permite.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE CENTRAL 2 -->
+  <div class="frase-central">
+    <p>Pouco valem estas palavras se não forem feitas por você — <em>dia após dia</em>, sem pressa e sem pausa.</p>
+    <div class="frase-divider"></div>
+  </div>
+
+  <!-- ATO 4 -->
+  <section>
+    <div class="container">
+      <div class="section-label">
+        <span class="numero">04</span>
+        <div class="linha-divisor"></div>
+      </div>
+      <h2 class="section-title">O que fica quando <em>nada é buscado</em></h2>
+      <div class="corpo">
+        <p>
+          Determinados dias faço minhas preces com o coração puro — e entrego às leis deste plano. Não peço resultados específicos, não negoço com o silêncio. Há um senso de proporção que a madrugada ensina: o que sou diante do que existe é imensamente pequeno, e essa pequenez não é derrota — é alívio.
+        </p>
+        <p>
+          O que a Kénosis produz não é euforia. Não é aquela paz performática de quem encontrou o caminho e quer contá-lo. É uma sinergia quieta, quase imperceptível — como a temperatura de um quarto que já esquentou sem que ninguém tenha acendido o fogo. Você percebe depois. Às vezes, muito depois.
+        </p>
+        <p>
+          Quando o pensamento vaga — e vaga sempre — a respiração funda não é uma punição. É um gesto de gentileza consigo mesmo. Um chamado suave de volta ao único lugar onde a entrega é possível: o instante presente, sem agenda, sem legenda, sem testemunha além do próprio vazio infinito que somos.
+        </p>
+        <p>
+          Não há fórmula aqui. O que posso oferecer é apenas o relato de quem continua, sem certificação e sem audiência, às quatro da manhã, enquanto o dia ainda não sabe que vai começar. A prática não me transformou em alguém melhor, mais iluminado ou mais seguro. Ela me tornou, talvez, um pouco mais capaz de suportar não saber — e isso, descobri, é mais do que suficiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separador">
+    <div class="linha"></div>
+    <span class="ornamento">✦ ✦ ✦</span>
+    <div class="linha"></div>
+  </div>
+
+  <!-- FECHAMENTO -->
+  <section class="fechamento">
+    <p class="fechamento-titulo">O vazio não é ausência. É a condição de toda presença.</p>
+    <p class="fechamento-texto">
+      Meditação sem resultado não é fracasso — é maturidade. O dia em que você parar de medir o silêncio é o dia em que ele começa, de fato, a existir. Dai-me a luz da sabedoria: não a sabedoria acumulada, mas a que chega quando se para de reter.
+    </p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
