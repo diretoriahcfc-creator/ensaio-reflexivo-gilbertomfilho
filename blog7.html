@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ensaio Reflexivo · Blog 7 — O Gestor e o Mestre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-musgo:   #2e4a30;
+    --verde-escuro:  #1a2e1b;
+    --azul-profundo: #1c2b3a;
+    --azul-ceu:      #4a7fa5;
+    --ouro:          #c8a84b;
+    --ouro-claro:    #e8d08a;
+    --creme:         #f5efe0;
+    --branco-suave:  #ede8df;
+    --cinza-texto:   #b8b0a0;
+    --fundo:         #111a12;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--fundo);
+    color: var(--creme);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 1.05rem;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    background: radial-gradient(ellipse at 50% 30%, rgba(28,43,58,0.6) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 80%, rgba(46,74,48,0.25) 0%, transparent 60%),
+                linear-gradient(180deg, #0d1510 0%, #0e1820 60%, #111a12 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'ἈΓΆΠΗ';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14rem;
+    font-weight: 300;
+    color: rgba(200,168,75,0.04);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(200,168,75,0.25);
+    border-radius: 30px;
+    padding: 0.45rem 1.4rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 2.5rem;
+  }
+  .hero-badge .dot {
+    width: 4px; height: 4px;
+    background: var(--ouro);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--branco-suave);
+    margin-bottom: 1.4rem;
+    max-width: 800px;
+  }
+  .hero-title em {
+    color: var(--ouro-claro);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--cinza-texto);
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+    margin: 0 auto 1.4rem;
+  }
+
+  .hero-meta {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--cinza-texto);
+    text-transform: uppercase;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--cinza-texto);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  .scroll-arrow {
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, var(--ouro), transparent);
+  }
+  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SEÇÕES ── */
+  section { padding: 5rem 0; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .numero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(200,168,75,0.07);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .linha-divisor {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 300;
+    color: var(--branco-suave);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+  .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+  .corpo p {
+    margin-bottom: 1.6rem;
+    color: #d4cdbf;
+    line-height: 1.9;
+  }
+  .corpo p:last-child { margin-bottom: 0; }
+
+  /* ── CITAÇÃO ── */
+  .citacao-principal {
+    border-left: 3px solid var(--ouro);
+    padding: 1.6rem 2rem;
+    margin: 3rem 0;
+    background: linear-gradient(90deg, rgba(200,168,75,0.06), transparent);
+    border-radius: 0 8px 8px 0;
+  }
+  .citacao-principal p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ouro-claro);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+  .citacao-fonte {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cinza-texto);
+  }
+
+  /* ── FRASE CENTRAL ── */
+  .frase-central {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .frase-central p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-style: italic;
+    color: var(--branco-suave);
+    line-height: 1.4;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+  }
+  .frase-central em { color: var(--ouro-claro); }
+  .frase-divider {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── CARDS DE CAMADAS ── */
+  .camadas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+  }
+  .camada-card {
+    background: linear-gradient(135deg, rgba(46,74,48,0.2), rgba(28,43,58,0.2));
+    border: 1px solid rgba(200,168,75,0.15);
+    border-radius: 12px;
+    padding: 1.8rem 1.4rem;
+    transition: border-color 0.3s;
+  }
+  .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+  .camada-icon { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+  .camada-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ouro-claro);
+    margin-bottom: 0.6rem;
+  }
+  .camada-texto { font-size: 0.88rem; color: var(--cinza-texto); line-height: 1.7; }
+
+  /* ── BLOCO FILOSÓFICO ── */
+  .agape-bloco {
+    background: linear-gradient(135deg, rgba(28,43,58,0.5), rgba(46,74,48,0.2));
+    border: 1px solid rgba(74,127,165,0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .agape-bloco::before {
+    content: 'ἈΓΆΠΗ';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    font-weight: 300;
+    color: rgba(74,127,165,0.07);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+  .agape-tag {
+    display: inline-block;
+    border: 1px solid rgba(74,127,165,0.35);
+    border-radius: 30px;
+    padding: 0.3rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--azul-ceu);
+    margin-bottom: 1.2rem;
+  }
+  .agape-bloco h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--branco-suave);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .agape-bloco h3 em { color: var(--ouro-claro); }
+  .agape-bloco p { color: #c4bdb0; font-size: 0.95rem; line-height: 1.85; margin-bottom: 1rem; }
+  .referencia-canal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--azul-ceu);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(74,127,165,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+  }
+  .referencia-canal:hover { color: var(--ouro-claro); }
+
+  /* ── SEPARADOR ── */
+  .separador {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .separador .linha {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.25), transparent);
+  }
+  .ornamento { color: rgba(200,168,75,0.35); font-size: 0.7rem; letter-spacing: 0.3em; }
+
+  /* ── ASSINATURA ── */
+  .fechamento-section {
+    background: linear-gradient(180deg, transparent, rgba(28,43,58,0.3));
+    border-top: 1px solid rgba(200,168,75,0.1);
+    padding: 5rem 0;
+  }
+  .fechamento-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ouro-claro);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+  .fechamento-para {
+    color: #c4bdb0;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .assinatura {
+    text-align: center;
+    border-top: 1px solid rgba(200,168,75,0.15);
+    padding-top: 2.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .assinatura-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--branco-suave);
+    margin-bottom: 0.2rem;
+  }
+  .assinatura-cargo {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ouro);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .assinatura-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--cinza-texto);
+  }
+  .bio-destaque {
+    color: var(--ouro-claro);
+    font-style: italic;
+  }
+
+  /* ── SEÇÃO FUNDO ALT ── */
+  .alt-bg {
+    background: linear-gradient(135deg, rgba(26,46,27,0.15), rgba(28,43,58,0.15));
+  }
+
+  /* ── MEDITAÇÃO CTA ── */
+  .meditacao-box {
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(200,168,75,0.05), transparent);
+    margin-top: 3rem;
+  }
+  .meditacao-box .ornamento-grande { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .meditacao-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ouro-claro);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .camadas-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2rem; }
+    section { padding: 3.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 7</span>
+  </div>
+  <h1 class="hero-title">O Gestor e o Mestre:<br><em>quando as metas bloqueiam a alma</em></h1>
+  <p class="hero-subtitle">Por que o caminho mais eficiente para o ser humano é exatamente o oposto do que nos ensinaram a perseguir?</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Maio 2026</p>
+  <div class="scroll-hint"><span>ler</span><div class="scroll-arrow"></div></div>
+</section>
+
+<!-- ══ ATO 1 — O DIAGNÓSTICO ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O mundo que aprendi <em>a habitar</em></h2>
+    <div class="corpo">
+      <p>Quarenta anos de mundo corporativo formam uma linguagem interna que opera antes do pensamento consciente. Antes de sentir, o gestor já calcula. Antes de perguntar, já compara. Há metas de curto prazo, metas de longo prazo, indicadores de performance, OKRs, revisões trimestrais — uma arquitetura inteira construída sobre a premissa de que o fim justifica a mobilização de tudo que existe no meio. É eficiente. Funciona. E vai muito além do escritório.</p>
+      <p>Essa lógica não fica na sala de reuniões. Ela viaja com a gente. Entra em casa, senta-se à mesa do jantar, observa os filhos com os olhos calibrados para avaliar desempenho. Ela esteve presente desde muito antes da carteira profissional: na escola, já nos ensinaram que vencer a prova era o objetivo; no esporte, que o placar definia o valor da tarde; na família, que ser reconhecido era o prêmio pela existência bem conduzida. A meta não é uma ferramenta do trabalho. É uma cosmologia. Um modo de ordenar o real.</p>
+      <p>E aqui está a questão que não sai mais de mim: se passei décadas dentro dessa cosmologia — e ela funciona para construir empresas, patrimônio, posição — por que, diante do espelho mais honesto, ela soa tão vazia quando aplicada ao que sou, não ao que produzo?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central container">
+  <p>A eficiência que constrói o mundo exterior pode ser, exatamente, o obstáculo ao mundo <em>interior</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<!-- ══ ATO 2 — AS CAMADAS ══ -->
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">As três forças que <em>nos amarram</em></h2>
+    <div class="corpo">
+      <p>O conflito não é simples demais para nomear nem complexo demais para sentir. Ele opera em camadas que se reforçam mutuamente, e identificá-las não as dissolve imediatamente — mas pelo menos interrompe a automação.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🏛️</span>
+        <div class="camada-titulo">A doutrina da conquista</div>
+        <p class="camada-texto">Desde a infância, cada sistema institucional — escola, família, religião formal, mercado — nos treina para medir o valor pelo resultado visível. Ser reconhecido não é consequência da vida: é o seu propósito declarado.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🧠</span>
+        <div class="camada-titulo">O psique doutrinado</div>
+        <p class="camada-texto">O trauma não é apenas ferida aberta. É, sobretudo, o padrão que se instala como normalidade. Uma psique formada na lógica da conquista não consegue descansar sem culpa nem amar sem condição de retorno.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⚡</span>
+        <div class="camada-titulo">A resistência à inversão</div>
+        <p class="camada-texto">Quando os ensinamentos originais aparecem — amor incondicional, compaixão sem agenda, perdão como liberação própria — o sistema treinado os experimenta como ameaça, não como convite. A rejeição é fisiológica antes de ser intelectual.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Não estou descrevendo fraqueza moral. Estou descrevendo engenharia cultural. Fomos construídos para produzir, não para ser. E o pior não é que essa construção nos limita — é que ela nos parece natural, até virtuosa. O gestor que não mede não existe. O pai que não avalia não educa. O ser humano que não conquista não merece.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SEPARADOR ══ -->
+<div class="container"><div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div></div>
+
+<!-- ══ ATO 3 — O CONCEITO FILOSÓFICO ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O que o Mestre <em>realmente disse</em></h2>
+    <div class="corpo">
+      <p>Há uma diferença fundamental entre o Jesus institucionalizado — aquele que foi filtrado por séculos de poder eclesiástico, concílios políticos e dogmas que serviam a quem os forjava — e o Jesus histórico que emerge dos textos mais antigos, das tradições gnósticas, dos manuscritos dos Essênios. Essa distinção não é detalhe acadêmico. É abismo.</p>
+      <p>O Jesus histórico, o que os pesquisadores reconstroem a partir do Talmude, dos textos apócrifos e das fontes gnósticas, ensina algo radicalmente incompatível com a cultura da conquista. Não porque seja passivo ou resignado, mas porque opera em uma ontologia diferente: o ser humano não tem valor por sua produção. Ele é o valor. E a transformação que propõe não é de comportamento, mas de percepção — uma metanoia, uma virada da consciência que muda a relação com tudo que existe.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"O reino de Deus não vem de forma visível, nem dirão: Ei-lo aqui, ou: Ei-lo ali; porque o reino de Deus está dentro de vós."</p>
+      <span class="citacao-fonte">Lucas 17:20–21 — Tradição sinótica, redação do séc. I</span>
+    </div>
+
+    <div class="agape-bloco">
+      <span class="agape-tag">Jesus Histórico · Gnose · Essênios</span>
+      <h3>Ἀγάπη — <em>o amor que dissolve a meta</em></h3>
+      <p>O termo grego ágape — que os textos originais usam para o amor ensinado por Jesus — não tem equivalente exato em nenhuma língua moderna de negócios. Não é eros (desejo), não é philia (afeição recíproca), não é storge (afeto familiar). É amor sem objeto, sem contrapartida, sem balanço. É precisamente o oposto da lógica transacional que estrutura a vida corporativa e, profundamente, a maioria dos nossos vínculos afetivos.</p>
+      <p>Os textos gnósticos — especialmente o Evangelho de Tomé e os manuscritos do Mar Morto estudados em conexão com os Essênios — reforçam que o ensinamento central não era sobre regras ou conquistas, mas sobre o reconhecimento de uma natureza interior que já está completa. A compaixão (eleos), o perdão (aphesis) e a reciprocidade (antapodosis) não são virtudes a serem conquistadas. São a natureza a ser desenterrada sob os sedimentos do condicionamento.</p>
+      <p>Essa leitura é radicalmente perturbadora para qualquer gestor que passou décadas crendo que o valor se constrói pelo que se entrega, não pelo que se é.</p>
+      <a class="referencia-canal" href="https://www.youtube.com/@CorvoSeco" target="_blank">▶ @CorvoSeco — Tradições originárias e hermenêutica alternativa</a>
+      <a class="referencia-canal" href="https://www.youtube.com/playlist?list=PL2wUY8ehPvZmmg5UdkrROxQc2T1L31clw" target="_blank">▶ Apókrifa.Gnosis — Jesus Histórico, Talmude, Essênios e Gnósticos</a>
+    </div>
+
+    <div class="corpo">
+      <p>O conflito que sinto — e que acredito que muitos gestores experimentam sem conseguir nomear — não é entre fé e razão. É entre dois sistemas operacionais completamente incompatíveis: um que mede, compara e conquista; outro que reconhece, dissolve e se entrega. Tentar executar os dois ao mesmo tempo não é equilíbrio. É dissociação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ATO 4 — A TRANSFORMAÇÃO ══ -->
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O único caminho que <em>encontrei</em></h2>
+    <div class="corpo">
+      <p>Não vou escrever que abandonei as metas. Seria mentira e seria ingênuo. As empresas existem em um mundo que as cobra. O que mudou — de forma lenta, às vezes dolorosa, nunca linear — é que passei a perceber as metas como ferramentas de um jogo que acontece no exterior, sem deixar que esse jogo defina o que acontece dentro. Essa distinção parece pequena no papel. Na prática, é o trabalho de anos.</p>
+      <p>A meditação diária não é técnica de produtividade. É o espaço onde o gestor cala e o ser humano aparece. É onde percebo, frequentemente com desconforto, que grande parte do que chamei de convicção era, na verdade, condicionamento. Que grande parte do que chamei de disciplina era medo com roupagem nobre. Que grande parte do que chamei de liderança era controle disfarçado de direção.</p>
+      <p>Os ensinamentos gnósticos e essenicos apontam para algo que 40 anos de Yoga confirmam de outra forma: a transformação genuína não é a adição de virtudes ao ego existente. É o progressivo reconhecimento de que o ego que conquista não é o ser que somos. E esse reconhecimento não acontece por decisão intelectual. Acontece por prática — repetida, silenciosa, sem plateia.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Quando você conhecer a si mesmo, então será conhecido, e compreenderás que és filho do Pai vivo."</p>
+      <span class="citacao-fonte">Evangelho de Tomé, Logion 3 — Tradição gnóstica, séc. I–II</span>
+    </div>
+
+    <div class="corpo">
+      <p>O conflito entre o gestor de metas e o ser espiritual não se resolve escolhendo um lado. Resolve-se reconhecendo que eles operam em planos diferentes da existência. Um pertence ao mundo do fazer; o outro, ao mundo do ser. O erro — que pagamos caro — é deixar que o primeiro colonize o segundo. Quando a vida interior vira projeto com indicadores, perdemos precisamente o único lugar onde a transformação real pode ocorrer.</p>
+      <p>É perturbador? É. Confortável não é o ponto.</p>
+    </div>
+
+    <div class="meditacao-box">
+      <span class="ornamento-grande">🌿</span>
+      <p>Medite. Não como técnica. Como ato de honestidade com o que você realmente é,<br>para além de tudo que aprendeu a produzir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FECHAMENTO ══ -->
+<section class="fechamento-section">
+  <div class="container">
+    <p class="fechamento-titulo">O inverso que liberta</p>
+    <p class="fechamento-para">Quarenta anos de metas me ensinaram a construir. Quinze anos de meditação diária me ensinaram que o que mais precisava ser construído não estava em nenhum planejamento estratégico. Estava — está — no silêncio anterior a qualquer meta. O caminho mais difícil não é o da alta performance. É o de reconhecer, sem performance nenhuma, quem você é quando não há mais nada para conquistar.</p>
+
+    <div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
