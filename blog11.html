@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 11 — Chitta Vritti: A Mente que Cria o Mundo | Ensaio Reflexivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-musgo:   #2e4a30;
+    --verde-escuro:  #1a2e1b;
+    --azul-profundo: #1c2b3a;
+    --azul-ceu:      #4a7fa5;
+    --ouro:          #c8a84b;
+    --ouro-claro:    #e8d08a;
+    --creme:         #f5efe0;
+    --branco-suave:  #ede8df;
+    --cinza-texto:   #b8b0a0;
+    --fundo:         #111a12;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--fundo);
+    color: var(--branco-suave);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 1.05rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(160deg, #0d1510 0%, #0e1820 50%, #111a12 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'चित्त';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22rem;
+    color: rgba(200,168,75,0.04);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid rgba(200,168,75,0.35);
+    color: var(--ouro);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.4rem;
+    border-radius: 30px;
+    margin-bottom: 2.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: var(--branco-suave);
+    line-height: 1.15;
+    max-width: 820px;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 em {
+    color: var(--ouro-claro);
+    font-style: italic;
+  }
+
+  .hero .subtitulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--cinza-texto);
+    font-style: italic;
+    max-width: 620px;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero .autoria {
+    font-size: 0.78rem;
+    color: var(--cinza-texto);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(200,168,75,0.4);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(200,168,75,0.5), transparent);
+  }
+
+  /* ── CORPO ── */
+  .corpo {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .secao {
+    position: relative;
+    margin-bottom: 5rem;
+  }
+
+  .num-decorativo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(200,168,75,0.07);
+    line-height: 1;
+    margin-bottom: -1.2rem;
+    display: block;
+  }
+
+  .secao-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .secao h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--branco-suave);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .secao p {
+    color: var(--cinza-texto);
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+  }
+
+  .secao p strong {
+    color: var(--branco-suave);
+    font-weight: 500;
+  }
+
+  .secao p em {
+    color: var(--ouro-claro);
+    font-style: italic;
+  }
+
+  /* separador */
+  .sep {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--ouro), transparent);
+    opacity: 0.25;
+    margin: 4.5rem 0;
+  }
+
+  /* citação */
+  .citacao {
+    border-left: 3px solid var(--ouro);
+    padding: 1.4rem 2rem;
+    margin: 2.5rem 0;
+    background: linear-gradient(to right, rgba(200,168,75,0.06), transparent);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .citacao p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ouro-claro) !important;
+    line-height: 1.5;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .citacao .fonte {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(200,168,75,0.55) !important;
+  }
+
+  /* cards camadas */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+  }
+
+  .card {
+    background: linear-gradient(135deg, rgba(46,74,48,0.2), rgba(28,43,58,0.2));
+    border: 1px solid rgba(200,168,75,0.15);
+    border-radius: 12px;
+    padding: 1.6rem;
+  }
+
+  .card .icone {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--ouro);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .card h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--ouro-claro);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--cinza-texto);
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+
+  /* conceito filosófico */
+  .conceito-box {
+    background: linear-gradient(135deg, rgba(26,46,27,0.5), rgba(28,43,58,0.4));
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .conceito-box::before {
+    content: 'वृत्ति';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    color: rgba(200,168,75,0.04);
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+  }
+
+  .conceito-box .termo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    color: var(--ouro);
+    font-style: italic;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .conceito-box .traducao {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cinza-texto);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .conceito-box p {
+    color: var(--cinza-texto);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  /* referências científicas */
+  .ref-lista {
+    margin: 1.5rem 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ref-lista li {
+    font-size: 0.78rem;
+    color: rgba(200,168,75,0.5);
+    padding-left: 1rem;
+    border-left: 1px solid rgba(200,168,75,0.2);
+    letter-spacing: 0.03em;
+  }
+
+  /* fechamento / assinatura */
+  .fechamento {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(200,168,75,0.15);
+  }
+
+  .fechamento h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ouro-claro);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .fechamento p {
+    color: var(--cinza-texto);
+    max-width: 580px;
+    margin: 0 auto 3rem auto;
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .assinatura {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 2rem 3rem;
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.15));
+  }
+
+  .assinatura .nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--branco-suave);
+    font-weight: 400;
+  }
+
+  .assinatura .handle {
+    font-size: 0.75rem;
+    color: var(--ouro);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+
+  .assinatura .bio-linha {
+    font-size: 0.78rem;
+    color: var(--cinza-texto);
+    letter-spacing: 0.04em;
+  }
+
+  .assinatura .bio-linha.destaque {
+    color: var(--ouro-claro);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+  }
+
+  /* observação */
+  .observacao {
+    max-width: 760px;
+    margin: 0 auto 4rem auto;
+    padding: 1.2rem 2rem;
+    background: rgba(200,168,75,0.04);
+    border: 1px solid rgba(200,168,75,0.1);
+    border-radius: 8px;
+    font-size: 0.76rem;
+    color: rgba(184,176,160,0.55);
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .hero::before { font-size: 10rem; }
+    .conceito-box::before { font-size: 5rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .corpo { padding: 3rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <span class="badge">Ensaio Reflexivo · Blog 11</span>
+  <h1>A Mente que Cria o Mundo<br><em>e o Homem que Ignora Ser o Criador</em></h1>
+  <p class="subtitulo">Presos aos condicionamentos, seguimos como folhas ao vento, criando sem saber, vivendo sem ver.</p>
+  <p class="autoria">Gilberto Mendonça Filho · @gilberto_mfilho</p>
+  <div class="scroll-indicator">leia</div>
+</section>
+
+<!-- ── CORPO ── -->
+<main class="corpo">
+
+  <!-- ATO 1 -->
+  <section class="secao">
+    <span class="num-decorativo">01</span>
+    <span class="secao-label">O Diagnóstico</span>
+    <h2>A Fábrica que Nunca Para</h2>
+
+    <p>A mente não descansa. Enquanto você lê esta linha, ela já produziu três associações, duas memórias e uma preocupação que nada tem a ver com o texto. Ela cria com a mesma indiferença com que o coração bate: sem pedir permissão, sem esperar ordem, sem sequer perguntar se o que fabrica tem alguma utilidade. É uma prensa em operação permanente, gerando formas, julgamentos, narrações, medos e desejos com uma velocidade que a consciência raramente acompanha.</p>
+
+    <p>O problema não é que a mente crie. O problema é que, <strong>na esmagadora maioria das vezes, ela cria a partir do arquivo morto</strong>: reage segundo padrões gravados há décadas, repete soluções que um dia funcionaram para situações que já não existem, confunde lembrança com percepção. O passado governa o presente com a autoridade de quem nunca foi questionado.</p>
+
+    <p>Nas corporações, esse mecanismo encontra o ambiente perfeito para se radicalizar. A pressão por resultado, a gramática da urgência, a glorificação da produtividade como virtude máxima: tudo isso alimenta a fábrica interna sem jamais perguntar o que ela está produzindo. O executivo que atropela o SER em nome do número não é um monstro racional. É, na maioria das vezes, um ser profundamente condicionado que confundiu sua máscara de competência com sua identidade mais profunda.</p>
+
+    <div class="citacao">
+      <p>"Evolução tecnológica sem desenvolvimento interior não é progresso. É velocidade sem direção."</p>
+      <span class="fonte">G. Mendonça Filho — premissa deste ensaio</span>
+    </div>
+
+    <p>A pergunta que este ensaio carrega é esta: <strong>se a mente é uma ferramenta criativa e autossuficiente, capaz de gerar realidade a partir de seus próprios conteúdos, quem exatamente está conduzindo essa criação?</strong> E o que acontece quando ninguém está?</p>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ATO 2 -->
+  <section class="secao">
+    <span class="num-decorativo">02</span>
+    <span class="secao-label">As Camadas</span>
+    <h2>Três Forças que Sustentam o Automatismo</h2>
+
+    <p>A estagnação espiritual não é ausência de movimento. É movimento em círculo. Há três mecanismos que, operando em conjunto, garantem que a maioria das pessoas permaneça vivendo como folhas ao vento, criando mundos interiores complexos sem nenhuma consciência disso.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <span class="icone">⊗</span>
+        <h4>O Automatismo Neurológico</h4>
+        <p>O Default Mode Network, mapeado por Marcus Raichle, é a rede que o cérebro ativa quando "não está fazendo nada". Ela ruminina o passado, projeta o futuro e constrói narrativas sobre o self. Opera sem convite. É o monólogo interior que a maioria toma por realidade.</p>
+      </div>
+      <div class="card">
+        <span class="icone">◎</span>
+        <h4>O Condicionamento Corporativo</h4>
+        <p>As instituições recompensam a conformidade com suas métricas e punem o silêncio interior como improdutividade. O ganancioso não é uma anomalia do sistema: é seu produto mais bem acabado. O equilíbrio que tornaria a evolução sustentável é enterrado como ineficiência.</p>
+      </div>
+      <div class="card">
+        <span class="icone">∿</span>
+        <h4>A Ilusão de Identidade com o Conteúdo</h4>
+        <p>A maior armadilha não é ter pensamentos negativos. É acreditar que você é seus pensamentos. Quando a mente produz medo, vergonha ou ambição, e o indivíduo não percebe a diferença entre o observador e o observado, o automatismo se torna destino.</p>
+      </div>
+    </div>
+
+    <p>A neurociência de Richard Davidson e Sara Lazar demonstrou que a prática meditativa altera fisicamente a espessura cortical e a conectividade neural, alterando o padrão de disparo dessas redes automáticas. Não como metáfora: como fato mensurável por ressonância magnética. O condicionamento é real, mas não é permanente. O que foi gravado pode ser reescrito, desde que haja quem segure a caneta.</p>
+
+    <p>E segurar a caneta exige algo que a lógica corporativa não consegue precificar: presença. Não como técnica de bem-estar. Como postura ontológica diante de uma mente que, deixada a si mesma, cria mundos paralelos e os vende como o único mundo possível.</p>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ATO 3 -->
+  <section class="secao">
+    <span class="num-decorativo">03</span>
+    <span class="secao-label">O Conceito</span>
+    <h2>Chitta Vritti: as Ondas que Formam o Oceano</h2>
+
+    <div class="conceito-box">
+      <span class="termo">Chitta Vṛtti</span>
+      <span class="traducao">Sanskrit · "as modulações da mente-campo" · Yoga Sutras de Patanjali, I.2</span>
+      <p>No segundo sutra do Yoga, Patanjali define o próprio propósito da prática em oito palavras: <em>yogaś citta-vṛtti-nirodhaḥ</em>. O yoga é a cessação das modulações da chitta. Não o silenciamento forçado, não a lobotomia espiritual. A dissolução gradual do automatismo que faz com que o ser humano identifique sua consciência com o conteúdo que a mente produz.</p>
+      <p><em>Chitta</em> é o campo da consciência, mais vasto que o pensamento consciente, que inclui memórias profundas, impressões (samskaras), desejos (vasanas) e arquétipos coletivos. <em>Vṛtti</em> são as ondulações, as formas que esse campo assume ao ser perturbado pela experiência. Quando o vento bate no lago, as ondas não são o lago. Mas, olhando de dentro da onda, é impossível ver o lago.</p>
+      <p>O canal @viespsicologico, na série "As 12 Coincidências Mais Improváveis da História Humana", apresenta evidências de como a ciência moderna chegou, por caminhos radicalmente diferentes, a conclusões estruturalmente similares. A física quântica de John Bell e Alain Aspect demonstrou que partículas separadas permanecem entrelaçadas, incapazes de ser descritas independentemente, como se pertencessem a um campo único cuja natureza é não-local. A geometria fractal de Benoît Mandelbrot revelou que padrões de autossimilaridade operam em escalas que vão do cosmos à célula. Stephanie Dikker mostrou, no PNAS (2017), que cérebros de pessoas em interação sincronizam suas ondas neurais, como se a cognição individual fosse uma ficção conveniente.</p>
+      <p>Tudo isso converge para uma intuição que Patanjali sistematizou há mais de dois mil anos: há um campo de consciência que precede o pensamento individual, e a mente que se identifica apenas com suas próprias ondulações perdeu o contato com o oceano.</p>
+      <ul class="ref-lista">
+        <li>Raichle, M. E. — The Brain's Default Mode Network. Annual Review of Neuroscience.</li>
+        <li>Davidson, R. J. & Lutz, A. — Meditation and Neuroplasticity Research. Univ. of Wisconsin–Madison.</li>
+        <li>Lazar, S. W. et al. — Meditation Experience Associated with Increased Cortical Thickness. NeuroReport.</li>
+        <li>Bell, J. S. — On the Einstein-Podolsky-Rosen Paradox, 1964.</li>
+        <li>Aspect, A. — Experimental Tests of Bell's Theorem. Physical Review Letters, 1982.</li>
+        <li>Dikker, S. et al. — Brain-to-Brain Synchrony Tracks Real-World Group Interactions. PNAS, 2017.</li>
+        <li>Mandelbrot, B. — The Fractal Geometry of Nature.</li>
+        <li>Kox, M. et al. — Voluntary Activation of the Sympathetic Nervous System. PNAS, 2014.</li>
+        <li>Noether, E. — Invariant Variation Problems, 1918.</li>
+        <li>Langevin, H. M. — The Connective Tissue Matrix and Acupuncture. Harvard Medical School.</li>
+        <li>HeartMath Institute Research Library.</li>
+        <li>Kaptchuk, T. J. — Placebo Studies. Harvard Medical School.</li>
+        <li>Moseley, J. B. et al. — Controlled Trial of Arthroscopic Surgery for Osteoarthritis. NEJM, 2002.</li>
+        <li>Ohsumi, Y. — Mechanisms of Autophagy. Nobel Prize in Physiology or Medicine, 2016.</li>
+      </ul>
+    </div>
+
+    <p>Emmy Noether demonstrou, em 1918, que toda simetria de um sistema físico corresponde a uma lei de conservação. Ou seja: o que permanece invariante enquanto tudo muda é a lei mais profunda do sistema. Transposto para a experiência humana: o que permanece imóvel enquanto os pensamentos, os papéis e as circunstâncias mudam é o observador, a consciência pura que Patanjali chama de <em>Purusha</em>. A crise existencial moderna não é filosófica. É o resultado prático de nunca ter sido apresentado a esse ponto de invariância.</p>
+
+    <p>A neurociência de Yosuhino Ohsumi, premiada com o Nobel de 2016, mostrou que o processo de autofagia, pelo qual a célula digere e reciclra seus próprios componentes disfuncionais, é essencial para a saúde e a longevidade. O que vale biologicamente vale psiquicamente: a mente que não revisita seus condicionamentos acumula toxinas cognitivas com a mesma consequência silenciosa.</p>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ATO 4 -->
+  <section class="secao">
+    <span class="num-decorativo">04</span>
+    <span class="secao-label">A Transformação</span>
+    <h2>O Observador que Não Pode Ser Observado</h2>
+
+    <p>Há um ponto de inflexão na experiência de quem pratica, de forma séria e continuada, qualquer disciplina de atenção. Não é um insight dramático. É mais silencioso que isso: um momento em que a pessoa percebe que está percebendo. Que há algo nela que observa o pensamento sem ser o pensamento. Que a onda e o lago são feitos da mesma água, mas não são a mesma coisa.</p>
+
+    <p>Esse reconhecimento não resolve os problemas corporativos. Não elimina a pressão por resultado. Não transforma a ganância estrutural de uma organização pela força de uma meditação matinal. Mas opera uma mudança que é, em certo sentido, mais radical do que qualquer estratégia: <strong>o ser humano para de se identificar exclusivamente com o papel que desempenha e começa a habitá-lo com uma espécie de liberdade interna que o automatismo nunca conheceu.</strong></p>
+
+    <p>A pesquisa do HeartMath Institute documenta como estados de coerência cardíaca, produzidos por práticas contemplativas, alteram a capacidade de tomada de decisão, reduzem a reatividade e aumentam a clareza cognitiva. Ted Kaptchuk, em Harvard, demonstrou que o efeito placebo não é ausência de efeito real: é prova de que o campo de crença e intenção do organismo possui capacidade de alterar a bioquímica de maneiras que a medicina ainda não mapeou completamente. Helene Langevin mostrou que a matriz de tecido conjuntivo funciona como um sistema de comunicação de baixa frequência que percorre o corpo inteiro, responsivo a estados internos que a consciência ordinária sequer percebe.</p>
+
+    <p>O corpo sabe. A mente que parou de ser governada por seus próprios condicionamentos também começa a saber. E o que ela descobre, invariavelmente, é que a estagnação nunca foi falta de capacidade. Foi excesso de automatismo operando no lugar da presença.</p>
+
+    <div class="citacao">
+      <p>"O jogo divino que é a vida não pede que vençamos. Pede que acordemos enquanto jogamos."</p>
+      <span class="fonte">G. Mendonça Filho — Ensaio Reflexivo, Blog 11</span>
+    </div>
+
+    <p>A evolução tecnológica continuará sua marcha. As corporações continuarão medindo o que é mensurável e ignorando o resto. O condicionamento cultural não vai se dissolver porque este ensaio foi lido. Mas há uma coisa que nenhuma força externa pode fazer pelo ser humano: observar seus próprios processos com suficiente distância para perceber que ele não é eles.</p>
+
+    <p>Chitta Vritti não é o inimigo. É o instrumento. O problema nunca foi a mente criativa e autossuficiente. O problema é que, sem um observador consciente, ela cria por conta própria, a partir de arquivos antigos, em benefício de padrões que ninguém escolheu conscientemente. E chama isso de vida.</p>
+  </section>
+
+</main>
+
+<!-- ── FECHAMENTO ── -->
+<footer class="fechamento">
+  <h3>Medite.</h3>
+  <p>Não como técnica. Como ato de reconhecimento de que há algo em você que antecede o barulho, que sobrevive ao resultado trimestral, que existia antes do primeiro condicionamento. Esse algo não precisa ser conquistado. Precisa ser lembrado.</p>
+
+  <div class="assinatura">
+    <span class="nome">Gilberto Mendonça Filho</span>
+    <span class="handle">@gilberto_mfilho</span>
+    <span class="bio-linha">Empresário · 59 anos</span>
+    <span class="bio-linha">Natação · Bike · Musculação</span>
+    <span class="bio-linha">40 anos de Yoga · 15 de meditação diária</span>
+    <span class="bio-linha destaque">Disciplina que vai além do corpo</span>
+  </div>
+</footer>
+
+<!-- ── OBSERVAÇÃO ── -->
+<div class="observacao">
+  <strong>Observação:</strong> Este ensaio possui caráter educativo e reflexivo. Algumas interpretações estabelecem paralelos entre tradições filosóficas, espirituais e descobertas científicas modernas. Em diversos casos, esses paralelos são objeto de debate acadêmico e não representam consenso científico. O objetivo é explorar convergências históricas e conceituais, incentivando o pensamento crítico e a investigação pessoal.
+</div>
+
+</body>
+</html>
