@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 23 — Apokatastasis | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΑΠΟΚΑΤΑΣΤΑΣΙΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 23</span>
+  </div>
+  <h1 class="hero-title"><em>Apokatastasis</em>:<br>o que desperta quando os alicerces desabam</h1>
+  <p class="hero-subtitle">Sobre a antiga promessa de restituição, o gesto judaico de recolher as centelhas espalhadas, e o que sobra quando a lógica transacional finalmente se esgota</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Julho 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se o colapso das estruturas em que confiei, ao invés de ser apenas perda, for a única condição sob a qual algo mais essencial finalmente se torna visível?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Sensação <em>de Que Tudo Está Rachando</em></h2>
+    <div class="corpo">
+      <p>Há uma sensação difusa, difícil de nomear com precisão, mas fácil de reconhecer quando compartilhada: a de que as estruturas que organizavam a vida, instituições religiosas, políticas, até certezas pessoais sobre o que funciona e o que não funciona, estão rachando ao mesmo tempo, em várias frentes, sem que ninguém tenha um plano pronto para quando a rachadura se completar.</p>
+      <p>A reação mais comum a essa sensação é o pânico silencioso, disfarçado de cinismo ou de indiferença performada. Poucos se permitem perguntar se esse colapso, além de perda real e concreta, também abre algum espaço que as próprias estruturas, enquanto sólidas, jamais permitiriam existir. Não se trata de otimismo ingênuo. Trata-se de uma pergunta honesta que a maior parte das tradições contemplativas sérias já fez, cada uma à sua maneira, muito antes de qualquer noticiário do século vinte e um.</p>
+      <p>Reconheço em mim a mesma resistência. Décadas construindo uma trajetória profissional me ensinaram a valorizar estabilidade, previsibilidade, sistemas que funcionam mesmo quando ninguém está olhando. Ver esses sistemas, dentro e fora de mim, mostrarem rachaduras simultâneas provoca um desconforto que nenhuma meditação elimina de imediato.</p>
+      <p>A pergunta que este ensaio tenta sustentar, sem prometer alívio fácil, não é como evitar o colapso. É outra: o que, exatamente, o colapso das minhas estruturas emprestadas está tornando visível, que a própria estrutura, enquanto intacta, insistia em manter escondido?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Não é a estrutura que garante a verdade.<br>É, muitas vezes, <em>a queda da estrutura</em> que finalmente permite vê-la.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Camadas <em>Que o Colapso Revela</em></h2>
+    <div class="corpo">
+      <p>O que desmorona junto com uma instituição raramente é só a instituição. Junto dela, desmoronam três camadas específicas que, enquanto sustentadas, impediam certas percepções de emergir.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🔥</span>
+        <div class="camada-titulo">O Inferno Como Freio</div>
+        <p class="camada-texto">O medo de punição eterna, usado como argumento de autoridade por séculos, mantinha a dúvida sob controle. Sem esse freio, resta perguntar o que realmente sustentava a obediência: convicção ou medo.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🕯️</span>
+        <div class="camada-titulo">A Multiplicidade Apagada</div>
+        <p class="camada-texto">O cristianismo primitivo era plural, um mosaico de comunidades e leituras diferentes, até que a narrativa vencedora apagou as demais. Cada colapso institucional reabre a pergunta sobre o que foi silenciado.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⚖️</span>
+        <div class="camada-titulo">A Lógica Transacional Esgotada</div>
+        <p class="camada-texto">Um sistema de metas, recompensas e culpas, construído sobre a promessa de que o sacrifício presente garante o benefício futuro, funciona até o momento em que deixa, visivelmente, de cumprir a promessa.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Seria difícil apontar um único evento responsável, sozinho, por essas três rachaduras. O que a arqueologia textual do século vinte revelou, no entanto, foi que a suposta unidade original das tradições religiosas era, em grande parte, uma construção tardia. Os textos da biblioteca de Nag Hammadi, silenciados por quase mil e seiscentos anos, mostram comunidades inteiras que se consideravam a expressão mais autêntica da fé, não uma variação inferior ou desviada dela. Aos olhos delas, era a estrutura institucional vencedora que parecia imitação, uma cópia burocrática de algo que, na origem, havia sido experiência viva.</p>
+      <p>Essa multiplicidade apagada é, talvez, a primeira coisa que qualquer colapso estrutural devolve à vista: a lembrança de que a versão única nunca foi a única versão possível, apenas a que sobreviveu ao controle de quem decidiu quais textos seriam copiados e quais seriam queimados.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Apokatastasis</em> e <em>Tikkun</em>: Nomes Antigos para a Restituição</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Orígenes · Gershom Scholem · Cabala Luriânica</span>
+      <h3>Dois nomes, duas tradições, a mesma promessa de <em>recolher o que se perdeu</em></h3>
+      <p>No século terceiro, o teólogo Orígenes de Alexandria propôs um conceito que a ortodoxia posterior consideraria perigoso demais para tolerar: a <em>apokatastasis</em>, a restituição final de todas as coisas. Para Orígenes, nenhuma alma estaria condenada para sempre; mesmo o que parecia definitivamente perdido seria, ao final de um processo purificador, restaurado à sua condição original de proximidade com o divino. A ideia foi condenada por concílios posteriores, no século seis, presa na mesma engrenagem que fabricava hereges: a mesma autoridade que definia o erro decidia, sozinha, quais esperanças a fé oficial tinha permissão de sustentar.</p>
+      <p>Mais de mil anos depois, numa tradição que não dialogava diretamente com Orígenes, a Cabala luriânica desenvolveu uma imagem estruturalmente semelhante com vocabulário próprio. O estudioso Gershom Scholem, principal autoridade acadêmica ocidental em misticismo judaico, descreve como Isaac Luria, no século dezesseis, ensinava que a criação do mundo havia envolvido uma catástrofe original, a quebra dos vasos, na qual centelhas de luz divina se espalharam, presas em fragmentos de escuridão por toda a existência material. A tarefa humana, o <em>tikkun</em>, consiste precisamente em reconhecer e recolher essas centelhas, uma a uma, através de atos concretos de atenção e retidão.</p>
+      <p>Apokatastasis e tikkun nomeiam, em vocabulários que nunca se encontraram historicamente, a mesma intuição: a fragmentação não é o estado final das coisas, apenas uma fase de um processo mais longo, e esse processo de recolhimento não acontece apesar da quebra, mas somente através dela. Não há centelha a recolher sem que o vaso, primeiro, tenha se partido.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"O Reino do Pai está espalhado sobre a terra, e os homens não o veem."</p>
+      <span class="citacao-fonte">Evangelho de Tomé, dito 113</span>
+    </div>
+
+    <div class="corpo">
+      <p>O dito 113 do Evangelho de Tomé converge, sem qualquer ligação histórica direta com a Cabala luriânica, para a mesma imagem: algo precioso já está espalhado diante de nós, disperso, fragmentado, e permanece invisível não por estar ausente, mas porque continuamos procurando por ele inteiro, num único lugar, em vez de reconhecê-lo distribuído nos fragmentos que já temos diante dos olhos.</p>
+      <p>É nesse ponto que o colapso das estruturas emprestadas deixa de ser apenas perda. O que a apokatastasis e o tikkun sugerem, cada um à sua maneira, é que a quebra é condição, não acidente, do processo de restituição. A estrutura, enquanto intacta, escondia as centelhas dentro de si, indistinguíveis do todo. Só fragmentada ela permite que sejam reconhecidas, uma a uma, e reunidas por quem se dispuser ao trabalho.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>O vaso não precisava se manter inteiro.<br>Precisava, em algum momento, <em>libertar o que carregava</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Recolher as Centelhas <em>Sem Voltar à Lógica Antiga</em></h2>
+    <div class="corpo">
+      <p>Reconhecer que o colapso pode libertar centelhas não resolve, sozinho, o problema de como viver depois dele. A tentação mais comum é reconstruir, às pressas, uma estrutura nova que reproduza exatamente a lógica transacional da anterior, metas, recompensas, culpa, apenas com etiquetas diferentes. Os textos gnósticos oferecem, aqui, uma pista concreta: o estado que descrevem como <em>monachos</em>, o unificado, não é alcançado escapando do mundo fragmentado, mas integrando, dentro de si, os opostos que a lógica antiga insistia em manter separados.</p>
+      <p>Essa integração tem, nos mesmos textos, dois nomes práticos. <em>Agapé</em>, o amor que não persegue meta nem cobra retorno, contrasta diretamente com a lógica transacional que estrutura boa parte das relações modernas, inclusive as afetivas e profissionais. <em>Kénosis</em>, o esvaziamento voluntário do ego, contrasta com o impulso de reconstruir, depois de qualquer colapso, uma versão ainda mais fortificada da identidade que acabou de desmoronar.</p>
+      <p>O efeito prático de recolher centelhas nesse espírito não é grandioso nem instantâneo. É, quase sempre, um gesto pequeno: presença que não cobra retorno imediato, atenção que não calcula o que vai ganhar com ela, disposição para reconhecer valor num fragmento sem exigir que ele se recomponha inteiro antes de merecer cuidado. Não é passividade diante do colapso. É recusa deliberada de repetir, com pressa, a mesma lógica que o colapso acabou de expor.</p>
+      <p>Fica, ao final desta reflexão em duas partes, uma pergunta que só pode ser respondida na prática, nunca de antemão: quando a próxima estrutura em que confio começar a rachar, vou gastar a energia tentando salvá-la inteira, ou vou usar a rachadura para recolher, finalmente, a centelha que ela escondia?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">As Centelhas <em>Não Precisam de um Vaso Perfeito</em>.</h2>
+  <p class="fechamento-corpo">Apokatastasis e tikkun, vindos de tradições que nunca dialogaram diretamente, apontam para a mesma direção: a fragmentação não é o fim da história, é a condição para que algo disperso volte a ser reconhecido. O que este ensaio, ao lado do anterior sobre metanoia, sugere não é conforto fácil diante do colapso. É outra coisa, mais exigente: a disposição de recolher, com atenção e sem pressa, o que a própria quebra tornou, finalmente, visível.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

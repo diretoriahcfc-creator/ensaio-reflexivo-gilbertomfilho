@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 22 — Metanoia | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΜΕΤΑΝΟΙΑ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 22</span>
+  </div>
+  <h1 class="hero-title"><em>Metanoia</em>:<br>a palavra que traduziram como culpa</h1>
+  <p class="hero-subtitle">Antes de significar arrependimento, metanoia significava apenas isto: mudar de mente. Sobre o método antigo de lutar contra o próprio piloto automático</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Julho 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se a mudança de opinião, que aprendi a tratar como fraqueza ou traição a mim mesmo, for na verdade o único gesto que a tradição mais antiga do cristianismo considerava sagrado?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Peso <em>de Mudar de Ideia</em></h2>
+    <div class="corpo">
+      <p>Há um desconforto específico, quase físico, em admitir publicamente que mudei de opinião sobre algo em que acreditei com convicção durante anos. A cultura ao redor tem um vocabulário pronto para isso, e nenhuma palavra dele é gentil: inconstante, oportunista, sem coluna vertebral. Mudar de mente virou sinônimo de fraqueza de caráter, quando deveria ser, na melhor das hipóteses, sinal de que alguém ainda está pensando.</p>
+      <p>Essa suspeita não nasceu no debate público contemporâneo. Ela tem raiz muito mais funda, e uma delas passa, ironicamente, por uma das palavras mais centrais do vocabulário cristão, tantas vezes repetida em sermões que perdeu qualquer capacidade de surpreender: metanoia. Traduzida quase sempre como arrependimento, a palavra carrega hoje um peso moralista de culpa e expiação que, segundo estudiosos da tradução bíblica, não estava presente no termo grego original.</p>
+      <p>Metanoia combina <em>meta</em>, além ou depois, com <em>nous</em>, mente, percepção, intelecto. Literalmente, o termo descreve um movimento para além da mente habitual, uma mudança na forma de perceber, não uma cerimônia de culpa por erros cometidos. Quando o texto latino da Vulgata verteu metanoia como <em>paenitentiam agite</em>, fazei penitência, algo se perdeu na tradução que o uso comum da palavra nunca mais recuperou.</p>
+      <p>A pergunta que interessa aqui não é filológica por si só. É pessoal: quantas vezes deixei de admitir, para mim mesmo, que minha percepção sobre algo havia mudado, só porque a cultura ao redor me ensinou que mudar de mente exige primeiro um pedido de desculpas?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Não fomos educados para pensar de novo.<br>Fomos educados para <em>nos desculparmos por ter pensado diferente</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Freios <em>Contra o Pensar de Novo</em></h2>
+    <div class="corpo">
+      <p>A resistência que sinto em admitir uma mudança genuína de percepção não é acidente cultural isolado. É sustentada por três mecanismos que se reforçam mutuamente.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">📜</span>
+        <div class="camada-titulo">A Tradução que Adestrou</div>
+        <p class="camada-texto">O deslocamento semântico de metanoia, de mudança de mente para arrependimento moralista, embutiu culpa onde antes havia apenas convite à percepção renovada.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🔥</span>
+        <div class="camada-titulo">O Medo do Inferno Como Freio</div>
+        <p class="camada-texto">A ameaça de punição eterna, usada por séculos como argumento de autoridade, ensinou que desviar da doutrina estabelecida era pecado, nunca investigação legítima.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⚖️</span>
+        <div class="camada-titulo">A Lógica do Pecado e da Recompensa</div>
+        <p class="camada-texto">Um sistema mental que converte cada pensamento em débito ou crédito moral torna qualquer mudança de posição um risco contábil, não um sinal de vitalidade intelectual.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Essas três engrenagens explicam por que, ainda hoje, tantas pessoas preferem defender uma posição já claramente insustentável a admitir publicamente que mudaram de percepção. O medo raramente é do erro em si. É do custo simbólico de ser vista como alguém que precisou, primeiro, se arrepender.</p>
+      <p>O que os textos gnósticos preservados em Nag Hammadi sugerem, no entanto, é que a tradição cristã mais antiga guardava uma leitura bem menos punitiva desse movimento interior, e um método concreto para praticá-lo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Metanoia</em>: o Atleta que Luta com a Própria Mente</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Evangelho de Tomé · Estudos Bíblicos</span>
+      <h3>Reconhecer o que já <em>está diante dos olhos</em></h3>
+      <p>No Evangelho de Tomé, um dos textos da biblioteca de Nag Hammadi, a metanoia não aparece como cerimônia de arrependimento, mas como exercício de atenção. Não há, nesses ditos, pedido de perdão. Há um convite a olhar com mais precisão para o que já está, de fato, acontecendo diante dos próprios olhos.</p>
+      <p>A pesquisadora April DeConick, referência em estudos do cristianismo tomasino, descreve os primeiros praticantes dessa tradição como seguidores de uma disciplina de autoexame contínuo, próxima do que os gregos chamavam de <em>askesis</em>, treino, exercício. A imagem recorrente nesses textos é a do atleta, alguém que entra em combate não contra um inimigo externo, mas contra os próprios hábitos automáticos de pensamento e reação.</p>
+      <p>Esse combate não é violência contra si mesmo. É, antes, disciplina de observação: perceber o pensamento repetitivo antes que ele se converta, automaticamente, em identidade. Outras tradições contemplativas descreveram versões distintas dessa mesma disciplina, cada uma com vocabulário próprio, mas o que os textos de Tomé acrescentam de específico é a ideia de que a metanoia não é ponto de chegada. É exercício permanente, praticado a cada vez que um hábito antigo de julgamento se repete.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Disse Jesus: Reconhece o que está diante de teus olhos, e o que te é oculto se manifestará a ti. Pois nada há oculto que não venha a se manifestar."</p>
+      <span class="citacao-fonte">Evangelho de Tomé, dito 5</span>
+    </div>
+
+    <div class="corpo">
+      <p>A prática descrita nesse dito não promete revelação instantânea. Promete apenas que aquilo que já está visível, se observado com atenção real, revela camadas que o hábito de olhar distraidamente sempre escondeu. É uma pedagogia da atenção, não da culpa.</p>
+      <p>Essa leitura muda o peso da palavra. Metanoia deixa de ser vergonha retroativa por erros cometidos e passa a ser disciplina prospectiva de observação, o treino constante do atleta que não briga contra si mesmo, mas aprende, aos poucos, a reconhecer o próprio piloto automático antes que ele decida por ele.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Arrepender-se é olhar para trás com culpa.<br>Metanoia é olhar para o que já está diante dos olhos <em>com atenção nova</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Efeito de <em>Pensar de Novo, Sem Pedir Desculpas</em></h2>
+    <div class="corpo">
+      <p>Quinze anos de meditação diária não me deram nenhuma epifania sobre metanoia, mas me deram algo mais útil: a capacidade concreta de notar, em tempo real, quando um julgamento automático está prestes a se formar. Esse é o treino do atleta na prática. Ele não acontece na cadeira de meditação, acontece no minuto seguinte, quando alguém discorda de mim numa reunião e o primeiro impulso é defender a posição antiga só porque já é minha há mais tempo.</p>
+      <p>Isso não significa mudar de opinião com facilidade ou por conveniência. Significa apenas remover o custo emocional artificial de admitir, quando a evidência pede, que a percepção mudou. O atleta espiritual descrito nos textos de Tomé não vence lutando contra os próprios pensamentos. Vence reconhecendo, cada vez com mais rapidez, quando um pensamento é apenas hábito repetindo-se, e quando é, de fato, percepção nova pedindo espaço.</p>
+      <p>O efeito mais tangível dessa prática não é dramático. É a queda gradual de um tipo específico de ansiedade, aquela que aparece sempre que preciso admitir, para mim mesmo antes de qualquer plateia, que estava errado sobre algo em que investi tempo e identidade. Antes, essa admissão soava como derrota. Depois de anos de prática, ela começou a soar como o único sinal confiável de que a mente continua viva.</p>
+      <p>Fica, ao final, uma pergunta que a tradução equivocada de metanoia nos impediu de fazer por muito tempo: quantas convicções carrego hoje não porque a experiência direta as sustente, mas porque mudar de posição ainda me custa mais culpa do que a própria convicção vale?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">Pensar de Novo <em>Não é Traição a Si Mesmo</em>.</h2>
+  <p class="fechamento-corpo">Metanoia, antes de virar sinônimo de culpa, nomeava apenas o gesto mais vivo que a mente é capaz de fazer: mudar de percepção diante do que reconhece, com mais clareza, estar diante dos próprios olhos. O atleta de Tomé não treina para nunca errar. Treina para reconhecer mais rápido quando o hábito, não a verdade, está falando. Essa disciplina de atenção é o primeiro passo de uma reflexão que continua no próximo ensaio: o que acontece quando os alicerces coletivos que sustentam essas mesmas culpas começam, todos ao mesmo tempo, a desabar.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

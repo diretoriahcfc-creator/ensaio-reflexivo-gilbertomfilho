@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 21 — Hairesis | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΑΙΡΕΣΙΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 21</span>
+  </div>
+  <h1 class="hero-title"><em>Hairesis</em>:<br>a escolha que aprendemos a temer</h1>
+  <p class="hero-subtitle">Gnose e heresia nasceram como palavras neutras, conhecimento direto e escolha deliberada. Dois mil anos de institucionalização as transformaram em acusação</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Julho 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se o que chamamos de heresia, ao longo de quase dois milênios, tiver sido apenas o nome que demos ao ato mais simples e mais ameaçador de todos: escolher, por conta própria, o que julgamos verdadeiro?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Suspeita <em>que Vem Antes da Pergunta</em></h2>
+    <div class="corpo">
+      <p>Há duas palavras que, ditas em voz alta numa sala de família tradicional, ainda produzem um pequeno silêncio de desconforto: gnose e herege. Não é preciso saber grego nem ter lido um único tratado de patrística para sentir o peso que elas carregam. Aprendemos, sem que ninguém precisasse nos sentar e explicar, que uma designa um conhecimento suspeito, quase arrogante em sua pretensão de dispensar intermediários, e a outra designa quem foi expulso, quem errou de caminho, quem pagou caro por ter pensado sozinho demais.</p>
+      <p>O curioso é que essa reação não exige contexto religioso algum para se manifestar. Basta observar o que acontece quando alguém, numa reunião de trabalho ou numa conversa entre amigos, afirma ter chegado a uma conclusão importante por percepção direta, sem citar autoridade, artigo ou opinião de especialista que a respalde. Algo no ambiente se retesa, quase imperceptivelmente. A pergunta implícita não é se a percepção está correta. É outra, mais antiga: quem te deu permissão para saber isso sozinho?</p>
+      <p>Décadas administrando negócios me ensinaram a reconhecer esse mesmo reflexo em mim. Toda vez que uma intuição forte discordava do que o mercado, o manual de gestão ou um consultor mais graduado recomendava, a primeira reação não era examinar a intuição com cuidado. Era duvidar dela quase automaticamente, só porque não vinha carimbada por ninguém acima de mim na hierarquia. Levei anos para perceber que esse automatismo tinha nome, e que esse nome era muito mais antigo do que qualquer organograma corporativo.</p>
+      <p>A pergunta que este ensaio tenta abrir não é sobre teologia antiga. É sobre um hábito presente, quase invisível de tão entranhado: o que, exatamente, em mim, ainda pede autorização antes de confiar no que percebo ser verdadeiro? E desde quando aprendi que escolher por conta própria era coisa perigosa demais para se fazer sozinho?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Não fomos ensinados a desconfiar da mentira.<br>Fomos ensinados a desconfiar de <em>conhecer por conta própria</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Engrenagens <em>de uma Mesma Máquina</em></h2>
+    <div class="corpo">
+      <p>A desconfiança que sinto diante da própria intuição não nasceu comigo, nem nasceu do nada. Ela foi construída, camada sobre camada, por três mecanismos que a história das ideias documenta com uma precisão às vezes incômoda.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">⚖️</span>
+        <div class="camada-titulo">O Sacrifício do Intelecto</div>
+        <p class="camada-texto">Carl Gustav Jung descreveu a fé institucionalizada como exigência de um sacrificium intellectus, o sacrifício do intelecto, que mantém o indivíduo num estado que ele chamava de infantilismo espiritual.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🪞</span>
+        <div class="camada-titulo">A Invenção do Outro</div>
+        <p class="camada-texto">Heresiólogos como Irineu de Lyon e Tertuliano construíram a própria identidade cristã definindo, por oposição, quem deveria ser excluído, rotulando divergência de percurso como desvio da verdade única.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">👑</span>
+        <div class="camada-titulo">Um Deus, Um Bispo</div>
+        <p class="camada-texto">A partir do século IV, a aliança entre Igreja e Império transformou dissidência de pensamento em delito penal: se há apenas um Deus no céu, argumentava-se, deve haver apenas uma autoridade absoluta na terra.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Essas três engrenagens giram juntas. O sacrifício do intelecto fornece o material psíquico necessário, uma disposição a trocar autonomia por segurança; a invenção do outro fornece o vocabulário, a palavra pronta para nomear e isolar quem discorda; a fusão entre trono e altar fornece o mecanismo de aplicação, o poder de queimar livros e silenciar vozes. O historiador Bart D. Ehrman, da Universidade da Carolina do Norte, dedicou parte relevante de sua obra a mostrar que o que hoje chamamos de ortodoxia não descreve uma verdade que sempre existiu pura e depois foi corrompida por hereges. Descreve, isso sim, a narrativa que sobreviveu, entre várias outras igualmente antigas, porque teve do seu lado o poder de decidir quais textos seriam copiados e quais seriam queimados.</p>
+      <p>Por quase mil e seiscentos anos, essas outras vozes ficaram em silêncio, não porque tivessem sido refutadas, mas porque foram destruídas. Em 1945, um camponês egípcio encontrou, por acaso, perto da cidade de Nag Hammadi, uma jarra de cerâmica selada contendo mais de cinquenta textos que os heresiólogos haviam condenado ao esquecimento. Pela primeira vez em quase dois milênios, os chamados hereges puderam, enfim, falar por si mesmos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Hairesis</em>: o Grego Antes do Crime</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">C.G. Jung · Bart D. Ehrman · Eusébio de Cesareia</span>
+      <h3>A palavra que significava apenas <em>escolha</em></h3>
+      <p>No grego antigo, hairesis (αἵρεσις) não continha nada de sinistro. Vinha do verbo hairein, escolher, e designava exatamente isso: uma linha de pensamento adotada deliberadamente. Médicos falavam da hairesis empírica ou da hairesis metódica para distinguir escolas de tratamento. Filósofos falavam da hairesis estoica ou da hairesis platônica sem que ninguém pensasse em processar quem preferisse Zenão a Platão. Escolher uma escola de pensamento era, simplesmente, exercer a faculdade de pensar.</p>
+      <p>O próprio Eusébio de Cesareia, historiador oficial do cristianismo primitivo no século IV e figura central na consolidação daquilo que se tornaria ortodoxia, ainda usa o termo num sentido essencialmente neutro ao descrever o cristianismo nascente como uma hairesis herdada da tradição judaica, uma escolha, entre outras, dentro de um campo mais amplo de possibilidades religiosas. A palavra só se transforma em acusação quando um grupo específico, tendo vencido a disputa por poder institucional, precisa justificar por que sua escolha é a única legítima e todas as demais são erro, contaminação, perigo.</p>
+      <p>É aqui que Jung se torna indispensável para entender o mecanismo psicológico por trás da mudança semântica. Ele distinguia, com insistência que atravessa boa parte de sua obra sobre religião, a fé (<em>pistis</em>), depositada numa autoridade externa, do conhecimento (<em>gnosis</em>), percepção adquirida por experiência direta. A primeira, argumentava, tende a exigir do fiel um sacrificium intellectus, a suspensão do próprio julgamento em troca de pertencimento e segurança psíquica. A segunda não pede sacrifício algum, pede apenas disposição para atravessar, sozinho, o que só pode ser conhecido em primeira pessoa.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Aquele que busca não deve parar de buscar até encontrar. E quando encontrar, ficará perturbado. E, perturbado, ficará maravilhado, e reinará sobre o Todo."</p>
+      <span class="citacao-fonte">Evangelho de Tomé, dito 2</span>
+    </div>
+
+    <div class="corpo">
+      <p>O dito 2, resgatado naquela mesma jarra de Nag Hammadi, descreve com precisão notável o preço da gnose genuína: perturbação antes de qualquer maravilhamento. Não é uma promessa confortável. É, antes, um alerta honesto de que conhecer por conta própria custa a segurança de saber, de antemão, exatamente o que se vai encontrar.</p>
+      <p>A transformação de hairesis em heresia seguiu, historicamente, o mesmo roteiro que Ehrman descreve para a produção de textos pseudoepígrafos, escritos atribuídos a apóstolos que jamais os teriam redigido, fabricados justamente para emprestar autoridade a doutrinas que consolidavam hierarquia. Irineu de Lyon, em Contra as Heresias, e Tertuliano, em seu tratado sobre a prescrição contra os hereges, não estavam apenas refutando ideias que consideravam erradas. Estavam definindo, pela primeira vez de forma sistemática, as fronteiras de uma identidade coletiva através da exclusão de quem ficasse do lado de fora.</p>
+      <p>Um Deus, um bispo resume com brutalidade quase administrativa a lógica que se consolidou a partir do século IV: se a divindade é única e falar em nome dela é privilégio de poucos, então qualquer pretensão de acesso direto ao sagrado, sem mediação clerical, precisa ser tratada como ameaça à ordem, não como possibilidade legítima de experiência religiosa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>A heresia nunca foi o erro.<br>Foi sempre a <em>escolha que alguém não teve autoridade para proibir</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Reivindicar <em>a Palavra de Volta</em></h2>
+    <div class="corpo">
+      <p>Não pratico gnosticismo nem me filio a nenhuma escola herética antiga. O que quarenta anos de yoga e quinze de meditação diária me ensinaram foi algo mais modesto e, ao mesmo tempo, mais radical: existe uma diferença perceptível, no corpo e na mente, entre uma convicção adotada porque alguém investido de autoridade me disse que assim é, e uma convicção que atravessou o crivo da própria experiência, sessão após sessão, ano após ano.</p>
+      <p>Reivindicar a palavra hairesis em seu sentido original não significa desprezar toda tradição ou toda autoridade estabelecida. Significa apenas devolver ao indivíduo o direito de escolher, com responsabilidade e sem culpa antecipada, qual caminho de investigação faz sentido para ele percorrer, e tratar a dúvida não como sintoma de fraqueza espiritual, mas como o primeiro instrumento de qualquer busca séria.</p>
+      <p>O efeito prático dessa reivindicação não é dramático nem instantâneo. É a redução gradual de um certo tipo de ansiedade específica, aquela que aparece toda vez que uma percepção pessoal contradiz o consenso ao redor. Antes, essa contradição soava como erro provável meu. Hoje, soa como um convite a investigar mais, não como motivo para recuar antes mesmo de examinar o que percebi.</p>
+      <p>Fica, ao final, uma pergunta bem menos confortável do que qualquer resposta doutrinária: quantas das minhas convicções mais profundas nasceram de percepção direta, e quantas nasceram apenas do medo antigo, quase esquecido, de ser chamado de herege por ter ousado escolher sozinho?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Escolha <em>Nunca Foi o Crime</em>.</h2>
+  <p class="fechamento-corpo">Gnose e heresia nasceram como palavras vizinhas da liberdade: conhecer por experiência própria, escolher por convicção própria. O que a história registra, com nomes, datas e concílios, é o preço que se cobrou de quem insistiu em exercer as duas coisas ao mesmo tempo. Recuperar o sentido original dessas palavras não é reabrir uma disputa teológica de dois mil anos. É perguntar, com a coragem possível hoje, o que ainda impede cada um de nós de escolher, sozinho, o que reconhece como verdadeiro.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
