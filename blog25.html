@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 25 — Destemor | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'SHAMBHALA';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 25</span>
+  </div>
+  <h1 class="hero-title"><em>Destemor</em>:<br>a coragem que nasce de um coração triste e terno</h1>
+  <p class="hero-subtitle">Sobre o guerreiro que Chögyam Trungpa descreve não como quem vence guerras, mas como quem tem coragem de sentir, e sobre a bravura que amadurece devagar, como chifres novos</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Agosto 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se a coragem que busco não vier de me tornar mais impenetrável, mas do contrário, de deixar o peito aberto o bastante para doer, e ainda assim seguir adiante?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Bravura <em>Que Confundimos com Dureza</em></h2>
+    <div class="corpo">
+      <p>Quase sempre aprendemos que força significa não deixar nada passar. Endurecer a pele, fechar a expressão, treinar o rosto para não trair o que se sente por dentro. Diante de um mundo instável, com ameaças econômicas, sociais e políticas que mudam de nome a cada década mas nunca desaparecem de fato, a resposta mais comum é a mesma há gerações: construir um casulo e viver ali dentro, protegido, o mais isolado possível do que poderia ferir.</p>
+      <p>Reconheço esse movimento em mim depois de décadas tomando decisões difíceis, à frente de uma empresa, de uma família, de compromissos que não permitiam hesitação visível. Aprendi a não vacilar diante de crise, a manter o tom firme quando tudo ao redor parecia desmoronar. Com o tempo, percebi que essa mesma couraça, tão útil nos momentos de tempestade, também me deixava mais surdo nos momentos de calmaria. Ficou mais difícil sentir alegria plena, mais difícil chorar quando havia motivo, mais difícil simplesmente estar presente sem calcular o próximo movimento defensivo.</p>
+      <p>A palavra guerreiro carrega, quase automaticamente, essa imagem de invulnerabilidade. Mas há uma tradição inteira, muito mais antiga do que qualquer manual de liderança corporativa, que descreve o guerreiro de um jeito quase oposto: alguém corajoso o bastante para viver em paz, não para vencer batalhas. Essa definição, à primeira vista simples, esconde uma pergunta incômoda sobre o que realmente estamos protegendo quando construímos nosso próprio casulo.</p>
+      <p>A questão que este ensaio tenta sustentar não é como me tornar mais resistente ao próximo golpe. É outra: o que, exatamente, a couraça que carrego está impedindo que eu sinta?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Nem toda dureza é força.<br>Às vezes é apenas <em>medo bem disfarçado de disciplina</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Forças <em>Que Constroem o Casulo</em></h2>
+    <div class="corpo">
+      <p>Endurecer não é escolha isolada de um único momento. São três movimentos que, juntos, vão fechando o casulo sem que se perceba o processo em andamento.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🐢</span>
+        <div class="camada-titulo">O Casulo Protetor</div>
+        <p class="camada-texto">Cada exposição emocional passa a ser tratada como risco desnecessário. Construímos abrigos cada vez mais fechados, convencidos de que segurança significa não deixar nada tocar o que está dentro.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🌫️</span>
+        <div class="camada-titulo">O Medo do Silêncio</div>
+        <p class="camada-texto">Preenchemos cada momento de vazio com ruído, ocupação, distração, porque ficar realmente parado, sem nenhum ponto de referência, parece perigoso demais para ser tolerado.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🏺</span>
+        <div class="camada-titulo">A Bravura Que Racha Fácil</div>
+        <p class="camada-texto">A dureza treinada sem nada de genuíno por baixo parece sólida na superfície, mas se comporta como porcelana: resiste bem até o primeiro impacto real, e então se estilhaça de uma vez.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Nenhuma dessas três forças age sozinha, e seria simplista culpar apenas a educação recebida ou a cultura corporativa por um padrão tão distribuído. O que chama atenção é que tradições contemplativas muito anteriores a qualquer discurso sobre resiliência já haviam mapeado exatamente esse mecanismo: o casulo, o medo do silêncio e a bravura frágil não protegem de fato quem os constrói, apenas adiam o momento em que a fragilidade escondida vai aparecer.</p>
+      <p>É nesse ponto que vale revisitar o que a tradição do guerreiro, em sua origem, quis dizer com coragem, um conceito que raramente coincide com o que a cultura contemporânea costuma vender sob o mesmo nome.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Destemor</em>: a Coragem Que Nasce de Um Coração Terno</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Chögyam Trungpa Rinpoche · Shambhala: The Sacred Path of the Warrior</span>
+      <h3>Não a ausência de medo, mas o <em>produto da ternura</em></h3>
+      <p>Chögyam Trungpa Rinpoche, mestre budista tibetano que fundou a tradição de treinamento Shambhala, descreve o destemor de um jeito que contraria quase toda intuição comum sobre coragem. Não se trata da capacidade de revidar, nem da ausência de medo. O verdadeiro destemor, em sua descrição, é consequência direta da ternura, algo que só aparece quando alguém permite que o mundo, em suas palavras, faça cócegas no próprio coração.</p>
+      <p>Para explicar como essa coragem amadurece, Trungpa recorre à imagem do nascimento dos chifres de uma rena. No início, eles são macios, quase de borracha, incapazes de qualquer enfrentamento real. É só com o tempo, conforme a rena envelhece, que os chifres endurecem e ganham suas pontas verdadeiras. A coragem nasceria do mesmo jeito: primeiro frágil e incerta, depois firme, mas nunca por decisão instantânea ou força de vontade isolada, sempre por um processo de maturação que não pode ser apressado.</p>
+      <p>Há ainda outra imagem, talvez a mais precisa de todas: bravura sem essa ternura genuína por baixo é como uma xícara de porcelana, bonita e aparentemente sólida, mas que se quebra ao primeiro tombo. Já a coragem que nasce do coração terno se pareceria com uma xícara de madeira revestida de laca, capaz de ser macia e resistente ao mesmo tempo, algo que cai e não se despedaça.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"O primeiro sinal do destemor é quando a tristeza atinge seu coração."</p>
+      <span class="citacao-fonte">Chögyam Trungpa Rinpoche — Shambhala: The Sacred Path of the Warrior</span>
+    </div>
+
+    <div class="corpo">
+      <p>Essa tristeza descrita por Trungpa não tem nada de autocomiseração. É antes uma sensação de plenitude tão completa que quase transborda, o peito tão cheio que parece prestes a derramar. Inverte-se, assim, uma suposição quase universal: a de que a força reside em fechar a percepção, endurecer o rosto, calcular cada resposta antes de senti-la. A tradição do guerreiro coloca a fonte exata da coragem no lugar em que a maioria de nós esconde a própria vulnerabilidade.</p>
+      <p>Não é coincidência que essa mesma tradição insista em começar pela própria casa, antes de qualquer ambição maior de ajudar o mundo. Só quem primeiro se permite sentir, sem couraça, tem alguma ternura verdadeira para oferecer a outra pessoa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>O guerreiro não é quem nunca sente a ferida.<br>É quem a deixa <em>exposta, mesmo depois de cicatrizada</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Deixar o Peito Aberto <em>Onde Antes Havia Couraça</em></h2>
+    <div class="corpo">
+      <p>Reconhecer que a coragem nasce da ternura não elimina, sozinho, o impulso automático de endurecer diante do próximo desafio. O efeito prático costuma ser mais discreto: perceber, no meio de uma discussão difícil com um filho, um sócio, alguém que se ama há décadas, o exato instante em que o rosto começa a se fechar, e escolher, só dessa vez, não completar o gesto.</p>
+      <p>É aí que a reflexão volta a algo simples, quase óbvio quando dito em voz alta: somos canais por onde algo maior pode atravessar, na família, no meio social, no trabalho, nas companhias que escolhemos manter por perto. Trazer esse guerreiro à tona não significa vencer mais discussões nem parecer mais forte diante dos outros. Significa resgatar ética, respeito, empatia e paz precisamente onde a couraça costumava ocupar o lugar.</p>
+      <p>Não é gesto grandioso. É presença que permanece aberta mesmo quando dói, atenção que não se fecha só porque o ambiente ficou hostil, disposição para deixar a ternura aparecer antes de qualquer resposta calculada. Nenhuma dessas escolhas garante proteção contra a próxima decepção. Mas muda, de forma concreta, o que sobra depois dela.</p>
+      <p>A pergunta que fica não é como me proteger melhor amanhã. É outra: da próxima vez que a ferida aparecer, vou cobri-la com mais uma camada de couraça, ou vou, finalmente, deixá-la exposta?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Coragem <em>Não Endurece, Ela se Abre</em>.</h2>
+  <p class="fechamento-corpo">Depois de reconhecer, no ensaio anterior, que a pedra empurrada montanha acima é também espelho do que ainda não foi integrado, esta reflexão pergunta o que acontece quando, em vez de fortalecer a couraça em torno dessa pedra, alguém decide manter o peito aberto ao lado dela. Chögyam Trungpa descreve o guerreiro não como quem vence o mundo, mas como quem tem coragem de sentir tudo o que o mundo apresenta, sem se fechar. Talvez essa seja, afinal, a única bravura que realmente vale a pena treinar.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 24 — A Pedra Que Sou Eu | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΣΙΣΥΦΟΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 24</span>
+  </div>
+  <h1 class="hero-title"><em>A Pedra Que Sou Eu</em>:<br>o cansaço que Sísifo nunca sentiu, mas nós sentimos todos os dias</h1>
+  <p class="hero-subtitle">Sobre o mito que Camus leu como lucidez diante do absurdo, e o que a individuação junguiana, ao lado dos princípios herméticos, reconhece nele como convite, não como condenação</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Agosto 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se o que chamo de cansaço não vier do peso da pedra, mas do fato de empurrá-la, todos os dias, exatamente do mesmo jeito, sem nunca perguntar o que, em mim, ainda se recusa a atravessar essa subida de olhos abertos?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Cansaço <em>Que Descanso Nenhum Resolve</em></h2>
+    <div class="corpo">
+      <p>Há um tipo específico de exaustão que sobrevive à noite bem dormida, às férias completas, ao fim de semana sem agenda. Volta-se ao mesmo estado de antes, talvez com um verniz de disposição renovada, mas a sensação de fundo permanece intacta: a de estar empurrando algo, sempre o mesmo algo, ladeira acima, todos os dias. Quando o corpo descansa e a exaustão continua, vale desconfiar de que o problema nunca foi propriamente físico.</p>
+      <p>É comum, nesse ponto, alguém recorrer ao mito de Sísifo como queixa. "Estou vivendo como Sísifo" virou expressão de desabafo, quase clichê, evocando a imagem homérica do rei condenado pelos deuses a empurrar uma pedra montanha acima para vê-la rolar de volta assim que alcança o topo, eternamente, sem trégua. O que raramente se examina é o que essa comparação está realmente afirmando sobre os próprios dias: não que a tarefa seja pesada demais, mas que ela se repete sem que nada, nesse meio-tempo, seja verdadeiramente incorporado pela experiência.</p>
+      <p>Reconheço o padrão em mim mesmo depois de décadas à frente de decisões, negociações, conversas difíceis com equipe e família. Não é a quantidade de trabalho que pesa, é a suspeita, cada vez mais difícil de ignorar, de estar reagindo aos mesmos estímulos exatamente da mesma forma há anos, como se a experiência acumulada não tivesse alterado uma única linha do roteiro interno que se repete a cada vez que a pedra volta ao pé da montanha.</p>
+      <p>A pergunta que este ensaio tenta sustentar não é como aliviar o peso da subida, nem como escapar dela, o que raramente é possível ou mesmo desejável. É outra, mais incômoda: o que, exatamente, continua se repetindo em mim sem nunca ter sido, de fato, olhado de frente?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>O cansaço não vem sempre da pedra.<br>Às vezes vem de empurrá-la <em>sem nunca ter aprendido seu formato</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Forças <em>Que Mantêm a Pedra Pesada</em></h2>
+    <div class="corpo">
+      <p>O que torna a repetição exaustiva raramente é o esforço em si. São três mecanismos específicos, quase sempre operando juntos, que transformam um gesto que poderia amadurecer em um gesto que apenas se repete.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🌀</span>
+        <div class="camada-titulo">A Repetição Sem Testemunha</div>
+        <p class="camada-texto">O corpo executa o gesto diário enquanto a atenção está em qualquer outro lugar. Sem alguém dentro de mim realmente observando, o número de repetições cresce, mas nada é de fato aprendido a cada volta.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⛰️</span>
+        <div class="camada-titulo">A Pedra Vista Como Inimiga</div>
+        <p class="camada-texto">O conflito que retorna, seja na relação, na saúde ou no trabalho, é tratado como obstáculo a ser vencido de uma vez por todas, nunca como matéria que continua voltando até ser efetivamente reconhecida.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🌊</span>
+        <div class="camada-titulo">O Ritmo Que Perdemos</div>
+        <p class="camada-texto">A vida moderna impõe um ritmo uniforme a algo que nunca foi linear. Ignorar que toda subida espera uma descida transforma ciclos naturais em esteira sem fim.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Não há um único evento responsável por essas três forças, e seria ingênuo procurar culpado isolado para algo tão distribuído na cultura contemporânea. O que chama atenção, ao revisitar tradições muito mais antigas do que qualquer discurso de produtividade, é que boa parte delas já havia identificado com precisão exatamente esse ponto: repetição sem testemunha, resistência ao que insiste em voltar, e desprezo pelo ritmo natural das coisas, formam juntas a receita que transforma trabalho psíquico legítimo em exaustão sem sentido.</p>
+      <p>É esse o momento em que o mito de Sísifo merece ser lido de novo, com menos pressa. Não como sentença sobre a inutilidade do esforço humano, mas como descrição precisa do que acontece quando a subida se repete sem que nada, do lado de dentro, acompanhe a subida.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Individuação</em> e os Sete Princípios: o Mesmo Mapa em Dois Vocabulários</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">C.G. Jung · O Caibalion · Jayson G. Seibel, 2021</span>
+      <h3>A pedra como <em>matéria-prima</em>, não como castigo</h3>
+      <p>Carl Gustav Jung descreveu a individuação como impulso natural de desenvolvimento psíquico, um movimento em direção à maior realização possível da personalidade, análogo ao das plantas que crescem em direção ao sol. Não se trata de eliminar o conflito que insiste em voltar, mas de integrá-lo: reconhecer, em cada repetição, o fragmento de si mesmo que ainda permanece cindido, separado do todo, e que por isso continua reaparecendo sob formas diferentes até ser efetivamente reconhecido.</p>
+      <p>Séculos antes, uma tradição de vocabulário completamente distinto já cartografava algo estruturalmente semelhante. O Caibalion, texto atribuído a Hermes Trismegisto e publicado de forma anônima em 1908, sintetiza sete princípios herméticos como chave de autoconhecimento: mentalismo, correspondência, vibração, polaridade, ritmo, causa e efeito, gênero. O princípio de correspondência afirma que existe equivalência entre os planos, o que se manifesta fora replica algo que já existia dentro. O princípio de ritmo sustenta que tudo oscila entre dois polos, nada permanece parado em um único extremo. O princípio de polaridade ensina que os opostos são o mesmo objeto observado em graus diferentes, e que dominá-los não significa eliminar um deles, mas aprender a transitar conscientemente de um ao outro.</p>
+      <p>Em 2021, o pesquisador Jayson Gustavo Seibel, sob orientação de Jorge Antonio Jorge, defendeu junto à Associação Junguiana do Brasil uma monografia que aproxima diretamente esses sete princípios do processo de individuação junguiano, mostrando como pressupostos inteiros da psicologia analítica encontram, no Caibalion, uma base de ressonância teórica muito anterior a Jung. O que os dois vocabulários descrevem, cada um à sua maneira, é a mesma intuição: nada que retorna insistentemente é acidente. É correspondência entre o que acontece fora e o que ainda não foi integrado dentro.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"É preciso imaginar Sísifo feliz."</p>
+      <span class="citacao-fonte">Albert Camus — O Mito de Sísifo, 1942</span>
+    </div>
+
+    <div class="corpo">
+      <p>Camus já intuía parte disso. Seu Sísifo não é feliz por ignorar a pedra ou fingir que ela não pesa, mas por conhecer, em suas palavras, toda a extensão da própria condição, e ainda assim seguir descendo a montanha, lúcido, sem esperança metafísica de que a rocha algum dia deixe de rolar de volta. A felicidade de Sísifo, para Camus, está inteira nessa lucidez, na recusa de qualquer fuga do absurdo.</p>
+      <p>A individuação, e o mapa hermético que a antecede em muitos séculos, avançam um passo além dessa lucidez estoica. Não bastaria apenas suportar a mesma pedra para sempre com dignidade; a correspondência entre montanha e psique sugere algo mais concreto: o gesto de empurrar e quem empurra nunca foram dois processos separados. Reconhecer isso não faz a pedra desaparecer no dia seguinte, mas muda irreversivelmente o que acontece cada vez que as mãos voltam a tocá-la.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Sísifo não precisa vencer a montanha.<br>Precisa, a cada subida, <em>reconhecer o que carrega</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Empurrar a Mesma Pedra <em>de Outro Jeito</em></h2>
+    <div class="corpo">
+      <p>Reconhecer que a repetição carrega um convite não resolve, sozinho, a pedra do dia seguinte. A tentação mais comum, assim que essa percepção aparece, é tentar quitar tudo de uma vez, resolver em um único gesto decisivo o que a psique insiste em trazer de volta em ciclos. Não é assim que individuação ou ritmo funcionam, nem em Jung nem no Caibalion: ambos descrevem processo, não veredito único.</p>
+      <p>O efeito concreto costuma ser bem mais modesto. É perceber, no meio da mesma discussão que volta a acontecer com um filho, um sócio, um companheiro de décadas, o instante exato em que o corpo já sabe o próximo movimento antes mesmo de pensar nele, e escolher, só dessa vez, fazer uma pausa de um segundo antes de repetir o gesto automático. Não é vitória grandiosa. É testemunha, ali onde antes só havia reação.</p>
+      <p>É nesse ponto que a reflexão volta a algo simples: somos, cada um de nós, canais por onde alguma coisa maior atravessa, na família, no círculo social, no trabalho, nas companhias que escolhemos manter por perto. Resgatar ética, respeito, empatia e paz não depende de escapar da montanha nem de encontrar um atalho que livre alguém da subida. Depende de estar, finalmente, presente durante o gesto que sempre se repetiu sem ninguém realmente ali para vê-lo.</p>
+      <p>Amanhã a pedra volta a estar ao pé da montanha, como sempre esteve. A pergunta que resta não é como evitar subir de novo. É outra: desta vez, vou empurrá-la olhando para ela, ou vou repetir mais um dia sem testemunha?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Montanha <em>Não é o Castigo, é o Espelho</em>.</h2>
+  <p class="fechamento-corpo">Depois de refletir, no ensaio anterior, sobre o que desperta quando as estruturas emprestadas desabam, este texto olha para o que sustenta o gesto de recomeçar todos os dias. Camus deu a Sísifo lucidez para suportar a pedra. Jung e o Caibalion, em vocabulários que nunca dialogaram diretamente, sugerem algo além da resistência estoica: a montanha nunca foi apenas obstáculo externo, é o espelho exato do que ainda não foi integrado. Empurrar de olhos abertos não elimina a subida. Mas muda, para sempre, quem sobe.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
