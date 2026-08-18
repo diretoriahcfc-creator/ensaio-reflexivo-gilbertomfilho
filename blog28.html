@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 28 — O Fruto Que Não Queima | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 660px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΚΑΡΠΟΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 28</span>
+  </div>
+  <h1 class="hero-title"><em>O Fruto Que Não Queima</em>:<br>o Simão que a difamação quase apagou</h1>
+  <p class="hero-subtitle">Sobre A Grande Declaração — o texto mais antigo atribuído a Simão o Mago, anterior à própria campanha que o difamou —, e sobre o ensinamento de que o poder divino em nós, se não gerar fruto, perece junto com o corpo</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Agosto 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se o poder divino que carrego dentro de mim não for garantia de nada — apenas potência que, como a gramática nunca escrita ou a geometria nunca aplicada, desaparece se eu não a transformar em fruto?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Fé Como Posse, <em>Não Como Fruto</em></h2>
+    <div class="corpo">
+      <p>Boa parte do que chamamos de vida espiritual se resume a acumular crenças: aceitar uma doutrina, guardar uma convicção, carregar a certeza de que algo divino habita em nós. Rara é a pergunta seguinte, mais desconfortável: o que essa certeza produziu, de fato, na minha vida? Tratamos o sagrado como posse — algo que se tem — quando talvez ele só exista de verdade como algo que se pratica.</p>
+      <p>Reconheço em mim essa tentação de confundir entender um princípio com já tê-lo incorporado, como se a compreensão sozinha já bastasse.</p>
+      <p>O mesmo padrão sustenta instituições inteiras: recompensa-se a declaração de fé, a adesão formal, o diploma da crença — raramente se pergunta o que essa fé gerou de concreto na vida de quem a professa. Isso vale tanto para quem reconheceu, em algum momento, a centelha que já habita nele quanto para quem reivindicou o direito de fazer as perguntas que a tradição ensinou a temer. Reconhecer não é o fim do caminho. É só o começo dele.</p>
+      <p>A pergunta que sustenta este ensaio não é se existe, de fato, um poder divino latente em cada um de nós — os últimos dois ensaios já trataram disso sob mais de um ângulo. É outra, mais exigente: o que acontece com esse poder quando ele nunca é transformado em nada além de crença?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Reconhecer a centelha não é o fim da jornada.<br>É apenas <em>a permissão para começar a dar fruto</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Camadas de Difamação <em>Que Um Texto Antigo Desfaz</em></h2>
+    <div class="corpo">
+      <p>Até pouco tempo, quase tudo que sabíamos sobre Simão vinha de seus adversários — e chegava carregado de intenção. Mas um texto específico, preservado por um dos próprios heresiólogos, vem sendo relido por estudiosos contemporâneos, entre eles David Litwa, com uma conclusão perturbadora: talvez ele seja anterior à campanha inteira que definiu Simão para a posteridade.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">📜</span>
+        <div class="camada-titulo">A Datação Que Reescreve a História</div>
+        <p class="camada-texto">A Grande Declaração, texto que os simonianos atribuíam a Simão, não menciona o conflito com Pedro nem a história da prostituta de Tiro — como se esses episódios simplesmente não existissem. David Litwa argumenta que o texto é anterior a essas narrativas, talvez do ano 110 ou 120, contemporâneo do Evangelho de João.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🔮</span>
+        <div class="camada-titulo">O Bruxo Que Nunca Existiu Assim</div>
+        <p class="camada-texto">A imagem do feiticeiro ganancioso vendendo poderes divinos, consolidada em Atos dos Apóstolos e nos heresiólogos, talvez seja eco distorcido de um homem que ensinava sobre o "Grande Poder" — o Nous, a mente divina —, e que por isso passou a ser chamado, de forma literal e caluniosa, de "Simão, o grande poder de Deus".</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">💍</span>
+        <div class="camada-titulo">A União Cósmica Lida Como Escândalo</div>
+        <p class="camada-texto">Irineu conta que Simão comprou uma prostituta em Tiro e saiu viajando com ela, chamando-a de pensamento de Deus. O texto original fala de outra coisa: a união simbólica entre Nous e Epinoia, mente e pensamento, céu e terra — transformada em fofoca por quem só sabia ler símbolo como fato.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Se essas três camadas de difamação forem, de fato, posteriores ao texto original, o que sobra é outra coisa inteiramente: um pensador que discute o mesmo repertório discutido nos círculos que produziram o Evangelho de João e o Apócrifo de João — antes de qualquer fechamento de cânone, antes de qualquer acusação de heresia. E o que ele deixou, se lido com atenção, ensina bem menos sobre magia e bem mais sobre fruto.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Árvore de Fogo: <em>o Fruto Que Não Se Entrega às Chamas</em></h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Simão o Mago (atribuído) · A Grande Declaração — Apophasis Megale, preservada em Hipólito de Roma, Refutação de Todas as Heresias, livro VI (c. 200 d.C.; texto original datado por David Litwa entre 110-130 d.C.)</span>
+      <h3>Um fogo ilimitado, uma árvore, <em>e o fruto que sobrevive ao incêndio</em></h3>
+      <p>O texto começa descrevendo um princípio universal que é, ao mesmo tempo, um fogo e um poder sem limites: por não ter limite, não tem forma; por não ter forma, não pode ter nome; por não ter nome, não pode ser apreendido pela mente que opera por conceitos. É a mesma estrutura lógica do inominável descrito no Apócrifo de João, do <em>ápeiron</em> dos filósofos gregos, do Ein Sof judaico que precede a manifestação da Árvore da Vida cabalística — três tradições que talvez nunca tenham se encontrado, descrevendo, cada uma à sua maneira, o mesmo impasse: o que gera tudo não pode ser contido por nada do que gerou.</p>
+      <p>Desse fogo surgem Mente e Pensamento — Nous e Epinoia —, descritos como par masculino e feminino, e depois um sétimo poder que os transcende, "aquele que permaneceu, permanece e permanecerá". O ser humano, ensina o texto, foi feito à imagem desse Pensamento primeiro. E esse poder ilimitado habita em cada pessoa — não como metáfora distante, mas em potencial concreto, à espera de ser realizado.</p>
+      <p>Para explicar o que significa essa espera, o texto recorre a uma alegoria: o fogo comparado a uma grande árvore, como aquela vista por Nabucodonosor em visão. A parte manifesta — tronco, galhos, folhas, casca — será, no fim, consumida pelo próprio fogo que a sustentou. Mas o fruto, se sua imagem foi aperfeiçoada, é colhido antes: colocado no depósito, poupado das chamas. "O tronco é gerado não para o seu próprio bem, mas para o fruto." E então, sem deixar dúvida quanto ao alvo da imagem: "A árvore nada mais é do que o homem."</p>
+      <a class="referencia-canal" href="https://www.youtube.com/@Ap%C3%B3krifa.Gnosis" target="_blank">▶ Apókrifa — Gnosis e Gnosticismo</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Se permanecemos apenas na potencialidade e a imagem não é aperfeiçoada, então desaparece e perece, assim como a potencialidade da gramática e da geometria na mente de um homem [...] Com a morte do homem, ela perece com ele."</p>
+      <span class="citacao-fonte">A Grande Declaração (atribuída a Simão o Mago), apud Hipólito de Roma — tradução apresentada a partir de G.R.S. Mead e David Litwa</span>
+    </div>
+
+    <div class="corpo">
+      <p>Vale registrar a cadeia de transmissão desse texto: um original grego que não sobrevive, preservado apenas nas citações e paráfrases de Hipólito por volta do ano 200, traduzido ao inglês por G.R.S. Mead no início do século XX, revisitado por David Litwa em estudo recente que propõe uma datação bem mais antiga — argumento sólido, mas não unânime entre os estudiosos do período. Cada elo dessa corrente é uma oportunidade de perda ou de adição involuntária. O que se pode afirmar com razoável segurança é que o próprio Hipólito, hostil a Simão, preservou material extenso o bastante para que, hoje, seja possível reconhecer nele um pensamento sofisticado — coisa que a caricatura do feiticeiro jamais permitiria enxergar.</p>
+      <p>Chama atenção, além disso, que esse texto não apresenta o dualismo radical que se tornou, injustamente, sinônimo de "gnosticismo" no imaginário popular — a ideia de um mundo mau, criado por um deus inferior, do qual só resta fugir. O que se lê aqui é antes uma unidade fundamental: um único fogo, com um lado oculto e um lado manifesto, presente tanto no que se vê quanto no que não se vê, tanto no pensamento quanto na ação. Está mais próximo do hermetismo, do neoplatonismo, de certas correntes do Vedanta, do que da caricatura de um universo cindido ao meio.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Ter a centelha não é o fim da jornada.<br><em>É apenas a permissão para começar a dar fruto</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Dar Fruto <em>Antes Que o Tronco Seja Consumido</em></h2>
+    <div class="corpo">
+      <p>Reconhecer esse ensinamento não transforma, de um dia para o outro, potencial em fruto — nenhum texto antigo, por mais bonito, faz esse trabalho por quem o lê. Mas desloca a pergunta de lugar: em vez de perguntar se existe algo divino dentro de mim, pergunta-se o que estou fazendo, concretamente, com o que já reconheci.</p>
+      <p>É uma pergunta que gosto de me fazer sempre que percebo estar apenas acumulando entendimento sem transformá-lo em prática.</p>
+      <p>Dar fruto, no sentido que este texto propõe, não é produtividade disfarçada de espiritualidade — não é a lógica de acumular conquistas para provar valor, tema que este espaço já explorou sob outros nomes. É antes a exigência mais simples e mais difícil de todas: que aquilo que se reconhece como verdadeiro apareça em algum lugar da vida além da própria mente. Uma convicção que nunca vira gesto, presença ou cuidado concreto com alguém morre exatamente como a gramática nunca escrita: como se nunca tivesse existido.</p>
+      <p>A pergunta que fica não é quanto poder divino habita em mim. É: o que, hoje, estou deixando apenas na potencialidade — e vou continuar deixando até que o tronco seja consumido pelo fogo que um dia o sustentou?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">O Poder Não Salva Ninguém. <em>O Fruto, Talvez</em>.</h2>
+  <p class="fechamento-corpo">Depois de reconhecer, nos dois ensaios anteriores, que os mesmos Poderes que aprisionaram a Ennoia também proibiram a árvore do Éden para que ninguém descobrisse a própria centelha, este ensaio encontra, num texto quase apagado da história, a peça que faltava: a centelha reconhecida e a pergunta permitida não bastam, se não geram fruto. O Simão que a difamação tentou apagar não ensinava magia nem vaidade. Ensinava que o mesmo fogo que sustenta o universo inteiro mora em cada pessoa — e que, se ninguém colher o fruto antes do fim, é como se esse fogo nunca tivesse existido.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

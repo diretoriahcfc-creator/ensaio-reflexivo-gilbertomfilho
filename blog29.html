@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 29 — Sophia | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 660px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΣΟΦΙΑ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 29</span>
+  </div>
+  <h1 class="hero-title"><em>Sophia</em>:<br>as muitas vidas que a queda pediu antes do reconhecimento</h1>
+  <p class="hero-subtitle">Sobre o mito das três Sophias — mãe, esposa e filha —, a mulher encontrada em Tiro que os heresiólogos reduziram a escândalo, e o longo caminho da alma até reconhecer, enfim, a si mesma</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Agosto 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se a alma não precisasse acertar na primeira vida — e sim atravessar, como Sophia, um número desconhecido de corpos e esquecimentos até finalmente ser reconhecida por quem sempre a esperou?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Direito de <em>Não Acertar na Primeira Vida</em></h2>
+    <div class="corpo">
+      <p>Boa parte da ansiedade espiritual contemporânea nasce de uma pressa silenciosa: a sensação de que existe um prazo para "chegar lá", e de que cada tropeço nesse caminho é atraso imperdoável. Tratamos o despertar como um exame que se presta uma única vez, com nota de corte, em vez de reconhecê-lo como algo que talvez precise de muitas tentativas, muitos recomeços, muitos esquecimentos, para finalmente acontecer.</p>
+      <p>Reconheço em mim essa impaciência: a vontade de já ter chegado a algum lugar, em vez de aceitar que ainda estou, de fato, a caminho.</p>
+      <p>A mesma pressa sustenta boa parte da cultura ao redor: recompensam-se narrativas de virada única e definitiva — o dia em que tudo mudou —, e trata-se como fracasso qualquer caminho mais lento, repetitivo, cheio de voltas que parecem não levar a lugar nenhum. Raramente se pergunta se essa lentidão não seria, ela mesma, parte necessária do percurso.</p>
+      <p>A pergunta que sustenta este ensaio não é como acelerar o reconhecimento do que já somos — os três ensaios anteriores já trataram disso sob mais de um ângulo. É outra: o que muda quando aceitamos que esse reconhecimento pode legitimamente levar mais de uma tentativa, mais de uma queda, mais de uma vida?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Talvez não exista uma vida em que se acerta.<br><em>Existe apenas a que se atravessa, até reconhecer</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Camadas <em>de Um Único Mito da Queda</em></h2>
+    <div class="corpo">
+      <p>O mito da divindade feminina que cai, se perde e precisa ser reconhecida atravessa tradições que raramente conversaram entre si. Vale a pena desmontá-lo em três camadas antes de ver como Simão e os ofitas o contavam.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🌊</span>
+        <div class="camada-titulo">A Queda Como Aventura, Não Castigo</div>
+        <p class="camada-texto">No mito ofita, a Sophia mais jovem — chamada filha — lança-se ao mundo sensível por vontade própria, para ganhar experiência direta daquilo que só conhecia como ideia. A queda começa como escolha, não como punição imposta de fora.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🔄</span>
+        <div class="camada-titulo">As Muitas Vidas Antes do Reconhecimento</div>
+        <p class="camada-texto">Irineu relata que Simão ensinava que sua Ennoia, presa pelos próprios poderes que gerara, migrou de corpo em corpo, de geração em geração, ao longo do tempo — até ser encontrada, por fim, na mulher que ele reconheceu em Tiro.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🕊️</span>
+        <div class="camada-titulo">O Socorro Que Vem de Dentro</div>
+        <p class="camada-texto">Quando a Sophia caída pede ajuda, ela suplica à Sophia mãe — mas a mãe é, na verdade, o próprio aspecto divino dela mesma. Não existe um resgatador externo separado de quem precisa ser resgatado.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Essas três camadas não descrevem três personagens diferentes, mas três estágios de uma única travessia. E é justamente essa estrutura — queda voluntária, longo esquecimento em muitos corpos, resgate que vem do próprio interior — que aparece, com clareza notável, no que sobrou do ensinamento atribuído a Simão sobre sua companheira Helena.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title"><em>Sophia</em>: a Mesma Queda Contada em Três Vozes</h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Tradição Ofita, via Irineu de Lyon, Adversus Haereses I.23 e I.30 · Apócrifo de João e Sobre a Origem do Mundo (Nag Hammadi)</span>
+      <h3>Mãe, esposa e filha: <em>o mesmo poder em três estágios da mesma queda</em></h3>
+      <p>Os ofitas, a mesma tradição que leu a serpente do Éden como mensageira, também descreviam Sophia sob três aspectos — não como entidades separadas, mas como o mesmo poder em estágios distintos de uma única história. A Sophia mãe é o primeiro pensamento, a Ennoia original, a mãe do todo — a mesma figura que, no ensinamento atribuído a Simão, aparece como Epinoia, par do Grande Poder. A Sophia esposa é o aspecto que participa da criação, unida ao poder masculino como companheira. E a Sophia filha é quem se lança ao mundo sensível para experimentar por si mesma aquilo que, até então, só conhecia como ideia.</p>
+      <p>É essa terceira Sophia, a filha, que se perde. Segundo o relato — hostil, como quase tudo que chegou até nós sobre Simão — de Irineu de Lyon, a Ennoia gerada pelo Grande Poder foi detida pelos próprios anjos e poderes que ela havia originado, incapazes de reconhecer nela a própria origem. Presa, incapaz de retornar ao Pai, ela teria migrado de corpo em corpo, de geração em geração, sofrendo insultos em cada uma dessas passagens, até ser reconhecida, por fim, na mulher que Simão encontrou na cidade de Tiro.</p>
+      <p>É fácil, lendo isso hoje, entender por que os heresiólogos tiveram tanto material para transformar em escândalo: uma doutrina sobre a migração de um pensamento divino através de muitos corpos virou, nas mãos deles, biografia picante de um feiticeiro promíscuo. Mas o núcleo da história, despido da intenção difamatória, é outra coisa: a ideia de que o reconhecimento pode levar muitas vidas para acontecer — e que isso não é falha do sistema, é o próprio desenho dele.</p>
+      <p>Quando a Sophia perdida, em outros relatos do mesmo círculo — como Sobre a Origem do Mundo, dos manuscritos de Nag Hammadi — finalmente pede socorro, ela não invoca uma força estranha a si mesma. Suplica à Sophia mãe, que é, ela mesma, seu próprio aspecto superior — o mesmo poder que nunca deixou de habitar nela, mesmo nos corpos onde ninguém, nem ela, sabia reconhecê-lo.</p>
+      <p>Vale registrar, ainda, algo que a leitura de A Grande Declaração já sugeria, mas que o ensaio anterior não chegou a explorar: a estrutura de três poderes que precede toda manifestação — o fogo ilimitado gerando Mente, Pensamento e um sétimo poder que os transcende, tudo isso antes da "geração do Sol e da Lua" — ecoa, de forma notável, as três primeiras sefirot da Cabalá judaica: Kether, Chokhmah e Binah, que também precedem a manifestação dos mundos seguintes na Árvore da Vida. Tradições que talvez nunca tenham se encontrado, repetindo a mesma arquitetura: um princípio triplo anterior a qualquer coisa que se possa nomear.</p>
+      <a class="referencia-canal" href="https://www.youtube.com/@Ap%C3%B3krifa.Gnosis" target="_blank">▶ Apókrifa — Gnosis e Gnosticismo</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Toda a matéria, tudo que foi formado ou gerado, todas as criaturas existem uma nas outras, em relação com as outras. Elas se dissolverão novamente na sua própria raiz, pois a natureza da matéria se dissolve naquilo que pertence à sua própria natureza."</p>
+      <span class="citacao-fonte">Evangelho de Maria Madalena</span>
+    </div>
+
+    <div class="corpo">
+      <p>Essa mesma linguagem de retorno à raiz aparece, quase palavra por palavra, no texto atribuído a Simão — "esse poder é a raiz universal" —, o que levou até quem estuda esses materiais há anos a se perguntar se Simão e Maria Madalena não estariam ecoando o mesmo círculo de ensinamento, talvez os mesmos mestres, talvez os mesmos adversários. Não há como confirmar isso com certeza documental — é hipótese, não fato estabelecido —, mas a coincidência de vocabulário entre textos preservados por vias tão diferentes é, ao menos, convite a levar a sério a possibilidade de uma tradição comum, hoje fragmentada entre dezenas de nomes que talvez nunca tenham sido, originalmente, tão separados quanto parecem.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Talvez a queda não seja o oposto do retorno.<br><em>Talvez seja, desde sempre, o caminho até ele</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Reconhecer-se <em>Mesmo Depois de Muitos Corpos</em></h2>
+    <div class="corpo">
+      <p>Nenhum mito antigo resolve, sozinho, a impaciência de quem gostaria de já ter chegado a algum lugar. Mas há um alívio possível em reconhecer que a estrutura mesma da jornada espiritual, contada por tradições tão distantes entre si, nunca previu acerto na primeira tentativa.</p>
+      <p>Talvez o que chamamos de recomeço, cada vez que uma convicção antiga se revela insuficiente, seja menos fracasso e mais um capítulo esperado da mesma travessia.</p>
+      <p>Reconhecer-se, nesse sentido, não é evento único e definitivo. É prática repetida — outra forma de dizer o que o ensaio anterior chamou de dar fruto: cada reconhecimento, por menor que pareça, é uma colheita parcial, mesmo que o processo inteiro ainda não tenha terminado. A pergunta não é se já cheguei. É se, no momento em que estou agora, escolho continuar reconhecendo, mesmo sem garantia de que essa seja a última vez que precisarei fazê-lo.</p>
+      <p>A pergunta que fica não é quantos recomeços ainda faltam. É: nesta travessia específica, agora, vou tratar o tropeço como prova de que falhei, ou como sinal de que a jornada está seguindo exatamente o roteiro que os mais antigos já haviam previsto?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Queda Não Foi Castigo. <em>Foi o Único Caminho de Volta</em>.</h2>
+  <p class="fechamento-corpo">Depois de reconhecer, nos três ensaios anteriores, que os Poderes aprisionaram a Ennoia, que o mesmo medo proibiu a árvore do Éden, e que o poder divino em nós perece se nunca vira fruto, esta reflexão encontra a peça que dá sentido às demais: a Sophia que caiu não caiu por erro, e o tempo que levou para ser reconhecida não foi desperdício. Mãe, esposa e filha são a mesma potência atravessando estágios necessários da própria travessia. Se isso vale para o mito, talvez valha também para qualquer um de nós, ainda em algum corpo, ainda a caminho de ser, enfim, reconhecido.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
