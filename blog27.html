@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 27 — A Árvore Proibida | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 660px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'ΟΦΙΣ';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.2rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 27</span>
+  </div>
+  <h1 class="hero-title"><em>A Árvore Proibida</em>:<br>o fruto que os mesmos Poderes ensinaram a temer</h1>
+  <p class="hero-subtitle">Sobre os primeiros cristãos gnósticos que leram a serpente do Éden não como tentação, mas como a primeira mensageira da gnose — e sobre a mesma arquitetura de esquecimento que já vimos aprisionar a Ennoia</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Agosto 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se a árvore que nos ensinaram a temer não escondesse pecado algum, mas justamente o conhecimento que os mesmos Poderes que aprisionaram a Ennoia mais temiam que reconhecêssemos?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A História Que Nos Ensinou <em>a Temer a Própria Curiosidade</em></h2>
+    <div class="corpo">
+      <p>Antes de qualquer lei escrita, antes de qualquer código moral formalizado, recebemos uma narrativa fundacional que ensina, com precisão notável, o que acontece a quem busca conhecer por conta própria: perde-se o paraíso. A história do Éden atravessa milênios, moldou línguas inteiras, e continua operando muito depois de qualquer crença religiosa consciente — no medo quase reflexo diante da pergunta que vai fundo demais, na culpa que acompanha a curiosidade que ultrapassa o permitido.</p>
+      <p>Reconheço esse reflexo em mim mesmo mais vezes do que gostaria: a hesitação de puxar um fio de pensamento até o fim, como se algo ali devesse permanecer intocado.</p>
+      <p>O mesmo mecanismo sustenta instituições inteiras — educacionais, religiosas, corporativas — construídas sobre a mesma arquitetura: recompensa-se a obediência, desestimula-se a pergunta que examina os próprios fundamentos, ensina-se que certo conhecimento "ainda não é para você", até que alguma autoridade externa decida que chegou a hora. Raramente perguntamos quem, exatamente, se beneficia dessa demora.</p>
+      <p>A questão que sustenta este ensaio não é se a árvore do Éden existiu. É outra: o que, em mim, ainda recua diante de uma pergunta só porque, em algum momento remoto, ensinaram que perguntar demais custa caro?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Talvez o pecado nunca tenha sido comer o fruto.<br>Talvez tenha sido sempre <em>ensinar que comê-lo era pecado</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Camadas <em>Sobre a Mesma Árvore</em></h2>
+    <div class="corpo">
+      <p>Nenhuma história sagrada chega até nós exatamente como foi contada da primeira vez. A do Éden não é exceção: sobre o relato original, sucessivas camadas de tradução, interpretação e conveniência institucional foram se depositando, uma sobre a outra.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🍎</span>
+        <div class="camada-titulo">A Culpa Como Freio</div>
+        <p class="camada-texto">Aprendemos, antes de sermos capazes de questionar, que buscar conhecer por conta própria é o primeiro erro da história humana. A culpa embutida nessa lição funciona como freio automático: pensa-se duas vezes antes de perguntar demais.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🐍</span>
+        <div class="camada-titulo">O Guardião Reescrito</div>
+        <p class="camada-texto">No hebraico do relato, a serpente do Éden é descrita apenas como a mais sagaz entre os animais do campo — nada além disso. Séculos de tradução e interpretação a transformaram, camada sobre camada, em personificação do mal absoluto.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🚪</span>
+        <div class="camada-titulo">A Árvore Que Vira Ameaça</div>
+        <p class="camada-texto">Uma capacidade que deveria ser dom — discernir, avaliar, escolher — passa a ser ensinada como risco. Sociedades inteiras se organizam para proteger as pessoas de si mesmas, em vez de prepará-las para usar bem o que já possuem.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Nenhuma dessas camadas nasceu de uma única decisão isolada; formaram-se ao longo de séculos de releituras, concílios e traduções sucessivas. Curiosamente, os primeiros séculos do cristianismo guardam registro de comunidades inteiras que leram essa mesma história ao contrário — e que, não por acaso, a tradição que venceu preferiu classificar como herança direta do mesmo Simão que, sem saber, aprisionou a própria Ennoia.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Serpente Como <em>Primeira Mensageira da Gnose</em></h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Ofitas e Naassenos · Irineu de Lyon, Adversus Haereses I.30 · Hipólito de Roma, Refutação de Todas as Heresias, V</span>
+      <h3>A leitura que inverteu o Éden: <em>o guardião não era quem proibia, era quem revelava</em></h3>
+      <p>Ofitas — do grego <em>ophis</em>, serpente — e naassenos — do hebraico <em>nachash</em>, mesma palavra — foram nomes que os heresiólogos deram a comunidades gnósticas dos primeiros séculos que leram o relato do Éden de um jeito radicalmente oposto ao que a ortodoxia consolidaria. Nessa leitura, o deus que proíbe a árvore e ameaça com a morte não é o Pai supremo e inefável, mas um poder menor, ciumento de sua própria criação — a mesma figura, em essência, dos Poderes gerados pela Ennoia sem saber a própria origem, descritos no ensaio anterior. A serpente, nessa inversão, não é tentadora. É mensageira.</p>
+      <p>O próprio texto hebraico sustenta parte dessa leitura: a promessa da serpente não era falsa. "No dia em que dele comerdes, se vos abrirão os olhos, e sereis como Deus, conhecedores do bem e do mal" — e é exatamente isso que acontece no relato, sem que a morte prometida pelo deus do Éden se cumpra de imediato. Para os ofitas e naassenos, esse detalhe não era acidente de roteiro. Era a prova de que o verdadeiro impedimento nunca foi moral. Foi o medo de perder o controle sobre quem já carregava, dentro de si, a capacidade de discernir.</p>
+      <p>Essa leitura sobreviveu, ainda que de forma fragmentária, em alguns dos textos encontrados em Nag Hammadi, em 1945 — como <em>Sobre a Origem do Mundo</em> e <em>A Hipóstase dos Arcontes</em>, que descrevem uma figura instrutora, por vezes associada a Sophia, usando a serpente para abrir os olhos de Adão e Eva contra a vontade do criador que os havia formado na ignorância.</p>
+      <a class="referencia-canal" href="https://www.youtube.com/watch?v=HiqBkalXmcE" target="_blank">▶ Apókrifa — Gnosis e Gnosticismo: Ensinamentos Gnósticos de Simão o Mago e a Árvore da Vida</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Não morrereis; mas sabe Deus que no dia em que dele comerdes se vos abrirão os olhos, e sereis como Deus, conhecedores do bem e do mal."</p>
+      <span class="citacao-fonte">Gênesis 3:4-5</span>
+    </div>
+
+    <div class="corpo">
+      <p>Assim como no caso de Simão, quase tudo que sabemos sobre ofitas e naassenos chega filtrado pela pena de adversários como Irineu e Hipólito — o que torna qualquer reconstrução de sua doutrina original um exercício de reconstituição cuidadosa, não de certeza histórica, como observam estudiosos contemporâneos do gnosticismo, entre eles Kurt Rudolph e Elaine Pagels. Foi justamente Irineu, e mais tarde Eusébio de Cesareia, quem tratou de traçar essa linhagem inteira — ofitas, naassenos e tantos outros — de volta a um único ponto de origem: o próprio Simão, chamado por eles de "pai de todas as heresias".</p>
+      <p>Nada disso prova que essa fosse a leitura "verdadeira" pretendida pelos autores originais do Gênesis — seria tão dogmático quanto a leitura oposta afirmar isso com certeza. O que fica é outra coisa: a evidência de que, desde muito cedo, existiu gente disposta a ler a mesma história sagrada na direção contrária à autoridade estabelecida — e que essa leitura alternativa foi tratada não como hipótese a debater, mas como heresia a extinguir.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Talvez o fruto nunca tenha sido o problema.<br><em>O problema sempre foi quem decidia quem podia comê-lo</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Provar o Fruto <em>Sem Esperar Permissão</em></h2>
+    <div class="corpo">
+      <p>Reconhecer essa arquitetura de medo não elimina, de uma vez, o reflexo de hesitar diante da pergunta que vai fundo demais. Mas abre uma segunda possibilidade, antes obscurecida pela primeira leitura: a de que a curiosidade sentida ao se aproximar de uma questão desconfortável não é sinal de transgressão, e sim sinal de vida — a mesma vida que a tradição ofita reconhecia na serpente que, em vez de amaldiçoar, revelava.</p>
+      <p>Não é preciso professar nenhuma religião nova, nem trocar um dogma por outro, para simplesmente permitir-se essa pergunta uma vez por dia.</p>
+      <p>Exercer o livre-arbítrio, do jeito que este espaço tem insistido em explorar desde o ensaio anterior, não é escolher entre opções já aprovadas por uma autoridade externa. É reivindicar o direito de provar o fruto e assumir a responsabilidade pelo que se vê depois — sem esperar permissão, e sem fingir que a árvore nunca existiu.</p>
+      <p>A pergunta que fica não é se a árvore ainda está lá. É: da próxima vez que uma pergunta parecer proibida demais para ser feita em voz alta, vou recuar, ou vou, finalmente, provar o fruto?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">O Fruto Nunca Foi o Pecado, <em>Foi a Prova de Que Já Éramos Livres</em>.</h2>
+  <p class="fechamento-corpo">Depois de reconhecer, no ensaio anterior, que os Poderes gerados pela Ennoia a aprisionaram justamente por ignorarem a própria origem, esta reflexão encontra, na mesma arquitetura, o deus ciumento do Éden proibindo a árvore para que ninguém descobrisse que já era "como um deus, conhecedor do bem e do mal". Ofitas e naassenos, apagados pela mesma ortodoxia que combateu Simão, leram a serpente como mensageira, não como tentadora. Talvez a única heresia real, em qualquer época, tenha sido lembrar que o fruto sempre esteve ao alcance da mão.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
