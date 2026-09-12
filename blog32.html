@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 32: O Fogo Que Nunca Sacia | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 660px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'VAIRĀGYA';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 32</span>
+  </div>
+  <h1 class="hero-title"><em>O Fogo Que Nunca Sacia</em>: o desapego como inteligência, não como fuga</h1>
+  <p class="hero-subtitle">Sobre a distância entre o impulso que decide por nós e a ação que ainda nos pertence, o conceito vedântico de Vairāgya segundo Swami Chinmayananda, e por que a solitude bem cultivada é o único terreno onde esse desapego cresce</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Setembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>E se o que chamo de minha vontade for, na maioria das vezes, apenas a direção para onde um desejo não examinado já havia decidido me empurrar?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Instante em Que a Vontade <em>Deixa de Ser Minha</em></h2>
+    <div class="corpo">
+      <p>Há uma diferença nítida entre desejar algo e ser conduzido por esse desejo, e a maioria de nós só percebe essa diferença depois que ela já causou o estrago. O desejo intenso não pede licença ao intelecto antes de agir: ele empurra, e o corpo obedece antes que qualquer julgamento tenha tempo de se formar. É nesse intervalo perdido, entre o impulso e a resposta racional que deveria mediá-lo, que a maior parte das nossas indiscrições acontece.</p>
+      <p>Quando cedemos a essa pressa, alguma coisa em nós se parte ao meio. Uma parte age, satisfaz a urgência, colhe o prazer breve que ela prometia; outra parte, ainda lúcida, observa a cena de fora e já sabe, antes mesmo de a ação terminar, que aquilo contraria tudo o que dizemos valorizar. Essa divisão interna, o eu que faz e o eu que reprova assistindo, é o primeiro sintoma de que o desejo assumiu um comando que pertencia à razão.</p>
+      <p>Nesses instantes, a inteligência não desaparece: é sequestrada. Seu campo de visão se estreita até caber apenas o objeto do desejo, e tudo o que fica de fora dele, consequência, princípio, promessa feita a si mesmo, deixa de existir enquanto o impulso dura. É a mesma economia mental de um animal diante do alimento ou da ameaça, estímulo e resposta sem intervalo algum, e a diferença entre nós e ele, naquele instante específico, deixa de ser tão nítida quanto gostaríamos de admitir.</p>
+      <p>A pergunta que interessa aqui não é o que, no mundo à nossa volta, multiplica os estímulos capazes de disparar esse sequestro. Isso qualquer um enxerga sem esforço. A pergunta mais incômoda é outra: o que, dentro de mim, ainda trata um impulso passageiro como se fosse uma ordem inegociável?</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>O desejo não pergunta se pode decidir por mim.<br><em>Ele apenas decide, e depois me convida a concordar</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">As Três Correntes <em>Que Alimentam o Rio</em></h2>
+    <div class="corpo">
+      <p>A tradição vedântica que Swami Chinmayananda transmitia oferece uma imagem simples para esse sequestro: a mente é um rio, e cada pensamento, um balde de água despejado nele. Ninguém doma um rio tentando conter a água com as próprias mãos; doma-se um rio administrando as correntes que o alimentam. Essa tradição aponta três correntes principais, responsáveis por quase toda enchente mental capaz de nos arrastar até a ação impulsiva.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🕰️</span>
+        <div class="camada-titulo">O Apego ao Que Já Passou</div>
+        <p class="camada-texto">A memória fixada numa perda, numa vitória ou numa mágoa continua ditando reações no presente muito depois de o episódio ter terminado, como se o passado ainda tivesse voto sobre decisões de hoje.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🌫️</span>
+        <div class="camada-titulo">O Medo Entorpecente do Futuro</div>
+        <p class="camada-texto">A ansiedade antecipatória consome energia que deveria estar disponível para agir agora, e substitui a lucidez por um cálculo defensivo permanente, sempre um passo à frente da própria realidade.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⚡</span>
+        <div class="camada-titulo">A Tensão Com a Mudança Presente</div>
+        <p class="camada-texto">Toda alteração naquilo que já conhecíamos é recebida primeiro como ameaça, e só depois, se sobrar serenidade, como simples informação; a maioria de nós nunca chega a essa segunda etapa.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Nenhuma dessas três correntes se apresenta com o próprio nome. O apego ao passado se veste de identidade, "é assim que eu sou". O medo do futuro se veste de prudência, "é só precaução". E a tensão com o presente se veste de urgência, "é preciso agir agora". O ego, dizia essa tradição, não é senão o encontro dessas três correntes operando ao mesmo tempo, e é justamente por isso que raramente o reconhecemos em ação dentro de nós.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Vairāgya: a Inteligência <em>Que Sabe Soltar</em></h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Swami Chinmayananda · Vedanta Advaita · Yoga Sutras de Patanjali</span>
+      <h3>Vairāgya: <em>o desapego como discernimento, não como renúncia</em></h3>
+      <p>Swami Chinmayananda foi um dos grandes comentadores modernos do Vedanta Advaita, discípulo de Swami Sivananda e de Swami Tapovanam, e fundador da Chinmaya Mission, organização que levou seus comentários sobre o Bhagavad Gita e os textos clássicos indianos a plateias em várias partes do mundo por meio de palestras gravadas, entre elas "A Arte do Autodomínio". É ali que ele descreve com mais clareza o conceito de Vairāgya, e talvez a primeira coisa a corrigir seja o que a palavra não significa: Vairāgya não é fuga do mundo, nem recusa em desfrutá-lo.</p>
+      <p>Vairāgya é o que acontece quando o intelecto, através daquilo que essa tradição chama de viveka, o discernimento, chega a uma compreensão segura de que determinado objeto de desejo é apenas sombra, um nada sem valor permanente. Diante dessa clareza, a mente não precisa ser forçada a soltar o objeto: ela solta sozinha, da mesma forma que a mão solta uma brasa assim que reconhece que aquilo que segurava queima. É por isso que Patanjali, nos Yoga Sutras, coloca vairāgya ao lado de abhyāsa, a prática constante, como os dois pilares que, juntos, aquietam as ondulações da mente: um sem o outro produz ou repressão forçada, ou dispersão sem direção.</p>
+      <p>Curiosamente, a psicologia contemporânea chegou a uma descrição funcional muito próxima por um caminho inteiramente diferente. A Terapia de Aceitação e Compromisso, desenvolvida pelo psicólogo americano Steven Hayes, batizou de defusão cognitiva a habilidade de observar um pensamento ou um desejo como um evento mental passageiro, e não como uma ordem literal a ser obedecida. Duas tradições, separadas por continentes e por vocabulários inteiramente distintos, descrevendo a mesma operação interna: o problema nunca foi o desejo em si, foi confundir sua intensidade com sua autoridade sobre a ação.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"O homem semeia um pensamento e colhe uma ação. Ele semeia uma ação e colhe um hábito. Ele semeia um hábito e colhe um caráter. Ele semeia um caráter e colhe um destino."</p>
+      <span class="citacao-fonte">Swami Sivananda, citado por Swami Chinmayananda</span>
+    </div>
+
+    <div class="corpo">
+      <p>Essa sequência explica por que Vairāgya não é um gesto isolado, praticado apenas no instante em que um desejo forte bate à porta. Se o destino nasce do caráter, e o caráter nasce do hábito, e o hábito nasce da ação, e a ação nasce do pensamento, então a disciplina inteira se resume a decidir, pensamento a pensamento, quais das três correntes descritas antes têm permissão para se transformar em ação e quais são apenas água que passa sem represa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Não é preciso arrancar a sombra à força.<br><em>Basta reconhecê-la como sombra para que ela solte sozinha</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Solitude <em>Que Não É Isolamento</em></h2>
+    <div class="corpo">
+      <p>Praticar Vairāgya não produz indiferença pela vida: devolve o intervalo entre estímulo e resposta que o sequestro descrito no primeiro ato havia apagado. Quando o intelecto recupera esse intervalo, mesmo que por poucos segundos, a ação volta a ter um autor, e deixa de ser mera continuação automática do impulso que a precedeu.</p>
+      <p>Esse intervalo só se sustenta com prática, e a tradição de Chinmayananda insiste num terreno específico onde ele se cultiva: a solitude, entendida não como isolamento físico, mas como a capacidade de se sintonizar com o silêncio interior mesmo em meio ao barulho. É perfeitamente possível estar sozinho numa sala silenciosa e, ainda assim, carregar dentro de si uma agitação que nenhuma porta fechada consegue conter; e é igualmente possível atravessar um dia inteiro de ruído externo sustentando, por dentro, uma quietude que nada ali fora perturba.</p>
+      <p>Depois de décadas de prática, tanto no corpo quanto na mente, aprendi que essa quietude não chega por acaso: ela se protege, em geral em minutos reservados no início ou no fim do dia, dedicados apenas a observar o fluxo dos próprios pensamentos sem agir sobre nenhum deles. Não é um exercício que elimina o desejo, mas que interrompe a tradução automática desse desejo em ação, devolvendo ao intelecto a última palavra que a pressa costuma lhe roubar.</p>
+      <p>Da próxima vez que um desejo intenso exigir resposta imediata, talvez a pergunta mais útil não seja se devo satisfazê-lo ou reprimi-lo. É se já dei ao meu intelecto o intervalo de silêncio necessário para ver, com clareza, se aquilo que ele promete é substância real ou apenas mais uma sombra que meu próprio apego insiste em confundir com fogo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Liberdade Que Começa <em>No Que Deixamos Cair</em></h2>
+  <p class="fechamento-corpo">Nenhuma das três correntes que alimentam o rio da mente, o apego ao passado, o medo do futuro, a tensão com o presente, desaparece de uma só vez. Mas cada uma perde força toda vez que o intelecto reconhece, com clareza e sem pressa, que o objeto que ela promete é sombra, não substância. Que a próxima solitude bem cultivada seja, antes de qualquer outra coisa, o espaço onde essa clareza tem tempo de chegar antes que o desejo já tenha decidido por mim.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
