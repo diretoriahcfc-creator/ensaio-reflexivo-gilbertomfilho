@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog 33: Comer Sem Ser Comido | Ensaio Reflexivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-musgo:   #2e4a30;
+      --verde-escuro:  #1a2e1b;
+      --azul-profundo: #1c2b3a;
+      --azul-ceu:      #4a7fa5;
+      --ouro:          #c8a84b;
+      --ouro-claro:    #e8d08a;
+      --creme:         #f5efe0;
+      --branco-suave:  #ede8df;
+      --cinza-texto:   #b8b0a0;
+      --fundo:         #111a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--fundo);
+      color: var(--creme);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 45%, #1c2b3a 0%, #0d1510 55%, #111a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 75%, rgba(200,168,75,0.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .dot {
+      width: 4px; height: 4px;
+      background: var(--ouro);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--branco-suave);
+      max-width: 800px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cinza-texto);
+      max-width: 660px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--cinza-texto);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--cinza-texto);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-arrow {
+      width: 1px; height: 30px;
+      background: linear-gradient(180deg, var(--ouro), transparent);
+    }
+
+    /* ── PERGUNTA CENTRAL ─────────────────────────────────── */
+    .pergunta-central {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .pergunta-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-style: italic;
+      color: var(--ouro-claro);
+      line-height: 1.55;
+    }
+
+    /* ── SEPARADOR ────────────────────────────────────────── */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .separador .linha {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,168,75,0.3), transparent);
+    }
+
+    .ornamento {
+      color: var(--ouro);
+      font-size: 0.7rem;
+      opacity: 0.5;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── SEÇÕES ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 740px; margin: 0 auto; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(200,168,75,0.07);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .linha-divisor {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(200,168,75,0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em { color: var(--ouro-claro); font-style: italic; }
+
+    .corpo p {
+      font-size: 1.05rem;
+      color: var(--creme);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .corpo p em { color: var(--ouro-claro); font-style: italic; }
+
+    /* ── FRASE CENTRAL ────────────────────────────────────── */
+    .frase-central {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .frase-central p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-style: italic;
+      color: var(--creme);
+      line-height: 1.55;
+    }
+
+    .frase-central p em { color: var(--ouro-claro); }
+
+    .frase-divider {
+      width: 40px; height: 1px;
+      background: var(--ouro);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── CITAÇÃO DESTAQUE ─────────────────────────────────── */
+    .citacao-principal {
+      border-left: 3px solid var(--ouro);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(46,74,48,0.15), rgba(28,43,58,0.1));
+      border-radius: 0 8px 8px 0;
+    }
+
+    .citacao-principal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--branco-suave);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .citacao-fonte {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--ouro);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CARDS CAMADAS ────────────────────────────────────── */
+    .camadas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .camada-card {
+      border: 1px solid rgba(200,168,75,0.15);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(46,74,48,0.1), rgba(28,43,58,0.08));
+      transition: border-color 0.3s;
+    }
+
+    .camada-card:hover { border-color: rgba(200,168,75,0.35); }
+
+    .camada-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .camada-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ouro-claro);
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .camada-texto {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+
+    /* ── BLOCO FILOSÓFICO (Ato 3) ─────────────────────────── */
+    .bloco-filosofico {
+      position: relative;
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      background: linear-gradient(135deg, rgba(28,43,58,0.3), rgba(46,74,48,0.2));
+      overflow: hidden;
+    }
+
+    .bloco-filosofico::before {
+      content: 'BRAHMACHARYA';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: rgba(74,127,165,0.07);
+      letter-spacing: 0.06em;
+      pointer-events: none;
+    }
+
+    .bloco-tag {
+      display: inline-block;
+      border: 1px solid rgba(200,168,75,0.25);
+      color: var(--ouro);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 1.2rem;
+    }
+
+    .bloco-filosofico h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1rem;
+      line-height: 1.35;
+    }
+
+    .bloco-filosofico h3 em { color: var(--ouro-claro); font-style: italic; }
+
+    .bloco-filosofico p {
+      font-size: 0.98rem;
+      color: var(--creme);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .bloco-filosofico p em { color: var(--ouro-claro); font-style: italic; }
+
+    .referencia-canal {
+      display: inline-block;
+      margin-top: 0.75rem;
+      margin-right: 1.5rem;
+      color: var(--azul-ceu);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(74,127,165,0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+
+    .referencia-canal:hover { color: var(--ouro-claro); }
+
+    /* ── BACKGROUNDS ──────────────────────────────────────── */
+    .bg-ato2 { background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%); }
+    .bg-ato3 { background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+
+    /* ── FECHAMENTO ───────────────────────────────────────── */
+    .fechamento {
+      background: linear-gradient(180deg, var(--fundo), #0a1008);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .fechamento-titulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--branco-suave);
+      margin-bottom: 1.8rem;
+      line-height: 1.25;
+    }
+
+    .fechamento-titulo em { color: var(--ouro-claro); font-style: italic; }
+
+    .fechamento-corpo {
+      font-size: 1.02rem;
+      color: var(--creme);
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.95;
+    }
+
+    .assinatura {
+      border-top: 1px solid rgba(200,168,75,0.2);
+      padding-top: 2.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .assinatura-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--branco-suave);
+      margin-bottom: 0.3rem;
+    }
+
+    .assinatura-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .assinatura-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .assinatura-bio span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      letter-spacing: 0.05em;
+    }
+
+    .bio-destaque {
+      color: var(--ouro-claro) !important;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .camadas-grid { grid-template-columns: 1fr; }
+      .bloco-filosofico { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 33</span>
+  </div>
+  <h1 class="hero-title"><em>Comer Sem Ser Comido</em>: o mal-entendido que reduziu Brahmacharya à abstinência</h1>
+  <p class="hero-subtitle">Sobre a diferença entre recusar um prazer e estar livre dele, o verdadeiro sentido vedântico de Brahmacharya segundo Swami Chinmayananda, e o que Aristóteles já sabia sobre resistir a uma tentação e não precisar mais resistir a ela</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Setembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- PERGUNTA CENTRAL -->
+<div class="pergunta-central">
+  <p>Existe alguma diferença real entre recusar um prazer por domínio e recusá-lo por medo de não conseguir parar diante dele?</p>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 1: O DIAGNÓSTICO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Abstinência <em>Que Ainda é Escravidão</em></h2>
+    <div class="corpo">
+      <p>Há um tipo de orgulho silencioso em dizer que não se cede a determinado prazer. Recusar algo parece, à primeira vista, prova suficiente de domínio: se eu não toco, eu controlo. Mas essa equação simples esconde uma pergunta mais incômoda, que raramente chega a ser feita: o objeto recusado ainda ocupa o centro da minha atenção enquanto eu o recuso?</p>
+      <p>Porque existe uma abstinência que não é liberdade nenhuma, apenas adiamento com boa reputação. É a recusa vigiada o tempo inteiro, que exige energia constante para se manter, que pensa no que evita com mais frequência do que pensaria se o tivesse à mão. Essa pessoa não superou o desejo, apenas aprendeu a mantê-lo sob escolta permanente, e escolta permanente ainda é uma forma de prisão, só que com as grades do lado de dentro.</p>
+      <p>Há ainda uma variação mais sofisticada do mesmo mecanismo: organizar a vida inteira para que o teste nunca precise ser feito. Evitar por completo qualquer contato com o objeto do desejo garante que a pergunta sobre o próprio domínio jamais receba resposta, e a ausência de resposta é facilmente confundida com aprovação. Quem nunca se aproxima o suficiente do fogo não sabe se deixou de se queimar ou apenas deixou de se testar, e essas duas coisas, por dentro, têm gosto muito diferente uma da outra.</p>
+      <p>A diferença entre essas duas coisas raramente aparece de fora. De fora, quem recusa por domínio e quem recusa por medo de ceder parecem exatamente a mesma pessoa, praticando exatamente a mesma disciplina. A diferença só existe por dentro, no espaço privado onde cada um sabe se aquela recusa custa esforço renovado a cada vez ou se, em algum momento, deixou de custar.</p>
+      <p>Não pergunto, então, quantas indulgências você recusou nesta semana. Pergunto quantas delas ainda ocupam espaço na sua cabeça enquanto você as recusa, porque é exatamente aí que mora a distância entre abstinência e domínio.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>Não tocar em algo prova pouco.<br><em>O que prova é poder tocar e continuar livre</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 2: AS CAMADAS -->
+<section class="bg-ato2">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Os Dois Extremos <em>Que Erram Pelo Mesmo Motivo</em></h2>
+    <div class="corpo">
+      <p>A tradição que Swami Chinmayananda transmitia identifica dois extremos, aparentemente opostos, que na prática cometem o mesmo erro: entregar ao objeto do desejo o comando sobre a própria vida. Um extremo entrega esse comando pela recusa obsessiva; o outro, pela entrega irrestrita. Entre os dois, um terceiro caminho, mais raro e mais difícil de nomear, porque não se define pelo que faz com o objeto, e sim pela relação que estabelece com ele.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🔒</span>
+        <div class="camada-titulo">A Negação Total</div>
+        <p class="camada-texto">O extremo que confunde domínio com recusa de todo prazer sensorial, mais próximo de um medo disfarçado de virtude do que de uma liberdade real conquistada.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🌊</span>
+        <div class="camada-titulo">A Indulgência Sem Freio</div>
+        <p class="camada-texto">O extremo oposto, que confunde liberdade com ausência de qualquer controle, deixando cada impulso sensorial decidir a próxima ação sem consulta alguma à razão.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⚙️</span>
+        <div class="camada-titulo">O Freio Inteligente</div>
+        <p class="camada-texto">Nem recusa nem entrega, mas o controle que permite desfrutar do objeto sem se tornar refém dele, disponível quando útil e dispensável quando não.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Nenhum dos dois extremos se apresenta honestamente. A negação total se veste de santidade, "eu já superei isso". A indulgência sem freio se veste de liberdade, "eu simplesmente vivo sem culpa". E os dois, por caminhos opostos, deixam a pessoa governada pelo objeto, não pelo próprio intelecto: um governado pela fuga dele, o outro pela busca constante dele.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 3: O CONCEITO FILOSÓFICO -->
+<section class="bg-ato3">
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Brahmacharya: <em>o Freio Inteligente, Não a Corda Apertada</em></h2>
+
+    <div class="bloco-filosofico">
+      <span class="bloco-tag">Swami Chinmayananda · Vedanta · Aristóteles</span>
+      <h3>Brahmacharya: <em>autocontrole, não abstinência total</em></h3>
+      <p>Poucos termos da tradição vedântica foram tão distorcidos quanto Brahmacharya. Popularmente reduzido a sinônimo de celibato, o termo, como Swami Chinmayananda explica em "A Arte do Autodomínio", designa algo mais amplo e mais exigente: um controle inteligente sobre as próprias forças vitais, um freio que surge a todo movimento impensado. Não é a recusa de todo prazer sensorial, é o autocontrole em relação a todos eles, sem negá-los por completo. O mundo dos objetos existe, ensina essa tradição, para que possamos desfrutá-lo; o que se pede é que sejamos senhores desse desfrute, não escravos dele.</p>
+      <p>Aristóteles, na Ética a Nicômaco, descreveu uma distinção que ilumina exatamente essa diferença, embora tenha chegado a ela por um caminho totalmente distinto, séculos antes e num continente diferente. Ele separava a pessoa meramente continente (enkráteia), que resiste à tentação através de uma batalha interna renovada a cada vez, da pessoa verdadeiramente temperante (sophrosýne), cujos próprios desejos já foram educados a se alinhar com a razão, de modo que a resistência deixa de ser necessária porque o impulso contrário praticamente não surge mais. A negação total descrita no ato anterior se parece com a mera continência: eficaz, mas exaustiva, e a uma recaída de distância do colapso. Brahmacharya, como a sophrosýne aristotélica, descreve o estado mais raro em que o domínio deixou de ser esforço e passou a ser natureza.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>"Aproveite o mundo, mas não deixe o mundo se aproveitar de você. Você pode comer, mas não deixe a comida comer você."</p>
+      <span class="citacao-fonte">Swami Chinmayananda, A Arte do Autodomínio</span>
+    </div>
+
+    <div class="corpo">
+      <p>O teste prático que essa frase propõe é mais severo do que qualquer lista de renúncias. Não pergunta o que você recusou, pergunta se você ainda consegue tocar aquilo que antes te dominava e sair de perto exatamente como entrou. É um teste que a simples abstinência nunca precisa enfrentar, porque a abstinência, por definição, nunca se aproxima o suficiente do objeto para saber a resposta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="frase-central">
+  <p>A liberdade não se mede pelo que recuso.<br><em>Mede-se pelo que posso tocar sem deixar de ser eu mesmo</em>.</p>
+  <div class="frase-divider"></div>
+</div>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- ATO 4: A TRANSFORMAÇÃO -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Tartaruga <em>Que Decide Quando Sair</em></h2>
+    <div class="corpo">
+      <p>A tradição vedântica oferece uma imagem precisa para esse domínio: a tartaruga que, ao menor sinal de ameaça, retira todos os seus membros para dentro da própria casca. Ela não perde as pernas, não amputa a cabeça, apenas as recolhe, inteiras e disponíveis, prontas para voltar a se estender assim que o perigo passa. É exatamente essa reversibilidade que separa o domínio verdadeiro da negação total descrita no primeiro ato: a negação amputa, o domínio apenas recolhe, sabendo que pode estender de novo quando decidir.</p>
+      <p>Depois de décadas de prática, tanto no corpo quanto na mente, aprendi que esse recolhimento não é um gesto dramático, feito uma vez para sempre. É um músculo exercitado em situações pequenas e repetidas: diante de um prazer disponível, a pergunta não é se devo consumi-lo, é se, neste instante, ainda consigo recolher a atenção dele caso decida que não é hora. Quando a resposta é sim, o prazer permanece disponível sem nenhum risco à liberdade. Quando a resposta hesita, é sinal de que o freio enfraqueceu, e vale mais treiná-lo em silêncio do que fingir, publicamente, que ele nunca foi necessário.</p>
+      <p>Esse treino não exige isolamento nem grandes renúncias. Exige apenas o hábito de verificar, antes de ceder a qualquer impulso, se a ação que se segue ainda tem um autor lúcido por trás dela, ou se já é apenas o objeto decidindo por conta própria através do meu corpo.</p>
+      <p>Da próxima vez que um prazer familiar estiver ao alcance da mão, talvez a pergunta mais honesta não seja se devo tocá-lo. É: consigo, agora mesmo, recolher a atenção dele como a tartaruga recolhe a pata, e voltar a estendê-la depois, exatamente com a mesma liberdade de antes?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador">
+  <div class="linha"></div>
+  <span class="ornamento">✦ ✦ ✦</span>
+  <div class="linha"></div>
+</div>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <h2 class="fechamento-titulo">A Liberdade Que Ainda Consegue <em>Voltar a Se Estender</em></h2>
+  <p class="fechamento-corpo">Entre negar tudo e ceder a tudo existe um terceiro caminho que nenhum dos dois extremos sabe nomear, porque ele não se mede pelo que evitamos, mas pelo que continuamos livres para tocar. Brahmacharya nunca pediu que o mundo fosse recusado. Pediu apenas que, ao aproveitá-lo, ainda houvesse alguém no comando. Que a próxima tentação que se aproximar encontre, em mim, uma tartaruga que sabe recolher a pata, não um braço que já esqueceu como se faz isso.</p>
+
+  <div class="assinatura">
+    <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+    <p class="assinatura-cargo">@gilberto_mfilho</p>
+    <div class="assinatura-bio">
+      <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+      <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+      <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+      <span class="bio-destaque">Disciplina que vai além do corpo</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
