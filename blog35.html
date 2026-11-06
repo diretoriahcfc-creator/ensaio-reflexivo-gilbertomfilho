@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Arte de Voltar | Ensaio Reflexivo · Blog 35</title>
+<meta name="description" content="O que a meditação realmente pede de quem se senta: concentrar, depois entregar, e recomeçar, segundo os Cadernos de Paul Brunton.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-musgo:   #2e4a30;
+  --verde-escuro:  #1a2e1b;
+  --azul-profundo: #1c2b3a;
+  --azul-ceu:      #4a7fa5;
+  --ouro:          #c8a84b;
+  --ouro-claro:    #e8d08a;
+  --creme:         #f5efe0;
+  --branco-suave:  #ede8df;
+  --cinza-texto:   #b8b0a0;
+  --fundo:         #111a12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fundo);
+  color: var(--branco-suave);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ouro-claro); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%);
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .8rem;
+  border: 1px solid rgba(200,168,75,.25); color: var(--ouro);
+  border-radius: 30px; padding: .45rem 1.3rem;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.1; color: var(--creme);
+  max-width: 900px;
+}
+.hero-title em { font-weight: 300; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--cinza-texto);
+  max-width: 680px; margin-top: 2rem; line-height: 1.6;
+}
+.hero-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.5rem 0 1.5rem; }
+.hero-meta { font-size: .78rem; letter-spacing: .14em; color: var(--cinza-texto); text-transform: uppercase; }
+.scroll-hint { position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--ouro); font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+.scroll-arrow { width: 1px; height: 38px; background: linear-gradient(180deg, var(--ouro), transparent); animation: desce 2s infinite; }
+@keyframes desce { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* SEÇÕES */
+section { padding: 5.5rem 1.5rem; position: relative; }
+.container { max-width: 720px; margin: 0 auto; }
+.section-label { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+.numero { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(200,168,75,.07); font-weight: 300; }
+.linha-divisor { flex: 1; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); opacity: .35; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.2; color: var(--creme); margin-bottom: 2rem; }
+.corpo p { margin-bottom: 1.6rem; color: var(--branco-suave); }
+.corpo p:last-child { margin-bottom: 0; }
+.corpo strong { font-weight: 500; color: var(--creme); }
+
+/* FRASE CENTRAL */
+.frase-central { text-align: center; padding: 3.2rem 1rem 0; }
+.frase-central p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.5; color: var(--creme); max-width: 640px; margin: 0 auto; }
+.frase-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.2rem auto 0; }
+
+/* CAMADAS */
+.camadas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; margin: 2.4rem 0; }
+.camada-card { background: linear-gradient(160deg, rgba(46,74,48,.35), rgba(28,43,58,.35)); border: 1px solid rgba(200,168,75,.18); border-left: 3px solid var(--ouro); padding: 1.5rem 1.3rem; border-radius: 4px; }
+.camada-icon { font-size: 1.5rem; display: block; margin-bottom: .7rem; }
+.camada-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ouro-claro); margin-bottom: .6rem; font-weight: 600; }
+.camada-texto { font-size: .88rem; line-height: 1.7; color: var(--cinza-texto); }
+
+/* CITAÇÃO */
+.citacao-principal { border-left: 3px solid var(--ouro); background: linear-gradient(90deg, rgba(200,168,75,.09), transparent); padding: 1.8rem 2rem; margin: 2.4rem 0; }
+.citacao-principal p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1.4; color: var(--creme); }
+.citacao-fonte { display: block; margin-top: 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); }
+
+/* BLOCO FILOSÓFICO */
+.bloco-filosofico { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--azul-profundo), #14211b); border: 1px solid rgba(74,127,165,.25); border-radius: 6px; padding: 2.4rem 2.2rem; margin: 2.4rem 0; }
+.bloco-filosofico::before { content: 'ΠΡΟΣΟΧΗ'; position: absolute; bottom: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(74,127,165,.07); letter-spacing: .1em; pointer-events: none; }
+.filo-tag { display: inline-block; border: 1px solid rgba(200,168,75,.25); color: var(--ouro); border-radius: 30px; padding: .3rem 1rem; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.bloco-filosofico h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--creme); margin-bottom: 1.2rem; }
+.bloco-filosofico p { margin-bottom: 1.3rem; position: relative; }
+.referencia-canal { display: inline-block; margin-top: .4rem; color: var(--ouro); text-decoration: none; font-size: .8rem; letter-spacing: .08em; border-bottom: 1px solid rgba(200,168,75,.4); padding-bottom: 2px; position: relative; }
+.referencia-canal:hover { color: var(--ouro-claro); }
+
+/* SEPARADOR */
+.separador { display: flex; align-items: center; gap: 1.2rem; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.separador .linha { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); opacity: .35; }
+.separador .ornamento { color: var(--ouro); font-size: .75rem; letter-spacing: .5em; opacity: .7; }
+
+/* FECHAMENTO */
+.fechamento { text-align: center; background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+.fechamento h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--ouro-claro); margin-bottom: 1.8rem; }
+.fechamento .final { max-width: 620px; margin: 0 auto; color: var(--branco-suave); }
+.fontes { max-width: 620px; margin: 3rem auto 0; font-size: .78rem; line-height: 1.7; color: var(--cinza-texto); text-align: left; border-top: 1px solid rgba(200,168,75,.18); padding-top: 1.4rem; }
+.fontes a { color: var(--ouro); text-decoration: none; border-bottom: 1px solid rgba(200,168,75,.35); }
+
+/* ASSINATURA */
+.assinatura { margin-top: 3.5rem; text-align: center; }
+.assinatura-nome { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--creme); font-weight: 400; }
+.assinatura-cargo { color: var(--ouro); font-size: .85rem; letter-spacing: .12em; margin: .2rem 0 1.2rem; }
+.assinatura-bio { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; color: var(--cinza-texto); letter-spacing: .04em; }
+.assinatura-bio .bio-destaque { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ouro-claro); margin-top: .35rem; }
+
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .bloco-filosofico { padding: 1.8rem 1.4rem; }
+  .numero { font-size: 3.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 35</span>
+  </div>
+  <h1 class="hero-title">A Arte de Voltar:<br><em>o que a meditação pede de quem se senta</em></h1>
+  <p class="hero-subtitle">Entre a cadeira e o Vazio existe um ofício de anos, e Paul Brunton o descreve com a franqueza de quem o praticou.</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Novembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ATO 1 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Cadeira <em>Antes do Abismo</em></h2>
+    <div class="corpo">
+      <p>No ensaio anterior caminhamos até a beira do Vazio e olhamos para dentro dele. Ficou por contar como se chega até lá, e a resposta menos solene é que se chega de cadeira, depois de muitas manhãs em que nada de notável acontece. Paul Brunton reservou nos seus Cadernos uma categoria inteira à meditação elementar, com sete capítulos que vão do preparo e do lugar aos fundamentos, aos símbolos, aos mantras e à atenção plena, e o que mais me impressiona nela é a ausência de promessa fácil. Em vez de êxtase, o texto traz, com minúcia de oficina, o que acontece e o que não acontece nos primeiros minutos de quem se senta.</p>
+      <p>Há um fracasso que muita gente conhece por dentro. Sentamos, fechamos os olhos, e a mente passa a nos falar de reunião, de dívida, de uma frase dita há dez anos. Concluímos que não temos o dom e largamos a prática com a convicção discreta de que meditar é coisa de outro temperamento. Brunton conhecia essa cena de cor: registra que o iniciante senta para meditar e descobre, uns quinze minutos depois, que não quer meditar, e que uns desistem confessando o cansaço enquanto outros alegam um compromisso lembrado de repente. A explicação dele, a resistência do intelecto a ser governado e aquietado, é bem menos humilhante do que a falta de talento.</p>
+      <p>Existe também um fracasso mais discreto, que alcança quem já medita há anos. A prática vira uma coreografia executada por fidelidade, com a postura certa, o tempo certo e a técnica de sempre, enquanto um platô se instala sem que ninguém ouse dar nome a ele. Escrevo com quinze anos de meditação diária e sei que esse risco existe: tomar o método pelo destino.</p>
+      <p>A pergunta que organiza este ensaio é simples de enunciar e incômoda de responder. O que fazemos quando nos sentamos para meditar, se a mente se recusa a obedecer? E por trás dela vem outra, mais íntima: o que há em nós que espera de uma mente a obediência, de uma sessão o resultado, de uma prática o pagamento pelo tempo investido?</p>
+    </div>
+    <div class="frase-central">
+      <p>Se a mente recusa a ordem logo de saída, <em>o que é, então, praticar?</em></p>
+      <div class="frase-divider"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 2 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Quem Se Senta <em>Conosco</em></h2>
+    <div class="corpo">
+      <p>Brunton descreve a dificuldade com a sobriedade de um engenheiro diante de uma ponte, e o inventário que sai dali tem três camadas, a primeira delas bem concreta.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🪑</span>
+        <div class="camada-titulo">O corpo que protesta</div>
+        <p class="camada-texto">Sentar imóvel é começo e fim da prática, diz Brunton, e uma cadeira comum basta.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🦋</span>
+        <div class="camada-titulo">A mente que se evade</div>
+        <p class="camada-texto">A mente salta como borboleta entre flores e só aceita treino sendo trazida de volta, muitas vezes, como um cavalo.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">⏳</span>
+        <div class="camada-titulo">A pressa de resultado</div>
+        <p class="camada-texto">O iniciante exige experiências místicas antes de oferecer algo de si, quando as primeiras sessões já são o preparo.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Sobre o corpo, o texto tem um pragmatismo que desarma: coluna ereta, o resto solto, mãos e ombros incluídos, os pés inteiros no chão, e a advertência de que qualquer desconforto chama atenção para si e trai o propósito da postura. Dispensa exibição e dispensa o lótus para quem o corpo não permite, e admite até a posição reclinada, contanto que o corpo possa ser esquecido.</p>
+      <p>Sobre a mente, a reabilitação da divagação é a passagem que todo iniciante deveria ler no primeiro dia. Ele diz que os primeiros minutos dispersos são uma escavação necessária antes que a construção se erga, que esse período pode se estender por até meia hora sem que nada pareça acontecer, e que os pensamentos vão assentando devagar, como sedimento em água turva. A atitude certa, escreve, é a paciência. Um detalhe desloca a culpa: a agitação inicial mostra como a mente costuma estar no resto do dia, e o primeiro quarto de hora vira menos prova de fracasso do que espelho.</p>
+      <p>A terceira camada é a mais sorrateira, porque se disfarça de seriedade espiritual. Brunton adverte, com a mesma insistência do capítulo sobre o Vazio, que a mente em branco não é o objetivo. Cita o patriarca zen Hui-neng, para quem suprimir todo pensamento é um grande erro, e lembra, por meio do poeta chinês Su Tung Po, que cães e gatos dormindo depois de comer também estão sem pensamentos e ninguém os chama de iluminados. O alívio gostoso do silêncio pode enganar, observa ele, porque o ego continua escondido ali, apenas inativo por algum tempo.</p>
+      <p>Brunton não é unívoco, e a honestidade dele está aí. Num ponto manda afastar de imediato o pensamento alheio ao tema; noutro avisa que eliminar cada pensamento ao nascer é árduo e arriscado, e prefere fixar-se firmemente num único objeto elevado, até que o eu mais profundo dissolva por si a agitação. A diferença é a que separa expulsar de ancorar: a atenção deve ser positiva antes de poder se tornar passiva. Resta saber como a atenção ancorada acaba por se soltar, e quem a solta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 3 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Segurar e <em>Soltar</em></h2>
+    <div class="corpo">
+      <p>A estrutura que Brunton propõe tem duas metades, e a fidelidade a elas separa a prática viva da liturgia vazia. Na primeira, a vontade segura a atenção num tema ou objeto, e um tema elevado leva a mente da concentração à meditação propriamente dita. Na segunda, a vontade é gentilmente posta de lado, e é isso que abre a quietude da contemplação. O yoga conhece essa mesma escada nos Yoga Sutras de Patanjali (Livro III, 1 a 3), em que dharana, o ato de fixar a atenção num ponto, dhyana, o fluxo ininterrupto dessa atenção, e samadhi, a absorção, se sucedem como degraus de um só movimento.</p>
+    </div>
+
+    <div class="bloco-filosofico">
+      <span class="filo-tag">Paul Brunton · Os Cadernos</span>
+      <h3>Concentrar, depois <em>entregar</em></h3>
+      <p>Entre as duas metades há um momento que o texto trata como crucial. O praticante deixa de intensificar o esforço para segurar o objeto, seja uma ideia, uma imagem, um som ou a própria respiração, e se entrega, repousando. Ele faz questão de dizer que isso não é ociosidade egoísta, porque o que se solta foi confiado a algo maior que o eu, e só então o praticante se descobre calmo, pronto e receptivo.</p>
+      <p>Daí vem uma advertência de método que serve ao leigo e ao veterano: os preliminares da meditação não devem ser confundidos com a meditação. Os preliminares exigem esforço para afastar distrações e forçar o pensamento a um foco, ao passo que a meditação mesma é uma quietude contínua que dispensa tensão. Quem para na primeira metade e toma o suor pelo fruto tem um excelente treino de atenção e talvez nunca conheça o resto.</p>
+      <p>Dessa lógica sai uma ética dos métodos que desarma a vaidade técnica. Cada método, diz ele, é um ponto de partida, não um lugar de chegada: começa-se pelo exercício que vem mais fácil, adapta-se à índole de cada um, experimenta-se à vontade, e as ajudas, como mantras e diagramas, servem ao iniciante e se dispensam no avançado. Se um movimento interior mais profundo aparecer no meio de um exercício marcado, o conselho é interromper o exercício e render-se a ele sem hesitar.</p>
+      <a class="referencia-canal" href="https://www.paulbrunton.org/notebooks/4/3" target="_blank" rel="noopener">▶ Elementary Meditation · Fundamentals · Paul Brunton Philosophic Foundation</a>
+    </div>
+
+    <div class="corpo">
+      <p>Há ainda um cuidado que o próprio Brunton registra e que respeito. O exercício de fixar-se num só objeto, excluindo todas as associações, diz ele, não convém a pessoas com fragilidade psíquica severa (a expressão original é mais dura do que a que uso). Quem atravessa ansiedade intensa, depressão ou lembranças difíceis faz bem em conversar com um profissional de saúde antes de prolongar sessões de silêncio, e em preferir, no começo, práticas curtas e ancoradas num objeto simples, como o ir e vir do ar.</p>
+      <p>Falta ver o que tudo isso muda para quem se levanta da cadeira e volta à própria vida.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 4 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Que Se Leva <em>da Cadeira</em></h2>
+    <div class="corpo">
+      <p>Para quem nunca se sentou, o ponto de partida de Brunton tem uma modéstia quase ofensiva: uma cadeira de encosto reto, os dois pés no chão, a coluna ereta e o resto solto, num lugar sem gente nem vozes. Ele fala em cerca de quinze minutos para as sessões elementares e, noutros trechos, em vinte a trinta minutos diários. O horário importa menos que a regularidade, e ele é taxativo quanto a isso, porque a prática deixada ao capricho do humor acaba por não acontecer. As pausas de um a cinco minutos entre compromissos também contam, e a meditação, escreve ele, pode ser breve desde que seja frequente, para que o mundo não ocupe todo o espaço da vida e da mente.</p>
+      <p>A sessão pode ter três tempos. No primeiro, o corpo se assenta e a respiração se equaliza, com a inspiração um pouco mais funda e a expiração um pouco mais lenta que o habitual, sem forçar nada, a ponto de uma pena diante do nariz mal se mover. No segundo, escolhe-se um único objeto, que para o iniciante pode ser apenas o ir e vir do ar, observado sem alterar o ritmo, e a ele se volta cada vez que a mente escapa, sem comentário e sem contabilidade. O terceiro tempo só chega quando chega, como uma atração suave para dentro, e o conselho do texto é parar de apertar a atenção e acompanhar esse movimento, ainda que dure cinco minutos.</p>
+      <p>Para quem medita há anos, Brunton desloca a pergunta da técnica para a qualidade do gesto: a meditação pede compromisso amoroso e devoção, e não repetição mecânica, com interesse e disposição no momento da prática em lugar de mera obrigação de rotina. O platô, nessa leitura, nem sempre é falta de método; pode ser sinal de que um método elementar foi tomado por chegada, e vale perguntar se aquilo que antes abria ainda abre, ou se virou cumprimento de tabela.</p>
+      <p>O que a prática devolve ao resto do dia vem sem fanfarra. O texto descreve uma mente mais unificada, que decide com mais rapidez e acerto, uma vida exterior com mais propósito e confiança e uma crescente capacidade de se desligar de ambientes desagradáveis. Evita prometer prazos: o domínio de uma atenção de ponto único pode levar anos, adverte, e nas primeiras semanas ou meses a concentração é difícil e tediosa, embora não impossível para quem esteja resolvido a aprendê-la. A síntese dele desmonta boa parte da mística em torno do assunto.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“O segredo da concentração é praticar concentração.”</p>
+      <span class="citacao-fonte">Paul Brunton · The Notebooks of Paul Brunton, Cat. 4, Cap. 3, §160 (tradução livre)</span>
+    </div>
+
+    <div class="corpo">
+      <p>No capítulo sobre atenção plena, a prática sai da cadeira. Ele propõe parar de repente em momentos aleatórios do dia e congelar corpo, rosto e pensamentos exatamente como estavam, e observar-se comendo, andando e trabalhando com o olhar desapegado e interessado de quem assiste. Tarefas comuns viram, assim, treino de concentração. Depois de quinze anos de prática diária, tenho a impressão de que o recomeço é o método inteiro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="container">
+    <h2>Recomeço</h2>
+    <p class="final">Sentar de novo amanhã, na mesma cadeira e com a mesma mente que recusou a ordem hoje, é o gesto inteiro. O abismo do ensaio anterior continua onde estava, paciente, e talvez só deixe de assustar quem se habitua a recomeçar diante dele, sem pressa e sem plateia.</p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+
+    <p class="fontes">Fonte principal: The Notebooks of Paul Brunton, Categoria 4 (Elementary Meditation), capítulos 2, 3 e 7, e Categoria 3 (Relax and Retreat), capítulo 1, Paul Brunton Philosophic Foundation, disponíveis em <a href="https://www.paulbrunton.org/notebooks/4/3" target="_blank" rel="noopener">paulbrunton.org/notebooks/4/3</a>. A única citação direta está em tradução livre; as demais passagens são paráfrases, e o texto original permanece sob os direitos da fundação. Este ensaio tem caráter reflexivo e não substitui orientação de profissionais de saúde.</p>
+  </div>
+</section>
+
+</body>
+</html>

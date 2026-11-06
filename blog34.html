@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Vazio que Assusta | Ensaio Reflexivo · Blog 34</title>
+<meta name="description" content="Paul Brunton passou décadas anotando o que acontece quando o pensamento se cala. O que ele registrou começa pelo susto e termina em plenitude.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-musgo:   #2e4a30;
+  --verde-escuro:  #1a2e1b;
+  --azul-profundo: #1c2b3a;
+  --azul-ceu:      #4a7fa5;
+  --ouro:          #c8a84b;
+  --ouro-claro:    #e8d08a;
+  --creme:         #f5efe0;
+  --branco-suave:  #ede8df;
+  --cinza-texto:   #b8b0a0;
+  --fundo:         #111a12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fundo);
+  color: var(--branco-suave);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ouro-claro); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%);
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .8rem;
+  border: 1px solid rgba(200,168,75,.25); color: var(--ouro);
+  border-radius: 30px; padding: .45rem 1.3rem;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.1; color: var(--creme);
+  max-width: 900px;
+}
+.hero-title em { font-weight: 300; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--cinza-texto);
+  max-width: 680px; margin-top: 2rem; line-height: 1.6;
+}
+.hero-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.5rem 0 1.5rem; }
+.hero-meta { font-size: .78rem; letter-spacing: .14em; color: var(--cinza-texto); text-transform: uppercase; }
+.scroll-hint { position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--ouro); font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+.scroll-arrow { width: 1px; height: 38px; background: linear-gradient(180deg, var(--ouro), transparent); animation: desce 2s infinite; }
+@keyframes desce { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* SEÇÕES */
+section { padding: 5.5rem 1.5rem; position: relative; }
+.container { max-width: 720px; margin: 0 auto; }
+.section-label { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+.numero { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(200,168,75,.07); font-weight: 300; }
+.linha-divisor { flex: 1; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); opacity: .35; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.2; color: var(--creme); margin-bottom: 2rem; }
+.corpo p { margin-bottom: 1.6rem; color: var(--branco-suave); }
+.corpo p:last-child { margin-bottom: 0; }
+.corpo strong { font-weight: 500; color: var(--creme); }
+
+/* FRASE CENTRAL */
+.frase-central { text-align: center; padding: 3.2rem 1rem 0; }
+.frase-central p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.5; color: var(--creme); max-width: 640px; margin: 0 auto; }
+.frase-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.2rem auto 0; }
+
+/* CAMADAS */
+.camadas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; margin: 2.4rem 0; }
+.camada-card { background: linear-gradient(160deg, rgba(46,74,48,.35), rgba(28,43,58,.35)); border: 1px solid rgba(200,168,75,.18); border-left: 3px solid var(--ouro); padding: 1.5rem 1.3rem; border-radius: 4px; }
+.camada-icon { font-size: 1.5rem; display: block; margin-bottom: .7rem; }
+.camada-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ouro-claro); margin-bottom: .6rem; font-weight: 600; }
+.camada-texto { font-size: .88rem; line-height: 1.7; color: var(--cinza-texto); }
+
+/* CITAÇÃO */
+.citacao-principal { border-left: 3px solid var(--ouro); background: linear-gradient(90deg, rgba(200,168,75,.09), transparent); padding: 1.8rem 2rem; margin: 2.4rem 0; }
+.citacao-principal p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1.4; color: var(--creme); }
+.citacao-fonte { display: block; margin-top: 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); }
+
+/* BLOCO FILOSÓFICO */
+.vazio-bloco { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--azul-profundo), #14211b); border: 1px solid rgba(74,127,165,.25); border-radius: 6px; padding: 2.4rem 2.2rem; margin: 2.4rem 0; }
+.vazio-bloco::before { content: 'ΚΕΝΟΝ'; position: absolute; bottom: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(74,127,165,.07); letter-spacing: .1em; pointer-events: none; }
+.vazio-tag { display: inline-block; border: 1px solid rgba(200,168,75,.25); color: var(--ouro); border-radius: 30px; padding: .3rem 1rem; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.vazio-bloco h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--creme); margin-bottom: 1.2rem; }
+.vazio-bloco p { margin-bottom: 1.3rem; position: relative; }
+.referencia-canal { display: inline-block; margin-top: .4rem; color: var(--ouro); text-decoration: none; font-size: .8rem; letter-spacing: .08em; border-bottom: 1px solid rgba(200,168,75,.4); padding-bottom: 2px; position: relative; }
+.referencia-canal:hover { color: var(--ouro-claro); }
+
+/* SEPARADOR */
+.separador { display: flex; align-items: center; gap: 1.2rem; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.separador .linha { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); opacity: .35; }
+.separador .ornamento { color: var(--ouro); font-size: .75rem; letter-spacing: .5em; opacity: .7; }
+
+/* FECHAMENTO */
+.fechamento { text-align: center; background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+.fechamento h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--ouro-claro); margin-bottom: 1.8rem; }
+.fechamento .final { max-width: 620px; margin: 0 auto; color: var(--branco-suave); }
+.fontes { max-width: 620px; margin: 3rem auto 0; font-size: .78rem; line-height: 1.7; color: var(--cinza-texto); text-align: left; border-top: 1px solid rgba(200,168,75,.18); padding-top: 1.4rem; }
+.fontes a { color: var(--ouro); text-decoration: none; border-bottom: 1px solid rgba(200,168,75,.35); }
+
+/* ASSINATURA */
+.assinatura { margin-top: 3.5rem; text-align: center; }
+.assinatura-nome { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--creme); font-weight: 400; }
+.assinatura-cargo { color: var(--ouro); font-size: .85rem; letter-spacing: .12em; margin: .2rem 0 1.2rem; }
+.assinatura-bio { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; color: var(--cinza-texto); letter-spacing: .04em; }
+.assinatura-bio .bio-destaque { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ouro-claro); margin-top: .35rem; }
+
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .vazio-bloco { padding: 1.8rem 1.4rem; }
+  .numero { font-size: 3.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 34</span>
+  </div>
+  <h1 class="hero-title">O Vazio que Assusta:<br><em>a plenitude que o medo confunde com abismo</em></h1>
+  <p class="hero-subtitle">Paul Brunton passou décadas anotando o que acontece quando o pensamento se cala, e o que ele registrou começa pelo susto.</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Novembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ATO 1 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Ruído Que <em>Chamamos de Eu</em></h2>
+    <div class="corpo">
+      <p>Circula por aí uma meditação guiada, de voz pausada e fundo quase mudo, que repete com variações uma única instrução: esvazie-se. Esqueça a própria história, solte o passado e o futuro, deixe os pensamentos caírem num espaço sem bordas e espere. Ouvi a gravação como se ouve o que toca fundo demais para ser comentado na hora: primeiro um assentimento, que veio antes de qualquer raciocínio, e logo depois uma hesitação.</p>
+      <p>A hesitação merece mais atenção do que o assentimento. No ensaio anterior olhamos para a energia que deixamos de dissipar, para o que fazemos com a força que recolhemos quando paramos de gastá-la em tudo. Este começa onde aquele terminou, porque a energia recolhida acaba encontrando o silêncio, e o silêncio, para a maioria de nós, é menos um lugar de repouso do que uma sala sem mobília onde escutamos a própria voz sem intermediários.</p>
+      <p>Dirigi hospitais por mais de vinte anos e conheço de perto a lógica segundo a qual uma agenda lotada funciona como atestado de existência. Ela vale também fora dos corredores: nas telas que acendemos ao menor intervalo, no áudio acelerado, na conversa que preenche o elevador. Tudo indica que tememos o vazio mais do que quase qualquer outra coisa, e que damos a esse temor o nome respeitável de produtividade.</p>
+      <p>Convém inverter a pergunta de costume. Interessa menos saber por que o mundo nos enche de ruído do que descobrir o que há em nós que prefere o ruído, a ponto de chamar de perigo aquilo que as tradições contemplativas chamam de casa.</p>
+    </div>
+    <div class="frase-central">
+      <p>Se tudo o que penso ser pode cessar por alguns instantes, <em>quem permanece</em> para perceber que cessou, e por que temos tanto medo de descobrir?</p>
+      <div class="frase-divider"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 2 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">As Três <em>Resistências</em></h2>
+    <div class="corpo">
+      <p>Paul Brunton (1898-1981), o inglês que viajou à Índia nos anos 1930 e foi dos primeiros ocidentais a procurar Sri Ramana Maharshi, deixou nos seus Cadernos um capítulo inteiro sobre o Vazio como experiência contemplativa (Categoria 23, Capítulo 8, na edição online mantida pela fundação que preserva sua obra). Quem abre essas páginas esperando um manual de serenidade encontra outra coisa: boa parte do texto trata do que impede alguém de entrar.</p>
+      <p>A meditação que ouvi tem ecos claros ali. Ela pede que nenhum conteúdo mental seja alimentado, por mais virtuoso ou espiritual que pareça, e Brunton escreve em outro ponto que tudo o que invade a quietude deve ser recusado, mesmo quando vem com cara de espiritualidade. Os Cadernos vão além do convite, porém: descrevem com minúcia o que acontece a quem tenta aceitá-lo, e das passagens reunidas saem três resistências.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🌑</span>
+        <div class="camada-titulo">O medo da aniquilação</div>
+        <p class="camada-texto">O primeiro contato com o Vazio assusta, diz Brunton: a sensação de estar sozinho num abismo sem limites. Ele lê o pavor como a resistência do eu pessoal diante de algo maior e observa que muitos místicos recuam justamente na soleira.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🎭</span>
+        <div class="camada-titulo">O esconderijo</div>
+        <p class="camada-texto">O ego, que viveu disfarçado dentro de cada aspiração espiritual, precisa enfim aparecer como é. Brunton pergunta onde ele poderia se ocultar num vazio sem objetos.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🪑</span>
+        <div class="camada-titulo">A pressa de povoar</div>
+        <p class="camada-texto">Sustentar o vazio além de um instante é uma tensão quase insuportável, e por isso o intelecto ou a imaginação o ocupam logo com uma ideia ou uma imagem, a que se segue uma série inteira de outras.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Nenhuma das três revela defeito de caráter; todas são manobras de proteção de uma estrutura construída inteira em torno da própria continuidade. O medo vigia a porta por fora, o esconderijo trabalha disfarçado de devoção, e a pressa de preencher opera por dentro, em silêncio e quase sempre vitoriosa. Quem já tentou ficar dez minutos sentado sem fazer nada conhece a terceira de perto: o vazio dura um segundo e meio e, no seguinte, já estamos planejando o jantar com uma nitidez que não tivemos o dia inteiro.</p>
+      <p>Resta uma suspeita incômoda: e se o medo for o guarda mais antigo e mais lúcido desse limiar? Brunton não a descarta, e é aí que se afasta dos entusiastas. Se a compreensão e a purificação forem insuficientes, escreve, talvez seja prudente parar e preparar-se melhor antes do passo seguinte. A coragem que ele pede não é a do impulso.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 3 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Intervalo e a <em>Plenitude</em></h2>
+    <div class="corpo">
+      <p>O que há do outro lado do medo? A resposta de Brunton desmonta a imagem que a palavra vazio costuma evocar. O Vazio dos Cadernos não é ausência de consciência, e ele insiste nisso em várias passagens: a mente se cala, mas quem a atravessa não desmaia, não dorme, não se apaga.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“Não é a aniquilação da Consciência, mas a plenitude dela.”</p>
+      <span class="citacao-fonte">Paul Brunton · The Notebooks of Paul Brunton, Cat. 23, Cap. 8, §73 (tradução livre)</span>
+    </div>
+
+    <div class="vazio-bloco">
+      <span class="vazio-tag">Paul Brunton · Os Cadernos</span>
+      <h3>O Vazio como <em>plenitude</em> e o intervalo entre dois pensamentos</h3>
+      <p>No sono profundo o pensamento do mundo também se aquieta, observa ele, mas a consciência se perde; no Vazio ela se mantém, e a diferença é tudo. Por isso os Cadernos descrevem a experiência como uma consciência separada de todos os seus objetos, uma percepção que tem a si mesma por único conteúdo.</p>
+      <p>A porta de entrada que ele mais valorizava tem uma modéstia desconcertante: o intervalo entre dois pensamentos. Os pensamentos se sucedem no tempo, mas a fresta que separa um do outro, sugere Brunton, está fora dele, e é ali que o eu pessoal se ausenta, de modo que a cada pensamento o ego renasce. Em vez de esperar uma série de vidas pela libertação, haveria uma série de nascimentos momentâneos, cada um oferecendo a mesma chance a quem soubesse usá-la. Ele conta que propôs o exercício em <em>The Wisdom of the Overself</em> e que só mais tarde encontrou o Buda dizendo que o nirvana existe entre dois momentos mentais.</p>
+      <p>É raro ver, em literatura de meditação, a honestidade que ele tem quanto à dificuldade: o exercício pede meses e anos de prática paciente, e poucos, admite, conseguiram achar o caminho para dentro da fresta.</p>
+      <a class="referencia-canal" href="https://www.paulbrunton.org/notebooks/23/8" target="_blank" rel="noopener">▶ The Void As Contemplative Experience · Paul Brunton Philosophic Foundation</a>
+    </div>
+
+    <div class="corpo">
+      <p>Duas sutilezas impedem que o Vazio vire troféu. A primeira: ausência de pensamentos ainda não é o ponto final, pois quem percebe que está sem pensar, adverte Brunton, carrega a consciência dessa ausência, e ela também precisa ser transcendida. A segunda tem algo de ironia lógica: quem afirma ter vivido o Vazio estava presente para registrar que era Vazio, e portanto não estava ali como o eu de todo dia, que nem negaria a própria presença nem reivindicaria uma fusão completa. Talvez por isso o capítulo prefira o idioma da paz ao da euforia. No Vazio, diz ele, a alegria não cabe, porque alegria pressupõe alguém com uma natureza emocional ativa, e o que resta é a paz.</p>
+      <p>Plotino já descrevia algo muito próximo nas Enéadas, e o próprio Brunton aproxima esses textos do que a yoga indiana chama de nirvikalpa samadhi. O salmista resumiu a mesma disciplina numa ordem curta (Salmo 46:10): aquietai-vos e sabei. O verbo escolhido é aquietar-se, que pede mais entrega do que conquista, e Brunton concorda a ponto de reservar o último passo à graça: a vontade afasta os pensamentos, mas o pensamento do próprio Vazio, segundo ele, não se dissolve por esforço pessoal.</p>
+      <p>Resta saber se isso serve a quem vive entre reuniões, contas e filhos, e não num mosteiro. O próprio Brunton levanta a objeção e responde com cautela: para o ocidental fora de um mosteiro, a prática da filosofia é o melhor caminho, e a busca direta dessa experiência nem sempre é necessária nem segura.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 4 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Que <em>Volta</em></h2>
+    <div class="corpo">
+      <p>O que mais me desarmou no capítulo vem depois da experiência. O Vazio tem um equivalente na vida ativa e desperta, que se chama desapego, e a consciência do Real precisa ser encontrada também de olhos abertos, não só no transe da meditação profunda. Brunton chega a lembrar que o Vazio, por grandioso que seja, é uma experiência temporária, um período de meditação, e que o que permanece é o que ela faz com o resto da vida.</p>
+      <p>Os Cadernos descrevem esse resto com precisão sóbria. Quem volta do Vazio não recupera o antigo eu pessoal, que Brunton considera já morto, e sim algo que ele chama de alma; passa a olhar o corpo e o ego com a clareza de quem sentiu seus limites; e perde aos poucos o sentido de posse, tanto sobre as coisas quanto sobre as ideias. A passagem sobre o homem rico que não entra no reino dos céus ganha ali um sentido que eu nunca tinha lido: o obstáculo não está no dinheiro em si, mas no coração que não consegue se afastar dele. Conduzi a venda de um hospital que eu dirigia, e a compreensão intelectual do desapego chegou muito antes daquela que se instala no corpo.</p>
+      <p>Nada disso se promete a ninguém, e Brunton é o primeiro a recusar atalhos. Sobra um gesto pequeno, que cabe numa terça-feira qualquer: reparar, uma vez por dia, no momento em que um pensamento termina e o seguinte ainda não chegou, sem tentar conquistá-lo e sem contá-lo como mérito, para saber que ele existe e que, nele, ninguém está tentando ser alguém. Se o medo aparecer, vale tratá-lo como Brunton o trata, como sinal de que algo antigo em nós está sendo notado, e não como veredito sobre o caminho.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="container">
+    <h2>Fresta</h2>
+    <p class="final">Passamos a vida tapando frestas, porque por elas entra o que não controlamos. Brunton sugere que é por uma delas, minúscula e anterior ao próximo pensamento, que entra também o que nunca saiu de casa. Se for assim, o vazio que tanto tememos talvez seja o nome que o medo dá ao lugar onde sempre estivemos inteiros.</p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+
+    <p class="fontes">Fonte principal: The Notebooks of Paul Brunton, Categoria 23 (Advanced Contemplation), Capítulo 8 (The Void As Contemplative Experience), Paul Brunton Philosophic Foundation, disponível em <a href="https://www.paulbrunton.org/notebooks/23/8" target="_blank" rel="noopener">paulbrunton.org/notebooks/23/8</a>. A única citação direta está em tradução livre; as demais passagens são paráfrases do texto, que permanece sob os direitos da fundação.</p>
+  </div>
+</section>
+
+</body>
+</html>
