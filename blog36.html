@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estreitar o Rio | Ensaio Reflexivo · Blog 36</title>
+<meta name="description" content="A concentração como ofício de desfazer condicionamentos: o rio dos pensamentos, as vāsanās e a sentinela, segundo Swami Chinmayananda, Patanjali e William James.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-musgo:   #2e4a30;
+  --verde-escuro:  #1a2e1b;
+  --azul-profundo: #1c2b3a;
+  --azul-ceu:      #4a7fa5;
+  --ouro:          #c8a84b;
+  --ouro-claro:    #e8d08a;
+  --creme:         #f5efe0;
+  --branco-suave:  #ede8df;
+  --cinza-texto:   #b8b0a0;
+  --fundo:         #111a12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fundo);
+  color: var(--branco-suave);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ouro-claro); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%);
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .8rem;
+  border: 1px solid rgba(200,168,75,.25); color: var(--ouro);
+  border-radius: 30px; padding: .45rem 1.3rem;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.1; color: var(--creme);
+  max-width: 900px;
+}
+.hero-title em { font-weight: 300; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--cinza-texto);
+  max-width: 680px; margin-top: 2rem; line-height: 1.6;
+}
+.hero-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.5rem 0 1.5rem; }
+.hero-meta { font-size: .78rem; letter-spacing: .14em; color: var(--cinza-texto); text-transform: uppercase; }
+.scroll-hint { position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--ouro); font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+.scroll-arrow { width: 1px; height: 38px; background: linear-gradient(180deg, var(--ouro), transparent); animation: desce 2s infinite; }
+@keyframes desce { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* SEÇÕES */
+section { padding: 5.5rem 1.5rem; position: relative; }
+.container { max-width: 720px; margin: 0 auto; }
+.section-label { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+.numero { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(200,168,75,.07); font-weight: 300; }
+.linha-divisor { flex: 1; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); opacity: .35; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.2; color: var(--creme); margin-bottom: 2rem; }
+.corpo p { margin-bottom: 1.6rem; color: var(--branco-suave); }
+.corpo p:last-child { margin-bottom: 0; }
+.corpo strong { font-weight: 500; color: var(--creme); }
+
+/* FRASE CENTRAL */
+.frase-central { text-align: center; padding: 3.2rem 1rem 0; }
+.frase-central p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.5; color: var(--creme); max-width: 640px; margin: 0 auto; }
+.frase-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.2rem auto 0; }
+
+/* CAMADAS */
+.camadas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; margin: 2.4rem 0; }
+.camada-card { background: linear-gradient(160deg, rgba(46,74,48,.35), rgba(28,43,58,.35)); border: 1px solid rgba(200,168,75,.18); border-left: 3px solid var(--ouro); padding: 1.5rem 1.3rem; border-radius: 4px; }
+.camada-icon { font-size: 1.5rem; display: block; margin-bottom: .7rem; }
+.camada-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ouro-claro); margin-bottom: .6rem; font-weight: 600; }
+.camada-texto { font-size: .88rem; line-height: 1.7; color: var(--cinza-texto); }
+
+/* CITAÇÃO */
+.citacao-principal { border-left: 3px solid var(--ouro); background: linear-gradient(90deg, rgba(200,168,75,.09), transparent); padding: 1.8rem 2rem; margin: 2.4rem 0; }
+.citacao-principal p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1.4; color: var(--creme); }
+.citacao-fonte { display: block; margin-top: 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); }
+
+/* BLOCO FILOSÓFICO */
+.bloco-filosofico { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--azul-profundo), #14211b); border: 1px solid rgba(74,127,165,.25); border-radius: 6px; padding: 2.4rem 2.2rem; margin: 2.4rem 0; }
+.bloco-filosofico::before { content: 'ΝΗΨΙΣ'; position: absolute; bottom: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(74,127,165,.07); letter-spacing: .1em; pointer-events: none; }
+.filo-tag { display: inline-block; border: 1px solid rgba(200,168,75,.25); color: var(--ouro); border-radius: 30px; padding: .3rem 1rem; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.bloco-filosofico h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--creme); margin-bottom: 1.2rem; }
+.bloco-filosofico p { margin-bottom: 1.3rem; position: relative; }
+.referencia-canal { display: inline-block; margin-top: .4rem; color: var(--ouro); text-decoration: none; font-size: .8rem; letter-spacing: .08em; border-bottom: 1px solid rgba(200,168,75,.4); padding-bottom: 2px; position: relative; }
+.referencia-canal:hover { color: var(--ouro-claro); }
+
+/* SEPARADOR */
+.separador { display: flex; align-items: center; gap: 1.2rem; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.separador .linha { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); opacity: .35; }
+.separador .ornamento { color: var(--ouro); font-size: .75rem; letter-spacing: .5em; opacity: .7; }
+
+/* FECHAMENTO */
+.fechamento { text-align: center; background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+.fechamento h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--ouro-claro); margin-bottom: 1.8rem; }
+.fechamento .final { max-width: 620px; margin: 0 auto; color: var(--branco-suave); }
+.fontes { max-width: 620px; margin: 3rem auto 0; font-size: .78rem; line-height: 1.7; color: var(--cinza-texto); text-align: left; border-top: 1px solid rgba(200,168,75,.18); padding-top: 1.4rem; }
+.fontes a { color: var(--ouro); text-decoration: none; border-bottom: 1px solid rgba(200,168,75,.35); }
+
+/* ASSINATURA */
+.assinatura { margin-top: 3.5rem; text-align: center; }
+.assinatura-nome { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--creme); font-weight: 400; }
+.assinatura-cargo { color: var(--ouro); font-size: .85rem; letter-spacing: .12em; margin: .2rem 0 1.2rem; }
+.assinatura-bio { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; color: var(--cinza-texto); letter-spacing: .04em; }
+.assinatura-bio .bio-destaque { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ouro-claro); margin-top: .35rem; }
+
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .bloco-filosofico { padding: 1.8rem 1.4rem; }
+  .numero { font-size: 3.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 36</span>
+  </div>
+  <h1 class="hero-title">Estreitar o Rio:<br><em>a concentração como ofício de desfazer o que a mente aprendeu</em></h1>
+  <p class="hero-subtitle">Entre o pensamento que chega sozinho e o pensamento que escolhemos existe um leito cavado por décadas, e a tradição de Swami Chinmayananda ensina a mexer nele sem violência.</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Novembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ATO 1 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Pensamentos Que Chegam <em>Sem Convite</em></h2>
+    <div class="corpo">
+      <p>Há uma cena que a meditação diária me ofereceu cedo e que nunca deixou de ensinar. Sento, fecho os olhos, decido acompanhar a respiração, e em menos de um minuto já estou discutindo em silêncio com alguém que nem lembro por que me irritou, ou ensaiando uma conversa que talvez jamais aconteça. Ninguém convidou esses pensamentos. Chegaram, ocuparam a sala e passaram a falar em primeira pessoa, como se fossem eu.</p>
+      <p>A psicologia experimental deu números a essa impressão. Em 2010, Matthew Killingsworth e Daniel Gilbert, de Harvard, publicaram na revista <em>Science</em> um estudo com cerca de 2.250 voluntários que, ao longo do dia, respondiam por um aplicativo ao que estavam fazendo, em que pensavam e como se sentiam. A mente estava longe da tarefa em torno de 47% do tempo desperto, e a frequência dessa fuga previa a infelicidade melhor do que a própria atividade em curso. Os autores resumiram o achado numa frase que ficou célebre (tradução livre): uma mente humana é uma mente que vaga, e uma mente que vaga é uma mente infeliz.</p>
+      <p>A tradição vedântica chega à mesma observação por outra porta e a leva mais longe. Na palestra “A Arte do Autodomínio”, Swami Chinmayananda afirma que o mundo exterior jamais é conhecido diretamente, apenas interpretado pela nossa mente, e que ele só nos faz sorrir ou chorar através dela: como é a mente, assim é o mundo. Se isso procede, o vaivém dos pensamentos funciona como o filtro por onde passa a vida inteira, e a maioria de nós jamais escolheu o filtro.</p>
+      <p>A pergunta que atravessa este ensaio nasce aí e incomoda quem, como nós, passa a semana convencido de que decide. Se tanto do que pensamos chega sem convite, quem escreve a nossa vida? E, mais adiante, o que seria preciso para que um pensamento tivesse autor?</p>
+    </div>
+    <div class="frase-central">
+      <p>Quem pensa em mim <em>quando eu não estou escolhendo</em>?</p>
+      <div class="frase-divider"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 2 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Qualidade, Quantidade <em>e Direção</em></h2>
+    <div class="corpo">
+      <p>Chinmayananda oferece uma imagem de oficina para o problema. Cada pensamento é um balde d’água, a mente é o rio, o fluxo contínuo de todos esses baldes despejados na mesma direção, e domar a mente se parece mais com domar um rio do que com esvaziar um balde. Quem tenta conter a correnteza com as mãos se cansa; quem aprende a mexer em suas variáveis encontra algum domínio. A palestra aponta três, a qualidade, a quantidade e a direção do fluxo, e afirma que somente elas decidem o valor, a beleza e a eficácia de uma personalidade.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">💧</span>
+        <div class="camada-titulo">A qualidade</div>
+        <p class="camada-texto">O que cada pensamento carrega: rancor, medo, gratidão, curiosidade. A mesma energia mental, com cargas diferentes, produz vidas diferentes.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🌊</span>
+        <div class="camada-titulo">A quantidade</div>
+        <p class="camada-texto">O volume que não deixa margem. Quando os pensamentos se amontoam, a enchente apaga as margens onde o discernimento poderia ficar de pé.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🧭</span>
+        <div class="camada-titulo">A direção</div>
+        <p class="camada-texto">Para onde o rio corre. Na descrição da palestra, a mente é esse fluxo voltado sem descanso para o mundo dos objetos.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>Falta, porém, uma quarta peça, que a tradição considera a mais decisiva e que as três primeiras escondem: o leito do rio. As <em>vāsanās</em>, na palavra sânscrita, são as tendências inconscientes que fixam a direção habitual dos pensamentos, depósitos de impressões deixadas pelo nosso trato apaixonado com os objetos do mundo. Sem domínio sobre elas, diz Chinmayananda, somos uma expressão desamparada do próprio passado, e a imagem é difícil de esquecer: uma vida inteira correndo por canais que outras águas cavaram.</p>
+      <p>A água não escolhe por onde correr. Segue o sulco que já existe, e cada ressentimento repassado, cada receio ensaiado, aprofunda o canal por onde o próximo pensamento escorregará sem precisar decidir coisa alguma. William James, nos <em>Princípios de Psicologia</em> (1890), observou que o tecido nervoso é plástico e se molda ao uso, e daí tirou uma conclusão menos lisonjeira do que parece: o hábito, escreveu, é o enorme volante da sociedade e o seu mais precioso agente conservador (tradução livre). Conserva o que nos serve e conserva igualmente o que deveríamos ter desfeito.</p>
+      <p>O ego, visto desse ângulo, é o feixe de lembranças, receios e excitações que o rio carrega, as mesmas correntes que examinamos no ensaio 32, e o sulco é o que dá a esse feixe a aparência de pessoa. Desconstruir um condicionamento exige mexer no leito, tarefa que nenhuma discussão com o pensamento que passa consegue cumprir. Resta saber com que ferramenta se mexe num leito que levou décadas para se cavar.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 3 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Dar à Mente <em>Um Lugar Para Ir</em></h2>
+    <div class="corpo">
+      <p>A resposta que a palestra oferece cabe numa palavra que o yoga conhece bem, <em>ekāgratā</em>, a concentração em um só ponto, e convém lê-la com a calma de quem desconfia de soluções fáceis para problemas antigos.</p>
+    </div>
+
+    <div class="bloco-filosofico">
+      <span class="filo-tag">Swami Chinmayananda · Patanjali · William James</span>
+      <h3>Concentrar para <em>desfazer sem combater</em></h3>
+      <p>Balakrishna Menon nasceu em 1916, em Ernakulam, no atual Kerala, e começou a vida adulta como jornalista, com passagem pelo <em>National Herald</em>. Foi a Rishikesh com a intenção de escrever uma reportagem desmascarando os swamis e saiu transformado pelo encontro com Swami Sivananda. Estudou Vedanta com Swami Tapovan Maharaj em Uttarkashi, tornou-se Chinmayananda Saraswati, fundou a Chinmaya Mission em 1953 e morreu em San Diego, em 1993, depois de décadas levando o Vedanta e o Bhagavad Gita a plateias de vários continentes.</p>
+      <p>O método que ele descreve contraria a imagem popular de calar o pensamento à força. A mente, lembra a palestra, é um instrumento dinâmico, feito para funcionar e não para permanecer ociosa, e quem apenas a afasta de um objeto a vê regressar a ele assim que a vigilância afrouxa. O caminho passa por oferecer a ela algo maior em que gastar a energia, e por isso a concentração tem aqui o papel de ferramenta de desmonte: ao dar ao fluxo uma única direção deliberada, ela deixa de abastecer os canais antigos.</p>
+      <p>Patanjali chegou à mesma lógica por escrito séculos antes. No Livro II, sutra 33, ensina que, quando pensamentos perturbadores nos assaltam, devemos cultivar o princípio oposto, o <em>pratipaksha bhāvana</em>, uma substituição deliberada em vez de uma luta frontal. No Livro I, sutra 32, indica a prática de um único princípio contra os obstáculos que dispersam a mente. O <em>japa</em>, a repetição mental de um nome ou de uma sílaba, é o exemplo que Chinmayananda dá de disciplina eficaz, porque ensina a mente a correr numa só linha e reduz o rio ao mínimo.</p>
+      <p>Falta nessa cena a figura que torna o método possível, e a palestra a nomeia com precisão: o intelecto como sentinela na torre de vigia, observador silencioso do que se passa lá dentro. A tradição cristã do deserto deu a essa vigilância o nome de <em>nepsis</em>, sobriedade atenta, o que talvez indique que a descoberta é antiga e humana antes de ser indiana ou grega.</p>
+      <a class="referencia-canal" href="https://en.wikipedia.org/wiki/Chinmayananda_Saraswati" target="_blank" rel="noopener">▶ Chinmayananda Saraswati · biografia e obra</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“A técnica correta não significa suprimir violentamente os pensamentos negativos, mas sim oferecer à mente um campo de ideais enobrecedores, onde ela possa funcionar e exaurir as suas energias.”</p>
+      <span class="citacao-fonte">Swami Chinmayananda · palestra “A Arte do Autodomínio” (transcrição em português)</span>
+    </div>
+
+    <div class="corpo">
+      <p>William James, trabalhando por outro caminho, deu à mesma capacidade um lugar de honra e, com honestidade rara, confessou que é mais fácil definir esse ideal do que ensinar a alcançá-lo.</p>
+      <p>Há aqui uma zona cinzenta que a honestidade pede para nomear. A concentração é uma força neutra, e a atenção de ponto único aprofunda um sulco ruim com a mesma eficácia com que abre um bom: o obsessivo também concentra. A palestra enfrenta o problema ao dizer que o objeto escolhido pode ser espiritual ou material, desde que o ego se renda no altar de um grande ideal, religioso ou secular. O critério, portanto, está menos na elevação aparente do objeto do que no efeito que ele tem sobre o ego que o serve, se o afina ou se o engorda. O impostor do ensaio 31 convive bem com uma boa concentração; apenas a pergunta sobre o destino do ego o incomoda.</p>
+      <p>Falta ver como isso cabe numa terça-feira comum.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 4 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Torre <em>e o Leito</em></h2>
+    <div class="corpo">
+      <p>Na prática, a proposta soa quase humilhante de tão pequena. Escolhe-se um objeto, que pode ser a respiração, uma frase repetida em silêncio ou um tema digno de contemplação, e a ele se volta cada vez que a mente escapa. A parte que costuma passar despercebida é o que se faz no instante da fuga. A sentinela olha para onde a mente foi, reconhece se era um passado revirado, um futuro temido ou uma agitação do momento, e retorna sem comentário. Com o tempo, essa vigia revela algo desconcertante: a mente foge quase sempre para os mesmos poucos endereços. São as <em>vāsanās</em> dizendo onde moram, e é a primeira vez que as vemos de fora.</p>
+      <p>Cada retorno é um voto pequeno contra o canal antigo. O sulco que não recebe água deixa de se aprofundar, enquanto o que se alimenta de atenção cresce. Como advertia Brunton no ensaio anterior, as primeiras semanas ou meses de concentração costumam ser difíceis e tediosas, e o tédio faz parte do trabalho.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“A faculdade de trazer de volta, voluntariamente, uma atenção que vagueia, uma e outra vez, é a raiz do juízo, do caráter e da vontade.”</p>
+      <span class="citacao-fonte">William James · Princípios de Psicologia, 1890, capítulo sobre a atenção (tradução livre)</span>
+    </div>
+
+    <div class="corpo">
+      <p>A tradição acrescenta um complemento que raramente aparece nos manuais de meditação, e ele diz respeito à ação. Chinmayananda chama de <em>karma-yoga</em> o hábito de agir dedicando o trabalho a um ideal maior do que o próprio ego, e sustenta que os desejos assim tratados se esgotam sem que outros nasçam. A tradição afirma que o trabalho entregue a um propósito maior pesa menos na mente do que o trabalho gasto em defender uma imagem, e quem passou décadas em salas de decisão, como eu, tem motivos para achar a hipótese plausível.</p>
+      <p>Convém não prometer o que nenhuma prática garante, e a mente vazia está entre as promessas que a própria tradição, como vimos com Brunton, trata com desconfiança. Para quem convive com ansiedade intensa, depressão ou lembranças difíceis, concentrar-se demais pode amplificar o que já ronda; sessões curtas e o acompanhamento de um profissional são prudência, não fraqueza. O que se obtém, com paciência, é mais modesto e mais útil: pensamentos que passam a ter autor ao menos numa parte do dia, e um intervalo entre o impulso e a resposta que antes não existia. O ego, esse feixe de memórias, receios e excitações, perde um pouco de solidez, porque um feixe só se mantém enquanto alguém o carrega, e a sentinela, a cada retorno, carrega menos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="container">
+    <h2>Sentinela</h2>
+    <p class="final">No alto da torre ninguém combate o rio. Um vigia atento escolhe, de tempos em tempos, para onde olhar, e é desse gesto repetido, modesto e sem plateia, que o leito começa a mudar. A pergunta que abriu este ensaio talvez dispense resposta definitiva; pede apenas uma terça-feira em que, por alguns minutos, o pensamento que chegar encontre um autor à espera.</p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+
+    <p class="fontes">Fontes: palestra “A Arte do Autodomínio”, de Swami Chinmayananda (transcrição em português); Matthew A. Killingsworth e Daniel T. Gilbert, “A Wandering Mind Is an Unhappy Mind”, <em>Science</em>, 330, 2010 (resumo em <a href="https://news.harvard.edu/gazette/story/2010/11/wandering-mind-not-a-happy-mind/" target="_blank" rel="noopener">Harvard Gazette</a>); William James, <em>The Principles of Psychology</em>, 1890 (capítulos sobre o hábito e a atenção); Patanjali, <em>Yoga Sutras</em>, I.32 e II.33; dados biográficos de Chinmayananda conforme <a href="https://en.wikipedia.org/wiki/Chinmayananda_Saraswati" target="_blank" rel="noopener">Wikipedia</a>. As citações estão em tradução livre ou transcritas da palestra. Este ensaio tem caráter reflexivo e não substitui orientação de profissionais de saúde.</p>
+  </div>
+</section>
+
+</body>
+</html>
