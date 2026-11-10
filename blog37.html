@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Templo Sem Paredes | Ensaio Reflexivo · Blog 37</title>
+<meta name="description" content="A espiritualidade que resta quando a crença se cala: crença como abrigo, ideal como fuga e a verdade como desencobrimento, a partir de The First and Last Freedom e Krishnamurti's Notebook, de Jiddu Krishnamurti.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-musgo:   #2e4a30;
+  --verde-escuro:  #1a2e1b;
+  --azul-profundo: #1c2b3a;
+  --azul-ceu:      #4a7fa5;
+  --ouro:          #c8a84b;
+  --ouro-claro:    #e8d08a;
+  --creme:         #f5efe0;
+  --branco-suave:  #ede8df;
+  --cinza-texto:   #b8b0a0;
+  --fundo:         #111a12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fundo);
+  color: var(--branco-suave);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ouro-claro); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%);
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .8rem;
+  border: 1px solid rgba(200,168,75,.25); color: var(--ouro);
+  border-radius: 30px; padding: .45rem 1.3rem;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.1; color: var(--creme);
+  max-width: 900px;
+}
+.hero-title em { font-weight: 300; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--cinza-texto);
+  max-width: 680px; margin-top: 2rem; line-height: 1.6;
+}
+.hero-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.5rem 0 1.5rem; }
+.hero-meta { font-size: .78rem; letter-spacing: .14em; color: var(--cinza-texto); text-transform: uppercase; }
+.scroll-hint { position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--ouro); font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+.scroll-arrow { width: 1px; height: 38px; background: linear-gradient(180deg, var(--ouro), transparent); animation: desce 2s infinite; }
+@keyframes desce { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* SEÇÕES */
+section { padding: 5.5rem 1.5rem; position: relative; }
+.container { max-width: 720px; margin: 0 auto; }
+.section-label { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+.numero { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(200,168,75,.07); font-weight: 300; }
+.linha-divisor { flex: 1; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); opacity: .35; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.2; color: var(--creme); margin-bottom: 2rem; }
+.corpo p { margin-bottom: 1.6rem; color: var(--branco-suave); }
+.corpo p:last-child { margin-bottom: 0; }
+.corpo strong { font-weight: 500; color: var(--creme); }
+
+/* FRASE CENTRAL */
+.frase-central { text-align: center; padding: 3.2rem 1rem 0; }
+.frase-central p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.5; color: var(--creme); max-width: 640px; margin: 0 auto; }
+.frase-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.2rem auto 0; }
+
+/* CAMADAS */
+.camadas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; margin: 2.4rem 0; }
+.camada-card { background: linear-gradient(160deg, rgba(46,74,48,.35), rgba(28,43,58,.35)); border: 1px solid rgba(200,168,75,.18); border-left: 3px solid var(--ouro); padding: 1.5rem 1.3rem; border-radius: 4px; }
+.camada-icon { font-size: 1.5rem; display: block; margin-bottom: .7rem; }
+.camada-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ouro-claro); margin-bottom: .6rem; font-weight: 600; }
+.camada-texto { font-size: .88rem; line-height: 1.7; color: var(--cinza-texto); }
+
+/* CITAÇÃO */
+.citacao-principal { border-left: 3px solid var(--ouro); background: linear-gradient(90deg, rgba(200,168,75,.09), transparent); padding: 1.8rem 2rem; margin: 2.4rem 0; }
+.citacao-principal p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1.4; color: var(--creme); }
+.citacao-fonte { display: block; margin-top: 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); }
+
+/* BLOCO FILOSÓFICO */
+.bloco-filosofico { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--azul-profundo), #14211b); border: 1px solid rgba(74,127,165,.25); border-radius: 6px; padding: 2.4rem 2.2rem; margin: 2.4rem 0; }
+.bloco-filosofico::before { content: 'ΑΛΗΘΕΙΑ'; position: absolute; bottom: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(74,127,165,.07); letter-spacing: .1em; pointer-events: none; }
+.filo-tag { display: inline-block; border: 1px solid rgba(200,168,75,.25); color: var(--ouro); border-radius: 30px; padding: .3rem 1rem; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.bloco-filosofico h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--creme); margin-bottom: 1.2rem; }
+.bloco-filosofico p { margin-bottom: 1.3rem; position: relative; }
+.referencia-canal { display: inline-block; margin-top: .4rem; color: var(--ouro); text-decoration: none; font-size: .8rem; letter-spacing: .08em; border-bottom: 1px solid rgba(200,168,75,.4); padding-bottom: 2px; position: relative; }
+.referencia-canal:hover { color: var(--ouro-claro); }
+
+/* SEPARADOR */
+.separador { display: flex; align-items: center; gap: 1.2rem; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.separador .linha { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); opacity: .35; }
+.separador .ornamento { color: var(--ouro); font-size: .75rem; letter-spacing: .5em; opacity: .7; }
+
+/* FECHAMENTO */
+.fechamento { text-align: center; background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+.fechamento h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--ouro-claro); margin-bottom: 1.8rem; }
+.fechamento .final { max-width: 620px; margin: 0 auto; color: var(--branco-suave); }
+.fontes { max-width: 620px; margin: 3rem auto 0; font-size: .78rem; line-height: 1.7; color: var(--cinza-texto); text-align: left; border-top: 1px solid rgba(200,168,75,.18); padding-top: 1.4rem; }
+.fontes a { color: var(--ouro); text-decoration: none; border-bottom: 1px solid rgba(200,168,75,.35); }
+
+/* ASSINATURA */
+.assinatura { margin-top: 3.5rem; text-align: center; }
+.assinatura-nome { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--creme); font-weight: 400; }
+.assinatura-cargo { color: var(--ouro); font-size: .85rem; letter-spacing: .12em; margin: .2rem 0 1.2rem; }
+.assinatura-bio { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; color: var(--cinza-texto); letter-spacing: .04em; }
+.assinatura-bio .bio-destaque { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ouro-claro); margin-top: .35rem; }
+
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .bloco-filosofico { padding: 1.8rem 1.4rem; }
+  .numero { font-size: 3.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 37</span>
+  </div>
+  <h1 class="hero-title">O Templo Sem Paredes:<br><em>a espiritualidade que resta quando a crença se cala</em></h1>
+  <p class="hero-subtitle">Krishnamurti passou a vida convidando as pessoas a olhar em vez de acreditar, e é por aí, talvez, que a nossa essência volte a respirar.</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Novembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ATO 1 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Herança <em>Que Não Escolhemos</em></h2>
+    <div class="corpo">
+      <p>Ninguém nos perguntou, na infância, em que queríamos acreditar. A resposta veio pronta, como vêm o sobrenome e o sotaque: um nome para Deus, certos gestos, uma lista do que era certo pensar. Quem nos deu isso agiu com carinho e com a firmeza de quem nunca duvidou, e hoje dá para agradecer sem precisar concordar.</p>
+      <p>Mais tarde a vida mexe nessa herança. Uma perda, um livro, a decepção com alguém que pregava o que não vivia. Uns se agarram com mais força, porque soltar dá vertigem. Outros jogam tudo fora de uma vez e descobrem, meses depois, que a fome do sagrado ficou, já que ela nunca foi dogma. A casa está limpa, e a sede segue sem destino.</p>
+      <p>Quatro décadas de yoga e quinze anos de meditação diária me ensinaram a ficar nessa sede sem correr para a primeira resposta que a mate. Foi ali que Krishnamurti me alcançou, por meio de dois livros muito diferentes. <em>The First and Last Freedom</em> reúne conversas públicas dos anos 1950, em que ele explica e responde. <em>Krishnamurti’s Notebook</em> é um diário escrito à mão, no começo dos anos 1960, em que ele apenas anota, sozinho, o que vê.</p>
+      <p>A pergunta que atravessa este ensaio é simples de dizer e difícil de sustentar: se a espiritualidade de que precisamos difere da crença que herdamos, o que resta de nós quando a crença se cala, e será isso a essência que queremos reconstruir?</p>
+    </div>
+    <div class="frase-central">
+      <p>O que resta de mim <em>quando a crença se cala</em>?</p>
+      <div class="frase-divider"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 2 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Muros <em>Dentro do Templo</em></h2>
+    <div class="corpo">
+      <p>Krishnamurti observa algo que quase todos já sentimos e raramente dizemos em voz alta: acreditamos, em boa parte, porque temos medo. Medo de descobrir que, tirada a crença, não sobra nada, de que por baixo do que dizemos ser exista apenas um vazio. A crença é o abrigo contra essa vertigem. E, segundo ele, tem um efeito menos simpático, porque separa. Gente que jura falar de amor e de fraternidade continua dividida pelas coisas em que acredita, cada grupo fechado na sua própria lista.</p>
+      <p>Há ainda um efeito mais sutil, que ele descreve como uma tela: passamos a olhar para nós mesmos através do que acreditamos, e o autoconhecimento fica barrado justamente por quem jura buscá-lo. Dessa tela saem três muros.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🧱</span>
+        <div class="camada-titulo">A crença como abrigo</div>
+        <p class="camada-texto">Acreditar alivia o medo de ser nada. Quanto maior a vertigem diante do vazio, mais firme a crença que o esconde.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🪞</span>
+        <div class="camada-titulo">O ideal como fuga</div>
+        <p class="camada-texto">O “deveria ser” nos tira do fato. Quanto mais luminoso o ideal, mais confortável a distância do que acontece agora.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">👁️</span>
+        <div class="camada-titulo">O observador como guardião</div>
+        <p class="camada-texto">Quem julga o pensamento é feito de pensamento. O vigia que corrige a mente é uma parte dela, vestida de autoridade.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>O segundo muro é o mais elegante, porque parece virtude. Eu deveria ser mais paciente, mais sereno, mais generoso. Cada “deveria” aponta para uma pessoa melhor que ainda não existe, e enquanto olhamos para ela deixamos de ver a que está sentada aqui, irritada, cansada, com medo. O ideal funciona como uma porta de saída do presente, decorada com bons sentimentos.</p>
+      <p>O terceiro muro é o que mais custa a enxergar. Quando tentamos vigiar a própria mente, quem vigia? Krishnamurti responde que o vigia é feito do mesmo material que vigia, o pensador nasce do pensamento, e que essa divisão interna, tão natural, alimenta o conflito que prometia resolver.</p>
+      <p>Ele conhecia a religião organizada pelo lado de quem recebe a coroa. Criado para ser o mestre de uma ordem espiritual, desfez essa ordem em 1929 e passou o resto da vida pedindo que ninguém o seguisse. Fica a pergunta que os três muros deixam: se a crença abriga, o ideal afasta e o vigia é parte do vigiado, de onde viria o sagrado que a nossa sede procura?</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 3 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Desencobrir <em>em Vez de Construir</em></h2>
+    <div class="corpo">
+      <p>O projeto de reconstruir a verdadeira essência esconde uma armadilha que Krishnamurti apontaria de imediato. Reconstruir pede uma planta, e planta é um ideal, a imagem do que deveríamos nos tornar, justamente o mecanismo de fuga que acabamos de ver. Se a essência fosse algo a erguer, o construtor seria o mesmo eu condicionado de sempre, fabricando uma versão mais refinada de si.</p>
+    </div>
+
+    <div class="bloco-filosofico">
+      <span class="filo-tag">Jiddu Krishnamurti · The First and Last Freedom · Krishnamurti’s Notebook</span>
+      <h3>Ver o que é, <em>sem ideal e sem nome</em></h3>
+      <p>Os gregos chamavam a verdade de <em>aletheia</em>, palavra que carrega a ideia de aquilo que deixa de estar encoberto. A imagem serve bem ao que Krishnamurti propõe: a essência já está aqui, e o trabalho consiste em ver as camadas, sem pôr nada novo no lugar.</p>
+      <p>Ele chama o gesto de atenção sem escolha. Observa-se o que está acontecendo, agradável ou não, sem um ideal que corrija, sem uma crença que explique, sem um nome que arquive. Quanto mais fundo se vai, mais a fronteira entre quem observa e o que é observado se mostra frágil, e ele faz questão de dizer que ninguém deve aceitar isso por autoridade, nem pela dele. O que não puder ser verificado por cada um, no próprio dia, não vale.</p>
+      <p>O <em>Notebook</em> traz a mesma recusa em tom de diário, sem argumento e sem plateia. Numa entrada de junho de 1961, ele escreve que o sagrado não tem atributos, e que uma pedra num templo, uma imagem numa igreja ou um símbolo não são sagrados. A frase deixa o templo em pé e lhe tira o monopólio, devolvendo a pergunta a quem a fazia.</p>
+      <a class="referencia-canal" href="https://kfoundation.org/krishnamurti-what-an-extraordinary-part-belief-plays-in-our-lives-from-the-first-and-last-freedom" target="_blank" rel="noopener">▶ Krishnamurti sobre a crença · Krishnamurti Foundation</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“O que é sagrado não tem atributos. Uma pedra num templo, uma imagem numa igreja, um símbolo, nada disso é sagrado.”</p>
+      <span class="citacao-fonte">Krishnamurti’s Notebook · entrada de 28 de junho de 1961 (tradução livre)</span>
+    </div>
+
+    <div class="corpo">
+      <p>Seria desonesto fechar esta parte sem as zonas cinzentas. Há o paradoxo de um mestre que diz para não seguir ninguém e é seguido por multidões. Há também o que a forma religiosa carrega além da crença: quem larga o rito perde junto a companhia que ele dava no luto, no nascimento, na mesa posta. Quem busca sozinho precisa achar outros apoios, ou a liberdade vira solidão.</p>
+      <p>E existe o risco que já enfrentamos no ensaio 31: uma espiritualidade sem dogma pode virar um espelho muito bem polido, onde o impostor discursa sobre a própria desconstrução. A diferença aparece no que a pessoa faz diante do fato que a incomoda, e é para essa hora que o último ato se volta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 4 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">O Dia Comum <em>Como Templo</em></h2>
+    <div class="corpo">
+      <p>Nada do que Krishnamurti propõe exige cenário. Pense numa terça à tarde, quando chega uma mensagem que irrita. Logo vem o “não devia ficar assim”, o “preciso ser mais calmo”, e a irritação ganha uma segunda camada, a de quem sofre por estar irritado. A prática consiste em notar esse desvio e voltar ao que está de fato ali, a raiva com o rosto que ela tem, sem nome, sem veredito e sem plano de correção. No começo parece perda de tempo, porque quem observa a raiva sem corrigi-la sente que a deixa vencer. O que a repetição tende a mostrar, e cada um verificará ou não por conta própria, é que a raiva vista assim perde a camada extra, e sobra apenas o que ela é.</p>
+      <p>A tradição pode entrar nesse dia, desde que largue o cargo de autoridade. Um texto sagrado lido como se lê a carta de um viajante que passou por onde queremos passar informa muito e não garante nada. O rito pode ficar como gesto de comunidade e de beleza, sem precisar passar por metafísica, e a oração pode seguir como escuta em vez de negociação.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>Reconstruir a essência talvez seja uma obra de demolição, feita sem planta e sem pressa, pelo único construtor que não pode ser contratado: quem olha.</p>
+      <span class="citacao-fonte">Reflexão do autor a partir de Krishnamurti</span>
+    </div>
+
+    <div class="corpo">
+      <p>Convém não prometer o que prática alguma garante. Quem atravessa depressão, luto agudo ou lembranças de trauma talvez não deva olhar sozinho o que dói, e o acompanhamento de um profissional é prudência, jamais fraqueza. O que se pode esperar é mais modesto e mais útil do que um estado extraordinário: crenças seguradas com a mão aberta, menos necessidade de que o outro pense como nós, uma relação menos defensiva com a própria incerteza. A essência, se existe como algo além de palavra, talvez se pareça menos com uma construção nova e mais com aquilo que permanece quando as camadas deixam de ser alimentadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="container">
+    <h2>Sem Paredes</h2>
+    <p class="final">Um templo sem paredes não tem porta, e por isso ninguém precisa de credencial para entrar nem de licença para sair. Cabe numa terça-feira qualquer, numa cozinha, no intervalo entre o impulso e a resposta. A pergunta que abriu este ensaio talvez só se responda vivendo-a, e sentar-se com ela, sem pressa de preenchê-la, pode ser o começo daquilo que algumas tradições chamam de oração.</p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+
+    <p class="fontes">Fontes: Jiddu Krishnamurti, <em>The First and Last Freedom</em> (1954; <a href="https://en.wikipedia.org/wiki/The_First_and_Last_Freedom" target="_blank" rel="noopener">visão geral</a>), e <em>Krishnamurti’s Notebook</em> (1976; <a href="https://en.wikipedia.org/wiki/Krishnamurti%27s_Notebook" target="_blank" rel="noopener">visão geral</a>). As ideias de Krishnamurti aparecem parafraseadas e as citações em tradução livre; o leitor é convidado a conferi-las nas edições originais. Este ensaio tem caráter reflexivo e não substitui orientação de profissionais de saúde.</p>
+  </div>
+</section>
+
+</body>
+</html>
