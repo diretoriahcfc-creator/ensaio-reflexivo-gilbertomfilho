@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Página em Branco | Ensaio Reflexivo · Blog 38</title>
+<meta name="description" content="O ego que ninguém vence sozinho: Mirra Alfassa, a Mãe de Pondicherry, e a ideia de trocar o centro de onde se vive, com as hesitações que um leitor honesto deve ter.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde-musgo:   #2e4a30;
+  --verde-escuro:  #1a2e1b;
+  --azul-profundo: #1c2b3a;
+  --azul-ceu:      #4a7fa5;
+  --ouro:          #c8a84b;
+  --ouro-claro:    #e8d08a;
+  --creme:         #f5efe0;
+  --branco-suave:  #ede8df;
+  --cinza-texto:   #b8b0a0;
+  --fundo:         #111a12;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fundo);
+  color: var(--branco-suave);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ouro-claro); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, #0d1510 0%, #0e1820 100%);
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .8rem;
+  border: 1px solid rgba(200,168,75,.25); color: var(--ouro);
+  border-radius: 30px; padding: .45rem 1.3rem;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+.hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.1; color: var(--creme);
+  max-width: 900px;
+}
+.hero-title em { font-weight: 300; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--cinza-texto);
+  max-width: 680px; margin-top: 2rem; line-height: 1.6;
+}
+.hero-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.5rem 0 1.5rem; }
+.hero-meta { font-size: .78rem; letter-spacing: .14em; color: var(--cinza-texto); text-transform: uppercase; }
+.scroll-hint { position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--ouro); font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+.scroll-arrow { width: 1px; height: 38px; background: linear-gradient(180deg, var(--ouro), transparent); animation: desce 2s infinite; }
+@keyframes desce { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* SEÇÕES */
+section { padding: 5.5rem 1.5rem; position: relative; }
+.container { max-width: 720px; margin: 0 auto; }
+.section-label { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem; }
+.numero { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(200,168,75,.07); font-weight: 300; }
+.linha-divisor { flex: 1; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); opacity: .35; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.2; color: var(--creme); margin-bottom: 2rem; }
+.corpo p { margin-bottom: 1.6rem; color: var(--branco-suave); }
+.corpo p:last-child { margin-bottom: 0; }
+.corpo strong { font-weight: 500; color: var(--creme); }
+
+/* FRASE CENTRAL */
+.frase-central { text-align: center; padding: 3.2rem 1rem 0; }
+.frase-central p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.5; color: var(--creme); max-width: 640px; margin: 0 auto; }
+.frase-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); margin: 2.2rem auto 0; }
+
+/* CAMADAS */
+.camadas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; margin: 2.4rem 0; }
+.camada-card { background: linear-gradient(160deg, rgba(46,74,48,.35), rgba(28,43,58,.35)); border: 1px solid rgba(200,168,75,.18); border-left: 3px solid var(--ouro); padding: 1.5rem 1.3rem; border-radius: 4px; }
+.camada-icon { font-size: 1.5rem; display: block; margin-bottom: .7rem; }
+.camada-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ouro-claro); margin-bottom: .6rem; font-weight: 600; }
+.camada-texto { font-size: .88rem; line-height: 1.7; color: var(--cinza-texto); }
+
+/* CITAÇÃO */
+.citacao-principal { border-left: 3px solid var(--ouro); background: linear-gradient(90deg, rgba(200,168,75,.09), transparent); padding: 1.8rem 2rem; margin: 2.4rem 0; }
+.citacao-principal p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1.4; color: var(--creme); }
+.citacao-fonte { display: block; margin-top: 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); }
+
+/* BLOCO FILOSÓFICO */
+.bloco-filosofico { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--azul-profundo), #14211b); border: 1px solid rgba(74,127,165,.25); border-radius: 6px; padding: 2.4rem 2.2rem; margin: 2.4rem 0; }
+.bloco-filosofico::before { content: 'ΨΥΧΗ'; position: absolute; bottom: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: rgba(74,127,165,.07); letter-spacing: .1em; pointer-events: none; }
+.filo-tag { display: inline-block; border: 1px solid rgba(200,168,75,.25); color: var(--ouro); border-radius: 30px; padding: .3rem 1rem; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.bloco-filosofico h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--creme); margin-bottom: 1.2rem; }
+.bloco-filosofico p { margin-bottom: 1.3rem; position: relative; }
+.referencia-canal { display: inline-block; margin-top: .4rem; color: var(--ouro); text-decoration: none; font-size: .8rem; letter-spacing: .08em; border-bottom: 1px solid rgba(200,168,75,.4); padding-bottom: 2px; position: relative; }
+.referencia-canal:hover { color: var(--ouro-claro); }
+
+/* SEPARADOR */
+.separador { display: flex; align-items: center; gap: 1.2rem; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+.separador .linha { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); opacity: .35; }
+.separador .ornamento { color: var(--ouro); font-size: .75rem; letter-spacing: .5em; opacity: .7; }
+
+/* FECHAMENTO */
+.fechamento { text-align: center; background: linear-gradient(180deg, #0e1820 0%, #0d1510 100%); }
+.fechamento h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--ouro-claro); margin-bottom: 1.8rem; }
+.fechamento .final { max-width: 620px; margin: 0 auto; color: var(--branco-suave); }
+.fontes { max-width: 620px; margin: 3rem auto 0; font-size: .78rem; line-height: 1.7; color: var(--cinza-texto); text-align: left; border-top: 1px solid rgba(200,168,75,.18); padding-top: 1.4rem; }
+.fontes a { color: var(--ouro); text-decoration: none; border-bottom: 1px solid rgba(200,168,75,.35); }
+
+/* ASSINATURA */
+.assinatura { margin-top: 3.5rem; text-align: center; }
+.assinatura-nome { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--creme); font-weight: 400; }
+.assinatura-cargo { color: var(--ouro); font-size: .85rem; letter-spacing: .12em; margin: .2rem 0 1.2rem; }
+.assinatura-bio { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; color: var(--cinza-texto); letter-spacing: .04em; }
+.assinatura-bio .bio-destaque { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ouro-claro); margin-top: .35rem; }
+
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .bloco-filosofico { padding: 1.8rem 1.4rem; }
+  .numero { font-size: 3.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span>Ensaio Reflexivo</span>
+    <div class="dot"></div>
+    <span>Blog 38</span>
+  </div>
+  <h1 class="hero-title">A Página em Branco:<br><em>o ego que ninguém vence sozinho</em></h1>
+  <p class="hero-subtitle">Mirra Alfassa, a Mãe de Pondicherry, ensinava que superar o ego é menos vencer um inimigo e mais mudar o centro de onde se vive. A ideia traz um paradoxo, e vale a pena encará-lo de frente.</p>
+  <div class="hero-line"></div>
+  <p class="hero-meta">por Gilberto Mendonça Filho &nbsp;·&nbsp; @gilberto_mfilho &nbsp;·&nbsp; Novembro 2026</p>
+  <div class="scroll-hint">
+    <span>ler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ATO 1 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">01</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Discussão Que <em>Mudou de Assunto</em></h2>
+    <div class="corpo">
+      <p>Toda discussão tem um instante em que o assunto muda sem aviso. Ela começa sobre o orçamento, o horário, a louça na pia, e de repente já não trata de nada disso: passa a tratar de quem tem razão, de quem cedeu primeiro, de quem ficou com a última palavra. Em mais de vinte anos de gestão hospitalar, vi essa virada acontecer em salas onde a vida de pessoas dependia da pauta, e a pauta, às vezes, perdia para a vaidade de uma frase.</p>
+      <p>Mirra Alfassa, a quem os discípulos chamam de A Mãe, diria que esse instante tem endereço. Para ela, a raiz das nossas dificuldades, discórdias e sofrimentos morais está no ego, com seus desejos, seus gostos e suas aversões, esse modo de ser que dá a cada um a ilusão de uma personalidade separada. Ela não o tratava como defeito de caráter dos outros. Tratava-o como o funcionamento comum a todos nós e, por isso mesmo, como o ponto onde qualquer mudança no mundo teria de começar.</p>
+      <p>Amanhã, 17 de novembro, completam-se cinquenta e três anos da morte dela, em Pondicherry, aos noventa e cinco. Nascida em Paris em 1878, de pais de origem turca e egípcia, Mirra atravessou a juventude entre a pintura, círculos esotéricos e uma insistente vida interior, até desembarcar na Índia em março de 1914 e reconhecer em Sri Aurobindo a figura que já conhecia de suas visões. Em 1926, ele lhe confiou a direção do ashram que nascia ali, e foi ela quem o conduziu por quase meio século.</p>
+      <p>O que ela propunha soa, à primeira leitura, como uma exigência desumana: tornar-se sem ego. A pergunta que atravessa este ensaio nasce justamente do incômodo dessa frase. Se o ego é o que me separa e a entrega é o que me reúne, quem é este que se entrega?</p>
+    </div>
+    <div class="frase-central">
+      <p>Quem é este <em>que se entrega</em>?</p>
+      <div class="frase-divider"></div>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 2 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">02</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Três Camadas <em>do Mesmo Eu</em></h2>
+    <div class="corpo">
+      <p>Antes de qualquer entrega, Mirra pedia um trabalho menos glamouroso: conhecer-se por partes. Ela insistia em que aprendamos a distinguir as várias regiões do próprio ser, para perceber de onde nasce cada impulso, cada reação, cada vontade que puxa para um lado enquanto outra puxa para o oposto. A tradição de Sri Aurobindo organiza esse mapa em três planos do ser exterior, e cada um colabora com o ego a seu modo.</p>
+    </div>
+
+    <div class="camadas-grid">
+      <div class="camada-card">
+        <span class="camada-icon">🗣️</span>
+        <div class="camada-titulo">A mente que justifica</div>
+        <p class="camada-texto">Tem sempre uma explicação favorável para o que pensamos, sentimos, dizemos e fazemos. O ego raramente mente: ele edita.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🔥</span>
+        <div class="camada-titulo">O desejo que impulsiona</div>
+        <p class="camada-texto">Gostos e aversões puxam a ação antes de percebermos de onde vem o movimento. É a camada da pressa, do medo e da cobiça.</p>
+      </div>
+      <div class="camada-card">
+        <span class="camada-icon">🕸️</span>
+        <div class="camada-titulo">O hábito que encobre</div>
+        <p class="camada-texto">A repetição do corpo e da rotina forma uma crosta espessa sobre aquilo que, em nós, não precisa de defesa.</p>
+      </div>
+    </div>
+
+    <div class="corpo">
+      <p>O dado mais incômodo, na observação dela, está na primeira camada. A mente humana, dizia, tende espontaneamente a dar uma explicação favorável a tudo o que pensa, sente, diz e faz. A edição é tão rápida que o próprio autor não a vê: “tive medo” vira “fui prudente”, “quis aparecer” vira “quis ajudar”.</p>
+      <p>Se o redator é o suspeito, quem faz a revisão? Krishnamurti, que visitamos no ensaio anterior, desconfiava da própria pergunta: para ele, o observador que julga o pensamento é feito de pensamento, e essa divisão interna alimenta o conflito que prometia resolver. Mirra segue por outro caminho, e é aqui que as duas vozes divergem sem se anular. Ela propõe trazer cada movimento interior diante do tribunal do nosso ideal mais elevado, com vontade sincera de aceitar o veredito. A lógica é a de qualquer tribunal: ninguém julga a própria causa.</p>
+      <p>Resta saber de onde virá esse juiz, já que nenhuma parte de mim, à primeira vista, é isenta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 3 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">03</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">Trocar o Centro, <em>Não Apagar a Pessoa</em></h2>
+    <div class="corpo">
+      <p>A resposta de Mirra e de Sri Aurobindo tem nome técnico: o ser psíquico. No Yoga Integral, que os dois desenvolveram juntos, a pessoa tem um exterior (mental, vital e físico), um interior mais vasto e, por trás de ambos, uma centelha do Divino que, na doutrina deles, evolui através das existências. Essa centelha seria o centro verdadeiro, o mesmo que o ego costuma ocupar por usurpação.</p>
+    </div>
+
+    <div class="bloco-filosofico">
+      <span class="filo-tag">Mirra Alfassa · Sri Aurobindo · Yoga Integral</span>
+      <h3>O ser psíquico: <em>o centro que não precisa ser defendido</em></h3>
+      <p>Aqui mora a virada que a frase inicial esconde, se lida ao pé da letra. Sri Aurobindo não manda extinguir o ego e deixar o vazio no lugar: manda encontrar, no lugar dele, o verdadeiro ser. A operação é de troca de centro, e o ego, como um inquilino que se julgava dono, é reposto na função de instrumento. Por isso a entrega, na boca de Mirra, tem pouco de capitulação. É o gesto de quem retira o ego do posto de comando. Segundo os biógrafos, o próprio Sri Aurobindo disse nunca ter visto uma entrega tão absoluta e sem reservas quanto a dela.</p>
+      <p>Mirra a descrevia em três degraus: dar tudo o que se tem, que é o começo; dar tudo o que se faz, que é o caminho; dar tudo o que se é, que é o cumprimento. E usava a imagem da página em branco: só quando não escrevemos nada por conta própria a vontade maior pode ser escrita em nós sem rasura e sem mistura. Quem já tentou deixar uma página em branco diante de um problema sabe quanto isso custa. O ego tem pressa de escrever.</p>
+      <p>O vocabulário é religioso, e quem não o partilha pode traduzi-lo sem traí-lo: entregar-se é consentir que a verdade mais funda de si governe, aceitando o veredito mesmo quando ele desfavorece a vaidade. A palavra “psíquico” aqui deriva de <em>psyché</em>, alma, e nada tem a ver com os fenômenos paranormais nem com o <em>psikhikós</em> dos gnósticos do ensaio 30.</p>
+      <a class="referencia-canal" href="https://www.sriaurobindoashram.org/mother/" target="_blank" rel="noopener">▶ A Mãe · Sri Aurobindo Ashram</a>
+    </div>
+
+    <div class="citacao-principal">
+      <p>“Encontre, no lugar do ego, o verdadeiro ser.”</p>
+      <span class="citacao-fonte">Sri Aurobindo · Bases of Yoga (tradução livre)</span>
+    </div>
+
+    <div class="corpo">
+      <p>Há três pontos em que esse caminho me faz hesitar, e prefiro dizê-los. O primeiro é a ideia de que o senso de individualidade seria totalmente inútil. Precisamos de um eu firme para negociar, para dizer não, para atravessar um luto sem desmoronar, e desconfio de quem pede a alguém ainda frágil que entregue um centro que mal teve tempo de construir. Primeiro a casa, depois a porta aberta.</p>
+      <p>O segundo é o paradoxo da nossa pergunta: quem se entrega é o próprio ego, e ele não se desfaz por esforço, do mesmo modo que ninguém se ergue puxando os próprios cabelos. Quem segue o Yoga Integral costuma responder que a entrega é resposta a um chamado vindo do fundo, e não vitória da vontade. Pode ser. Mas a resposta troca a verificação pela fé, e Krishnamurti, no ensaio anterior, nos ensinou a olhar com cuidado para tudo o que não se pode conferir por conta própria.</p>
+      <p>O terceiro é prático. Entregar a responsabilidade da vida pode virar um jeito elegante de não decidir, de empurrar para o céu o que é conta, prazo, doença. O texto de Mirra traz o antídoto dentro de si: exige vigilância constante e afirma que o trabalho é longo, lento e difícil. Entrega que dispensa o trabalho não é a dela.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"><div class="linha"></div><span class="ornamento">✦ ✦ ✦</span><div class="linha"></div></div>
+
+<!-- ATO 4 -->
+<section>
+  <div class="container">
+    <div class="section-label">
+      <span class="numero">04</span>
+      <div class="linha-divisor"></div>
+    </div>
+    <h2 class="section-title">A Entrega Pequena, <em>Todos os Dias</em></h2>
+    <div class="corpo">
+      <p>Nada disso pede cenário monástico. A prática que deriva do tribunal de Mirra, e que adapto aqui, consiste em rever o dia à noite, diante do ideal mais alto que se consegue conceber, e ver quais movimentos resistem ao julgamento. Basta escolher uma reação em que a explicação favorável chegou depressa demais, perguntar o que a parte mais verdadeira de nós diria dela e ficar com a resposta sem se absolver nem se açoitar. É um tribunal, sim, mas sem carrasco.</p>
+      <p>Os três degraus ganham escala doméstica. Dar o que se tem é a parte mais fácil, e começa no tempo e na atenção, não só no dinheiro: ouvir alguém sem preparar a réplica. Dar o que se faz é executar bem uma tarefa cujo crédito não voltará para o nosso nome, o que em empresa e em família é mais raro do que parece. Dar o que se é fica para depois, e talvez fique sempre um pouco para depois, porque exige tolerar o medo de ser ninguém que o ensaio 37 mostrou por baixo de cada crença.</p>
+      <p>Quatro décadas de yoga me ensinaram que esse trabalho não termina, apenas fica mais honesto. Os efeitos, quando aparecem, são modestos e verificáveis. O intervalo entre o impulso e a resposta cresce um pouco. A necessidade de vencer a discussão encolhe, e a discussão volta a ser sobre o assunto. O elogio perde parte do poder de inflar, e a crítica, de ferir. Não prometo iluminação. O que se pode esperar, no máximo, é menos ruído em torno de um centro que deixou de precisar de defesa.</p>
+    </div>
+
+    <div class="citacao-principal">
+      <p>Superar o ego talvez seja menos um combate e mais uma mudança de endereço: sair do centro sem sair da vida.</p>
+      <span class="citacao-fonte">Reflexão do autor a partir de Mirra Alfassa</span>
+    </div>
+
+    <div class="corpo">
+      <p>Cabe um cuidado. Quem atravessa depressão, luto agudo ou uma relação de dependência com um líder, religioso ou não, deve fazer esse caminho acompanhado por um profissional de saúde e por pessoas de confiança. Entregar-se não equivale a desaparecer, e nenhuma tradição séria deveria pedir isso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="container">
+    <h2>Página Aberta</h2>
+    <p class="final">Amanhã, no aniversário da morte de Mirra Alfassa, vale deixar uma página em branco por alguns minutos, sem escrever nada por cima, e observar quem fica impaciente. Essa impaciência, antes de qualquer doutrina, já responde em parte à pergunta que abriu este ensaio: quem se entrega é aquele que, aos poucos, aprende a descansar de si mesmo.</p>
+
+    <div class="assinatura">
+      <p class="assinatura-nome">Gilberto Mendonça Filho</p>
+      <p class="assinatura-cargo">@gilberto_mfilho</p>
+      <div class="assinatura-bio">
+        <span>Empresário &nbsp;|&nbsp; 59 anos</span>
+        <span>Natação &nbsp;·&nbsp; Bike &nbsp;·&nbsp; Musculação</span>
+        <span>40 anos de Yoga &nbsp;·&nbsp; 15 de meditação diária</span>
+        <span class="bio-destaque">Disciplina que vai além do corpo</span>
+      </div>
+    </div>
+
+    <p class="fontes">Fontes: Mirra Alfassa (A Mãe) e Sri Aurobindo, ensinamentos do Yoga Integral (<a href="https://www.sriaurobindoashram.org/mother/" target="_blank" rel="noopener">Sri Aurobindo Ashram</a>); Sri Aurobindo, <em>Bases of Yoga</em> (<a href="https://sri-aurobindo.co.in/workings/letters/0023/022217_e.htm" target="_blank" rel="noopener">fragmento citado</a>); <em>A Practical Guide to Integral Yoga</em>, compilação de textos de Sri Aurobindo e da Mãe (Sri Aurobindo Ashram, 1959); dados biográficos conferidos em <a href="https://en.wikipedia.org/wiki/Mirra_Alfassa" target="_blank" rel="noopener">Mirra Alfassa</a>. As ideias da Mãe aparecem parafraseadas a partir de falas que circulam em compilações, e a citação de Sri Aurobindo está em tradução livre; o leitor é convidado a conferi-las nas edições do Ashram. Este ensaio tem caráter reflexivo e não substitui orientação de profissionais de saúde.</p>
+  </div>
+</section>
+
+</body>
+</html>
